@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<style>
+@page { size: A4; margin: 20mm 18mm 18mm; }
+*{box-sizing:border-box}
+:root{
+  --tinta:#1F1B18; --tinta2:#6B615A; --acento:#A8735A; --acento2:#8A5B45;
+  --verde:#4F7A55; --verde-bg:#EDF2EA; --creme:#FBF8F4; --linha:#E4DCD3;
+  --ouro:#9A7220; --prata:#5B6B7A; --bronze:#8A6B4A; --infer:#7A6E64;
+  --perigo:#8C3A28; --perigo-bg:#F8ECE8;
+}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;color:var(--tinta);background:#fff;
+  font:11pt/1.5 "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  letter-spacing:.002em}
+.sans{font-family:-apple-system,"Helvetica Neue",Arial,sans-serif}
+
+/* CAPA */
+.capa{height:257mm;display:flex;flex-direction:column;justify-content:space-between;
+  page-break-after:always;padding:6mm 0}
+.capa .topo{font:600 8.5pt/1 -apple-system,sans-serif;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--acento)}
+.capa .meio h1{font-size:40pt;line-height:1.02;letter-spacing:-.02em;margin:0 0 10mm;font-weight:700}
+.capa .meio h1 em{font-style:italic;color:var(--acento)}
+.capa .tese{border-left:3px solid var(--acento);padding:4mm 0 4mm 7mm;margin:0;
+  font-size:14pt;line-height:1.45;color:var(--tinta)}
+.capa .rodape{font:8.5pt/1.6 -apple-system,sans-serif;color:var(--tinta2);
+  border-top:1px solid var(--linha);padding-top:5mm}
+.capa .rodape b{color:var(--tinta)}
+.selo{display:inline-block;border:1px solid var(--acento);color:var(--acento);border-radius:99px;
+  padding:2mm 5mm;font:600 8pt/1 -apple-system,sans-serif;letter-spacing:.14em;text-transform:uppercase;
+  margin-bottom:8mm}
+
+/* estrutura */
+h2{font-size:20pt;letter-spacing:-.015em;margin:0 0 2mm;font-weight:700;line-height:1.1}
+h2 .n{color:var(--acento);font-size:13pt;vertical-align:middle;margin-right:3mm}
+.sub-h2{font:600 8pt/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--acento);margin:0 0 6mm}
+.secao{page-break-inside:avoid;margin-bottom:9mm}
+.bloco{page-break-inside:avoid}
+h3{font-size:12.5pt;margin:7mm 0 2mm;font-weight:700}
+p{margin:0 0 3mm}
+.lead{font-size:12pt;color:var(--tinta2);font-style:italic;margin-bottom:5mm}
+a{color:var(--acento2);text-decoration:none;word-break:break-all}
+.small{font-size:8.5pt;color:var(--tinta2);line-height:1.45}
+
+.regua{border:0;border-top:1px solid var(--linha);margin:7mm 0}
+
+/* tabelas */
+table{width:100%;border-collapse:collapse;margin:4mm 0;font-size:10pt;page-break-inside:avoid}
+th{text-align:left;font:600 8pt/1.3 -apple-system,sans-serif;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--tinta2);border-bottom:1.5px solid var(--tinta);padding:0 4mm 2mm 0;vertical-align:bottom}
+td{padding:2.4mm 4mm 2.4mm 0;border-bottom:1px solid var(--linha);vertical-align:top;line-height:1.4}
+td:last-child,th:last-child{padding-right:0}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:700}
+
+/* selos de nível */
+.tag{display:inline-block;font:700 6.8pt/1 -apple-system,sans-serif;letter-spacing:.08em;
+  padding:1.4mm 2.4mm;border-radius:2px;text-transform:uppercase;white-space:nowrap}
+.t-ouro{background:#F6EED8;color:var(--ouro)}
+.t-prata{background:#EAEEF2;color:var(--prata)}
+.t-bronze{background:#F1E9DF;color:var(--bronze)}
+.t-infer{background:#EFECE8;color:var(--infer)}
+
+/* caixas */
+.caixa{background:var(--creme);border:1px solid var(--linha);border-radius:3mm;padding:5mm 6mm;
+  margin:4mm 0;page-break-inside:avoid}
+.caixa.verde{background:var(--verde-bg);border-color:#CBD9C4}
+.caixa.destaque{border-left:3px solid var(--acento);background:#fff;border-radius:0 3mm 3mm 0}
+.caixa.alerta{background:var(--perigo-bg);border:1px solid #E9C9BF}
+.caixa .rot{font:700 8pt/1 -apple-system,sans-serif;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--acento);margin-bottom:2.5mm;display:block}
+.caixa.alerta .rot{color:var(--perigo)}
+.caixa.verde .rot{color:var(--verde)}
+.frase{font-size:15pt;line-height:1.35;font-weight:700;letter-spacing:-.01em;margin:0}
+
+ul{margin:2mm 0 3mm;padding-left:5mm}
+li{margin-bottom:1.8mm;line-height:1.45}
+ol.muni{list-style:none;counter-reset:m;padding:0;margin:3mm 0}
+ol.muni li{counter-increment:m;position:relative;padding:3mm 0 3mm 11mm;border-bottom:1px solid var(--linha);
+  font-size:11pt;line-height:1.4}
+ol.muni li::before{content:counter(m);position:absolute;left:0;top:2.6mm;
+  font-family:Georgia,serif;font-size:15pt;font-weight:700;color:var(--acento)}
+
+.page-break{page-break-before:always}
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:6mm}
+.kpi{border:1px solid var(--linha);border-radius:3mm;padding:4mm 5mm;page-break-inside:avoid}
+.kpi .v{font-size:22pt;font-weight:700;color:var(--acento);line-height:1;letter-spacing:-.02em}
+.kpi .l{font:8.5pt/1.35 -apple-system,sans-serif;color:var(--tinta2);margin-top:2mm}
+
+footer{position:fixed;bottom:-12mm;left:0;right:0;font:7.5pt/1 -apple-system,sans-serif;
+  color:var(--tinta2);display:flex;justify-content:space-between;border-top:1px solid var(--linha);padding-top:2mm}
+</style>
+</head>
+<body>
+
+<!-- ══════════ CAPA ══════════ -->
+<section class="capa">
+  <div class="topo">Relatório de Curadoria &amp; Viabilidade de Mercado</div>
+  <div class="meio">
+    <span class="selo">Produto Express · Skincare</span>
+    <h1>Cara de pobre pode ter <em>cara de rica</em> com skincare.</h1>
+    <p class="tese">Skincare é o único item de luxo percebido que uma mulher brasileira compra por
+      R$47 — a ciência mostra que pele uniforme comunica saúde e status mais barato que qualquer
+      outra coisa, e ninguém no Brasil vende esse ângulo como produto digital estruturado.</p>
+  </div>
+  <div class="rodape">
+    <b>Nicho:</b> Skincare / K-beauty · mulheres reais · ticket R$27–97, orgânico &nbsp;·&nbsp;
+    <b>Método:</b> 44 buscas, fonte e nível de certeza em cada afirmação numérica<br>
+    <b>Níveis de certeza:</b> OURO = estudo/fonte primária · PRATA = portal confiável ·
+    BRONZE = blog/case · INFERÊNCIA = raciocínio próprio<br><br>
+    <b>RITUAL</b> — app de skincare · documento interno, não publicar
+  </div>
+</section>
+
+<!-- ══════════ SUMÁRIO EXECUTIVO ══════════ -->
+<section class="secao">
+  <div class="sub-h2">Sumário executivo</div>
+  <h2>O veredito em uma página</h2>
+  <p class="lead">Nicho aprovado. Mercado grande e em alta, dor mapeada, concorrência fraca
+    (só PDF estático) e ângulo de posicionamento vago — legalmente navegável.</p>
+
+  <div class="duas">
+    <div class="kpi"><div class="v">3º</div><div class="l">maior mercado de beleza do mundo —
+      R$ 242,3 bi em 2025, +11,2% ao ano</div></div>
+    <div class="kpi"><div class="v">+70%</div><div class="l">de buscas por "k-beauty" em 2025;
+      "peeling coreano" +1.150%</div></div>
+    <div class="kpi"><div class="v">R$ 5 mil</div><div class="l">parados na gaveta: ela tem R$ 6 mil
+      em produto em casa e usa só R$ 1 mil</div></div>
+    <div class="kpi"><div class="v">7/dia</div><div class="l">vendas de R$47 para chegar a
+      R$10 mil/mês — não 371, sete por dia</div></div>
+  </div>
+
+  <div class="caixa destaque">
+    <span class="rot">A frase da virada</span>
+    <p class="frase">Você não precisa de 371 vendas. Precisa de 7 pessoas por dia dizendo sim.
+      Sete — num nicho com 17 bilhões de views.</p>
+  </div>
+</section>
+
+<hr class="regua">
+
+<!-- ══════════ 1. MERCADO ══════════ -->
+<section class="secao">
+  <h2><span class="n">01</span>Tamanho e crescimento</h2>
+  <table>
+    <thead><tr><th>Indicador</th><th>Dado</th><th>Nível</th></tr></thead>
+    <tbody>
+      <tr><td>Mercado BR de beleza e higiene (2025)</td><td class="num">R$ 242,3 bi · +11,2%</td><td><span class="tag t-prata">Prata</span></td></tr>
+      <tr><td>Posição global</td><td class="num">3º do mundo</td><td><span class="tag t-prata">Prata</span></td></tr>
+      <tr><td>Projeção de crescimento até 2027</td><td class="num">+7,2% a.a.</td><td><span class="tag t-prata">Prata</span></td></tr>
+      <tr><td>E-commerce de cosméticos (2025)</td><td class="num">+44%</td><td><span class="tag t-prata">Prata</span></td></tr>
+      <tr><td>Exportações do setor</td><td class="num">US$ 1,06 bi · +20,1%</td><td><span class="tag t-ouro">Ouro</span></td></tr>
+      <tr><td>Importação de skincare coreano</td><td class="num">+57% a +86%</td><td><span class="tag t-bronze">Bronze</span></td></tr>
+      <tr><td>Marcas asiáticas no mercado BR</td><td class="num">14% das vendas</td><td><span class="tag t-bronze">Bronze</span></td></tr>
+      <tr><td>#glassskin no TikTok (global)</td><td class="num">25 bilhões de views</td><td><span class="tag t-bronze">Bronze</span></td></tr>
+    </tbody>
+  </table>
+  <p class="small"><b>Fontes:</b> ABIHPEC (Panorama do Setor 2025) · Beauty Fair / Euromonitor ·
+    Monitor Mercantil · CNN Brasil · Correio 24h · Korea JoongAng Daily.
+    <b>Ressalva:</b> fontes divergem entre 3º e 4º lugar — tratar como faixa. Números de k-beauty
+    vêm de matérias secundárias (Bronze).</p>
+</section>
+
+<!-- ══════════ 2. DOR ══════════ -->
+<section class="secao page-break">
+  <h2><span class="n">02</span>A dor real da consumidora</h2>
+  <p class="lead">Não a dor bonita — a frase que ela usa quando reclama.</p>
+  <table>
+    <thead><tr><th>A dor</th><th>A evidência</th><th>Nível</th></tr></thead>
+    <tbody>
+      <tr><td>"Não sei a ordem"</td><td>6+ marcas grandes mantêm artigo só sobre a ordem; nenhuma resolve de forma definitiva</td><td><span class="tag t-infer">Infer.</span></td></tr>
+      <tr><td>"Não sei meu tipo de pele"</td><td>Todas as marcas têm teste de tipo; todas admitem que produto errado piora</td><td><span class="tag t-prata">Prata</span></td></tr>
+      <tr><td>"Gastei e não uso"</td><td>R$ 6.000 em produto em casa, R$ 1.000 usados — 83% parado</td><td><span class="tag t-prata">Prata</span></td></tr>
+      <tr><td>"Compro por impulso do Insta"</td><td>53,7% gastam R$151–350/mês, muito sem necessidade</td><td><span class="tag t-prata">Prata</span></td></tr>
+      <tr><td>"10 passos é impossível"</td><td>A própria Sallve publica que nem as coreanas fazem os 10 juntos</td><td><span class="tag t-bronze">Bronze</span></td></tr>
+      <tr><td>"Fiz e piorou"</td><td>Dermatologistas: excesso de ácido sem orientação piora a acne</td><td><span class="tag t-prata">Prata</span></td></tr>
+    </tbody>
+  </table>
+  <p class="small"><b>Fontes:</b> NSC Total · E-Commerce Brasil · Sallve · Metrópoles · CeraVe · Dermaclub.
+    <b>Limite declarado:</b> não foi possível abrir threads do Reddit BR — a dor "gastei errado"
+    está validada por estatística, não por citação literal.</p>
+</section>
+
+<!-- ══════════ 3. ÂNGULO ══════════ -->
+<section class="secao">
+  <h2><span class="n">03</span>O ângulo "cara de pobre → cara de rica"</h2>
+  <div class="sub-h2">O coração do posicionamento</div>
+
+  <h3>A ciência (e ela é real)</h3>
+  <p>A homogeneidade de cor e textura da pele tem correlação <b>positiva e significativa</b> com
+    atratividade, percepção de saúde e juventude — e correlação negativa com idade estimada.
+    Replicado em estudos revisados por pares. <span class="tag t-ouro">Ouro</span></p>
+  <p>Observadores categorizam classe social a partir de pistas faciais mínimas, acima do acaso;
+    pessoas de renda alta são julgadas como mais confiáveis. <span class="tag t-ouro">Ouro</span></p>
+  <p class="small">Frontiers in Psychology 2022 · PMC (Facial Skin Coloration) · PubMed (Color homogeneity) ·
+    Wiley (male facial skin) · CNN / PMC (trustworthiness).</p>
+
+  <div class="caixa alerta">
+    <span class="rot">Honestidade epistêmica — leia antes de escrever a copy</span>
+    <p style="margin:0"><b>NÃO existe</b> um estudo que compare "pele vs. roupa vs. maquiagem" e diga
+    qual pesa mais na percepção de renda. A ideia de que "pele importa mais que roupa" é
+    <b>[INFERÊNCIA]</b> construída sobre duas evidências OURO reais + o argumento de custo.
+    Na copy, use a formulação segura: <i>"a ciência já mostrou que pele uniforme comunica saúde e
+    juventude — e pele é a coisa mais barata de arrumar"</i>. Nunca <i>"estudo comprovou que pele
+    vale mais que bolsa"</i>. Sua credibilidade vale mais que a frase bonita.</p>
+  </div>
+
+  <h3>A matemática do luxo mais barato</h3>
+  <table>
+    <thead><tr><th>Caminho para "parecer rica"</th><th>Custo</th></tr></thead>
+    <tbody>
+      <tr><td>Kit de skincare essencial</td><td class="num">R$ 50 – 100</td></tr>
+      <tr><td>Rotina coreana básica (nacional)</td><td class="num">R$ 250 – 450</td></tr>
+      <tr><td>Um único creme de luxo (La Mer)</td><td class="num">R$ 5.000</td></tr>
+      <tr><td>Botox (dura ~4 meses)</td><td class="num">R$ 900 – 2.500</td></tr>
+      <tr><td>Harmonização facial completa</td><td class="num">R$ 9.000 – 18.000</td></tr>
+      <tr><td>Bolsa quiet luxury (Birkin)</td><td class="num">~R$ 75.000</td></tr>
+    </tbody>
+  </table>
+  <p>Uma rotina completa custa <b>1/20 a 1/40 de uma harmonização</b> e <b>1/10 de um único pote de
+    creme de luxo</b> — e é ela que mexe na variável (uniformidade, luminosidade) que o cérebro lê
+    como saúde. Procedimento pontual e bolsa cara não mexem nisso. <span class="tag t-infer">Inferência sobre Ouro + Prata</span></p>
+
+  <div class="caixa verde">
+    <span class="rot">O melhor achado</span>
+    <p style="margin:0">"Pele de pobre × pele de rica" <b>já é hashtag nativa do TikTok brasileiro.</b>
+    Você não precisa criar o ângulo. Ele está solto, sem dono, sem produto por trás. É só ocupar.</p>
+  </div>
+</section>
+
+<!-- ══════════ MUNIÇÃO ══════════ -->
+<section class="secao page-break">
+  <h2><span class="n">04</span>Munição de copy</h2>
+  <p class="lead">Dez frases prontas — sempre com número, nunca com promessa clínica.</p>
+  <ol class="muni">
+    <li>Ninguém pergunta quanto custou seu blazer. Perguntam o que você usa na pele.</li>
+    <li>Cara de rica não é R$18 mil numa harmonização. É uma pele que parece cuidada — e isso cabe num Pix de R$47.</li>
+    <li>A ciência já mostrou: pele uniforme e iluminada é lida pelo cérebro como saúde e juventude. E é a coisa mais barata de arrumar.</li>
+    <li>Você tem R$6 mil em produto parado no banheiro e continua sem saber o que usar. Nunca foi falta de produto. Foi falta de ordem.</li>
+    <li>Coreana nenhuma faz 10 passos de uma vez. Ela faz 3 certos, na hora certa. É isso que ninguém te contou.</li>
+    <li>Skincare é o luxo mais democrático que existe: o mesmo ativo do creme de R$5.000 está, na versão honesta, no sérum de R$40.</li>
+    <li>Botox dura 4 meses e custa R$2.000. Rotina certa dura a vida toda e custa menos que um rodízio.</li>
+    <li>"Pele de pobre" e "pele de rica" não é sobre o dinheiro no bolso. É sobre a ordem dos produtos que você já tem.</li>
+    <li>Sua pele fala antes de você abrir a boca. E hoje quem escolhe o que ela diz é o produto errado, na ordem errada.</li>
+    <li>Você não precisa de 10 passos coreanos. Precisa de 1 rotina que funcione pra sua pele. Leva 5 minutos pra descobrir qual.</li>
+  </ol>
+</section>
+
+<!-- ══════════ 5. CONCORRÊNCIA ══════════ -->
+<section class="secao">
+  <h2><span class="n">05</span>Concorrência &amp; o gap</h2>
+  <p>No Hotmart, os produtos de skincare são <b>ebooks em PDF estático</b> (ex.: R$ 19). Nenhum
+    concorrente brasileiro usa web app interativo.</p>
+  <table>
+    <thead><tr><th>App existente</th><th>O que faz</th><th>O que NÃO faz</th></tr></thead>
+    <tbody>
+      <tr><td>Yuka</td><td>Nota por código de barras</td><td>Não monta rotina</td></tr>
+      <tr><td>INCIDecoder</td><td>Banco de ingredientes</td><td>Inglês, técnico</td></tr>
+      <tr><td>SkinSort</td><td>Ingredientes + match</td><td>Não gera rotina BR</td></tr>
+      <tr><td>skincareroutine.app</td><td>Monta rotina, evita conflito</td><td>Só marca DECIEM, sem PT-BR</td></tr>
+    </tbody>
+  </table>
+  <div class="caixa destaque">
+    <span class="rot">O gap em uma frase</span>
+    <p style="margin:0;font-size:12pt">Todos analisam <b>ingrediente isolado</b>. Nenhum responde:
+      <i>"o que eu faço, na ordem, com o que eu já tenho, no meu orçamento, em português."</i></p>
+  </div>
+</section>
+
+<!-- ══════════ 6. A CONTA ══════════ -->
+<section class="secao">
+  <h2><span class="n">06</span>A conta dos R$ 10.000/mês</h2>
+  <table>
+    <thead><tr><th>Cenário</th><th>Ticket</th><th>Vendas/mês</th><th>Vendas/dia</th></tr></thead>
+    <tbody>
+      <tr><td>A</td><td class="num">R$ 27</td><td class="num">371</td><td class="num">~12</td></tr>
+      <tr><td><b>B (recomendado)</b></td><td class="num">R$ 47</td><td class="num">213</td><td class="num">~7</td></tr>
+      <tr><td>C</td><td class="num">R$ 97</td><td class="num">104</td><td class="num">~3,5</td></tr>
+    </tbody>
+  </table>
+  <p>Com <b>orderbump</b> de R$17–27 convertendo a 30–40%, o ticket médio do cenário B vira
+    <b>R$ 53–58</b>. As mesmas 213 vendas passam a entregar <b>R$ 11.300–12.350</b> — batendo a meta
+    com folga.</p>
+  <p class="small"><b>Nota de método [INFERÊNCIA]:</b> não existe fonte pública de "views de vídeo de
+    skincare → venda de ebook R$47 no Brasil". A conta cruza a conversão real de e-commerce (2%, Prata)
+    com a faixa que o mercado de infoproduto cita (1–5%). É estimativa fundamentada, não fato coletado.
+    Benchmark de orderbump: SamCart (Bronze).</p>
+</section>
+
+<!-- ══════════ 7. GAPS + RISCOS ══════════ -->
+<section class="secao page-break">
+  <h2><span class="n">07</span>O que o app entrega e ninguém entrega</h2>
+  <ul>
+    <li>Diagnóstico + rotina na ordem certa + <b>checagem de conflito de ativos</b> + adaptação ao orçamento, tudo em PT-BR e ticket baixo.</li>
+    <li>Ferramenta interativa contra o PDF estático da concorrência.</li>
+    <li>O ângulo "cara de pobre → cara de rica" como <b>promessa central</b> — ninguém ocupou.</li>
+    <li>Tradutor "k-beauty para o bolso brasileiro": mata a objeção "é caro demais".</li>
+    <li>"Não desperdice o que você já comprou" — ângulo de confiança sobre os R$5 mil parados.</li>
+  </ul>
+
+  <h2 style="margin-top:10mm"><span class="n">08</span>Riscos e limites legais</h2>
+  <table>
+    <thead><tr><th>❌ Nunca dizer</th><th>✓ Sempre dizer</th></tr></thead>
+    <tbody>
+      <tr><td>trata, cura, elimina, garante</td><td>organiza, ensina a ordem, evita os erros comuns</td></tr>
+      <tr><td>"acaba com a acne"</td><td>"para de agredir sua barreira com ácido na hora errada"</td></tr>
+      <tr><td>"resultado garantido em 30 dias"</td><td>"método que você consegue manter"</td></tr>
+      <tr><td>promessa dermatológica mensurável</td><td>percepção estética, hábito e autoestima</td></tr>
+    </tbody>
+  </table>
+  <p class="small">Base: <b>ANVISA RDC 752/2022</b> (proíbe alegação terapêutica em cosmético) e
+    <b>CDC Art. 37</b> (propaganda enganosa). Só dermatologista diagnostica e prescreve. O ângulo
+    "cara de rica" fica no campo da percepção e autoestima, nunca do resultado clínico. Tudo já
+    embutido na blindagem do app (termo de aceite, triagem clínica, filtro de gestante, rodapé legal).</p>
+
+  <hr class="regua">
+  <p class="small"><b>Limitações da pesquisa (transparência):</b> Ad Library do Meta e Instagram
+    bloqueados — ganchos vêm de matérias, não de anúncios observados. Reddit BR e grupos fechados
+    inacessíveis. Alguns números de k-beauty vêm de matéria secundária. Google Trends não acessado
+    diretamente. Onde não se achou, está marcado "não encontrado".</p>
+</section>
+
+</body>
+</html>

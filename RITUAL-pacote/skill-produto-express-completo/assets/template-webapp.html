@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Produto Express — Template</title>
+<style>
+  :root{
+    --cor-primaria:#B76E79; --bg:#FFF8F5; --txt:#2B2B2B; --card:#fff;
+    --borda:#00000014; --suave:#00000008; --raio:16px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#161214; --txt:#F2ECEA; --card:#221D20; --borda:#ffffff1f; --suave:#ffffff0d; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    padding:24px 18px calc(24px + env(safe-area-inset-bottom));}
+  .wrap{max-width:560px;margin:0 auto}
+  h1{font-size:1.7rem;line-height:1.2;margin:0 0 8px}
+  h2{font-size:1.25rem;margin:0 0 12px}
+  p.sub{opacity:.75;margin:0 0 24px}
+  .card{background:var(--card);border:1px solid var(--borda);border-radius:var(--raio);
+    padding:18px;margin-bottom:12px}
+  button{font:inherit;font-size:16px;min-height:48px;border-radius:12px;cursor:pointer}
+  .btn{width:100%;background:var(--cor-primaria);color:#fff;border:0;font-weight:600;padding:14px}
+  .btn.sec{background:transparent;color:var(--txt);border:1px solid var(--borda)}
+  .opt{width:100%;text-align:left;background:var(--card);color:var(--txt);
+    border:1px solid var(--borda);padding:14px 16px;margin-bottom:10px}
+  .opt[aria-pressed="true"]{border-color:var(--cor-primaria);background:var(--suave)}
+  .barra{height:6px;background:var(--suave);border-radius:99px;margin-bottom:20px;overflow:hidden}
+  .barra i{display:block;height:100%;background:var(--cor-primaria);transition:width .3s}
+  .rodape{text-align:center;opacity:.6;font-size:.85rem;margin-top:28px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+  @media print{button,.barra,.rodape{display:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <section data-tela="capa">
+    <h1 id="tCapa">Título da promessa</h1>
+    <p class="sub" id="tSub">Subtítulo com o porquê concreto e o tempo definido.</p>
+    <button class="btn" onclick="ir('quiz')">Começar</button>
+  </section>
+
+  <section data-tela="quiz" hidden>
+    <div class="barra"><i id="prog" style="width:0%"></i></div>
+    <h2 id="pTitulo"></h2>
+    <div id="pOpcoes"></div>
+    <button class="btn sec" onclick="voltar()">Voltar</button>
+  </section>
+
+  <section data-tela="resultado" hidden>
+    <h1 id="rTitulo"></h1>
+    <div id="rCorpo"></div>
+    <button class="btn" onclick="compartilhar()">Compartilhar meu resultado</button>
+    <button class="btn sec" onclick="recomecar()">Refazer</button>
+  </section>
+
+  <p class="rodape" id="rodape"></p>
+</div>
+
+<script>
+// ===== PERSONALIZE AQUI =====
+const CONFIG = {
+  nome:"Nome do produto", autora:"@seu_arroba", linkBio:"https://seu-link.com",
+  corPrimaria:"#B76E79", corFundo:"#FFF8F5",
+  ctaTexto:"Quero o plano completo",
+};
+// ===== FIM DA PERSONALIZAÇÃO =====
+
+const PERGUNTAS = [
+  { id:"exemplo", titulo:"Pergunta de exemplo?", opcoes:[
+      {txt:"Opção A", valor:"a"}, {txt:"Opção B", valor:"b"} ] },
+];
+
+function calcularResultado(r){
+  return { titulo:"Seu resultado", itens:["Passo 1","Passo 2","Passo 3"] };
+}
+
+/* ---------- infra ---------- */
+const CHAVE="app_v1";
+const estadoInicial=()=>({tela:"capa",i:0,resp:{}});
+let estado=carregar();
+
+function carregar(){ try{return JSON.parse(localStorage.getItem(CHAVE))||estadoInicial()}catch{return estadoInicial()} }
+function salvar(){ try{localStorage.setItem(CHAVE,JSON.stringify(estado))}catch{} }
+
+function ir(tela){
+  document.querySelectorAll("[data-tela]").forEach(s=>s.hidden=s.dataset.tela!==tela);
+  estado.tela=tela; salvar(); window.scrollTo({top:0,behavior:"instant"});
+  if(tela==="quiz") renderPergunta();
+  if(tela==="resultado") renderResultado();
+}
+
+function renderPergunta(){
+  const p=PERGUNTAS[estado.i];
+  if(!p) return ir("resultado");
+  document.getElementById("prog").style.width=(estado.i/PERGUNTAS.length*100)+"%";
+  document.getElementById("pTitulo").textContent=p.titulo;
+  const box=document.getElementById("pOpcoes"); box.innerHTML="";
+  p.opcoes.forEach(o=>{
+    const b=document.createElement("button");
+    b.className="opt"; b.textContent=o.txt;
+    b.setAttribute("aria-pressed", estado.resp[p.id]===o.valor);
+    b.onclick=()=>{ estado.resp[p.id]=o.valor; estado.i++; salvar();
+      estado.i>=PERGUNTAS.length ? ir("resultado") : renderPergunta(); };
+    box.appendChild(b);
+  });
+}
+function voltar(){ if(estado.i>0){estado.i--; salvar(); renderPergunta();} else ir("capa"); }
+
+function renderResultado(){
+  const r=calcularResultado(estado.resp);
+  document.getElementById("rTitulo").textContent=r.titulo;
+  document.getElementById("rCorpo").innerHTML=
+    r.itens.map(t=>`<div class="card">${t}</div>`).join("");
+}
+
+async function compartilhar(){
+  const r=calcularResultado(estado.resp);
+  const txt=`${r.titulo}\n\n${r.itens.join("\n")}\n\n${CONFIG.nome} — ${CONFIG.autora}`;
+  try{
+    if(navigator.share) return await navigator.share({text:txt});
+    await navigator.clipboard.writeText(txt);
+    alertaSuave("Copiado! Cola no seu story 💛");
+  }catch{}
+}
+function alertaSuave(msg){
+  const el=document.getElementById("rodape"); const antes=el.textContent;
+  el.textContent=msg; setTimeout(()=>el.textContent=antes,2500);
+}
+function recomecar(){ try{localStorage.removeItem(CHAVE)}catch{} estado=estadoInicial(); ir("capa"); }
+
+/* boot */
+(function(){
+  const s=document.documentElement.style;
+  s.setProperty("--cor-primaria",CONFIG.corPrimaria);
+  // corFundo só se aplica no tema claro — no escuro o fundo do sistema prevalece
+  if(!matchMedia("(prefers-color-scheme: dark)").matches) s.setProperty("--bg",CONFIG.corFundo);
+  document.title=CONFIG.nome;
+  document.getElementById("rodape").textContent=`${CONFIG.nome} · ${CONFIG.autora}`;
+  ir(estado.tela);
+})();
+</script>
+</body>
+</html>

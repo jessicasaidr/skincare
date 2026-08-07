@@ -1,0 +1,1293 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RITUAL · sua rotina de skincare</title>
+<style>
+/* ══════════════ SISTEMA ══════════════ */
+:root{
+  --verde:#6E9B72; --verde-esc:#4F7A55; --verde-bg:#E9F1E7;
+  --roxo:#7B76D9;  --roxo-bg:#EEECFC;
+  --rosa:#E48BA0;  --rosa-bg:#FCE8EC;
+  --azul:#7CA3D6;  --azul-bg:#EAF1FB;
+  --pessego:#E9A178; --pessego-bg:#FBEDE3;
+  --creme:#FAF7F3; --papel:#FFFFFF;
+  --tinta:#1C1A19; --tinta2:#75706C; --linha:#0000000f; --linha2:#00000008;
+  --perigo:#C4553F; --perigo-bg:#FCEBE7;
+  --alerta:#9A7220; --alerta-bg:#FBF1DC;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  --r:18px; --rg:26px; --rx:34px;
+  --sombra:0 2px 4px #0000000a,0 12px 28px #00000012;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --verde:#8DBB91; --verde-esc:#A9D0AC; --verde-bg:#1E2A1F; --roxo:#A29EEA; --roxo-bg:#232140;
+    --rosa:#F0A7B8; --rosa-bg:#3A222A; --azul:#9FBFEA; --azul-bg:#1D2735;
+    --pessego:#F2B591; --pessego-bg:#33241B; --creme:#141312; --papel:#1E1C1B;
+    --tinta:#F4F0EC; --tinta2:#A29B95; --linha:#ffffff1a; --linha2:#ffffff0d;
+    --perigo:#F0A18C; --perigo-bg:#331E19; --alerta:#E8C888; --alerta-bg:#2C2416;
+    --sombra:0 2px 4px #00000030,0 12px 28px #00000040;
+  }
+}
+:root[data-tema="dark"]{
+  --verde:#8DBB91; --verde-esc:#A9D0AC; --verde-bg:#1E2A1F; --roxo:#A29EEA; --roxo-bg:#232140;
+  --rosa:#F0A7B8; --rosa-bg:#3A222A; --azul:#9FBFEA; --azul-bg:#1D2735;
+  --pessego:#F2B591; --pessego-bg:#33241B; --creme:#141312; --papel:#1E1C1B;
+  --tinta:#F4F0EC; --tinta2:#A29B95; --linha:#ffffff1a; --linha2:#ffffff0d;
+  --perigo:#F0A18C; --perigo-bg:#331E19; --alerta:#E8C888; --alerta-bg:#2C2416;
+  --sombra:0 2px 4px #00000030,0 12px 28px #00000040;
+}
+:root[data-tema="light"]{
+  --verde:#6E9B72; --verde-esc:#4F7A55; --verde-bg:#E9F1E7; --roxo:#7B76D9; --roxo-bg:#EEECFC;
+  --rosa:#E48BA0; --rosa-bg:#FCE8EC; --azul:#7CA3D6; --azul-bg:#EAF1FB;
+  --pessego:#E9A178; --pessego-bg:#FBEDE3; --creme:#FAF7F3; --papel:#FFFFFF;
+  --tinta:#1C1A19; --tinta2:#75706C; --linha:#0000000f; --linha2:#00000008;
+  --perigo:#C4553F; --perigo-bg:#FCEBE7; --alerta:#9A7220; --alerta-bg:#FBF1DC;
+  --sombra:0 2px 4px #0000000a,0 12px 28px #00000012;
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;overflow-x:hidden}
+body{background:var(--creme);color:var(--tinta);font-family:var(--sans);font-size:16px;
+  line-height:1.55;padding:0 0 calc(104px + env(safe-area-inset-bottom));-webkit-font-smoothing:antialiased}
+.pag{max-width:620px;margin:0 auto;padding:0 20px}
+
+h1,h2,h3{margin:0}
+.disp{font-family:var(--serif);font-weight:700;font-size:clamp(1.9rem,7.6vw,2.5rem);
+  line-height:1.14;letter-spacing:-.015em;text-wrap:balance;margin:0 0 12px}
+.disp em{font-style:normal;color:var(--verde)}
+.disp .rx{color:var(--rosa)} .disp .rz{color:var(--roxo)}
+.h2{font-family:var(--serif);font-weight:700;font-size:1.4rem;letter-spacing:-.01em;margin:0}
+.h3{font-size:1.02rem;font-weight:700;margin:0 0 4px;display:block}
+.lead{color:var(--tinta2);font-size:1rem;margin:0 0 24px}
+.peq{font-size:.87rem;line-height:1.55;color:var(--tinta2);margin:0}
+.mini{font-size:.75rem;color:var(--tinta2)}
+p{margin:0 0 12px}
+.secao{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:30px 0 14px}
+.secao .h2{font-size:1.28rem}
+.verTudo{background:none;border:0;color:var(--verde);font:inherit;font-size:.87rem;font-weight:600;padding:6px 2px}
+
+button{font:inherit;cursor:pointer;color:inherit}
+.btn{display:block;width:100%;background:var(--verde);color:#fff;border:0;border-radius:99px;
+  padding:17px 22px;font-size:1rem;font-weight:700;min-height:56px;margin-bottom:10px;
+  box-shadow:0 6px 18px color-mix(in srgb,var(--verde) 35%,transparent);
+  transition:transform .16s,box-shadow .2s,opacity .2s}
+.btn:active{transform:scale(.98)}
+.btn[disabled]{opacity:.45;box-shadow:none;cursor:not-allowed}
+.btn.ghost{background:transparent;color:var(--tinta);border:1.5px solid var(--linha);box-shadow:none}
+.btn.grad{background:linear-gradient(96deg,var(--pessego),var(--rosa));
+  box-shadow:0 8px 22px color-mix(in srgb,var(--rosa) 40%,transparent)}
+.btn.mini{width:auto;display:inline-flex;align-items:center;min-height:42px;padding:9px 18px;
+  font-size:.86rem;margin:0;box-shadow:none}
+
+.opt{display:block;width:100%;text-align:left;background:var(--papel);border:0;border-radius:var(--rg);
+  padding:17px 20px;margin-bottom:11px;box-shadow:var(--sombra);position:relative;
+  transition:transform .16s,background .2s,color .2s}
+.opt:active{transform:scale(.99)}
+.opt b{display:block;font-weight:700;font-size:1rem;line-height:1.3;padding-right:34px}
+.opt span:not(.tick){display:block;font-size:.85rem;color:var(--tinta2);margin-top:3px;padding-right:34px}
+.opt .tick{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:26px;height:26px;
+  border-radius:99px;background:#ffffff2e;display:none;align-items:center;justify-content:center;
+  color:#fff;font-size:.8rem;padding:0}
+.opt[aria-pressed="true"]{background:var(--roxo);color:#fff}
+.opt[aria-pressed="true"] span:not(.tick){color:#ffffffcf}
+.opt[aria-pressed="true"] .tick{display:flex}
+
+.qTopo{position:sticky;top:0;z-index:20;background:var(--creme);padding:14px 20px 0}
+.qLinha{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.qLinha b{font-size:.98rem;font-weight:700}
+.circBtn{width:46px;height:46px;border-radius:99px;background:var(--papel);border:0;box-shadow:var(--sombra);
+  display:flex;align-items:center;justify-content:center;font-size:1.05rem;color:var(--tinta)}
+.qBarra{height:3px;background:var(--linha);border-radius:99px;overflow:hidden}
+.qBarra i{display:block;height:100%;background:var(--verde);transition:width .4s cubic-bezier(.4,0,.2,1)}
+
+.slide{text-align:center;padding-top:4vh}
+.slideArte{width:100%;max-width:330px;margin:0 auto 24px}
+.dots{display:flex;gap:7px;justify-content:center;margin:20px 0}
+.dots i{width:7px;height:7px;border-radius:99px;background:var(--linha);transition:all .3s}
+.dots i.on{background:var(--verde);width:22px}
+
+.card{background:var(--papel);border-radius:var(--rg);padding:18px;margin-bottom:12px;box-shadow:var(--sombra)}
+.grade{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{border:0;border-radius:var(--rx);padding:16px;text-align:left;min-height:172px;
+  display:flex;flex-direction:column;justify-content:space-between;transition:transform .16s;color:var(--tinta)}
+.tile:active{transform:scale(.97)}
+.tile b{display:block;font-size:1.05rem;font-weight:700}
+.tile small{display:block;font-size:.78rem;opacity:.7;margin-top:2px;line-height:1.35}
+.t-verde{background:var(--verde-bg)} .t-roxo{background:var(--roxo-bg)}
+.t-rosa{background:var(--rosa-bg)}  .t-azul{background:var(--azul-bg)}
+
+.faixa{border-radius:var(--rx);padding:24px 20px;text-align:center;position:relative;overflow:hidden;
+  background:linear-gradient(122deg,var(--roxo-bg),var(--rosa-bg) 55%,var(--pessego-bg));margin-bottom:12px}
+.faixa>svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.8}
+.faixa h2{font-family:var(--serif);font-size:1.5rem;font-weight:700;margin:0 0 4px;position:relative}
+.faixa p{font-size:.9rem;color:var(--tinta2);margin:0 0 16px;position:relative}
+.faixa .btn{position:relative;width:auto;display:inline-block;padding:14px 34px;min-height:50px;margin:0}
+
+.medidor{display:flex;align-items:center;gap:12px;margin:10px 0 8px}
+.medidor .trilha{flex:1;height:8px;border-radius:99px;position:relative;
+  background:linear-gradient(90deg,#8FBF7F,#E7C978,#E39B6B,#D5716A,#9B7BD0)}
+.medidor .pino{position:absolute;top:50%;width:14px;height:14px;border-radius:99px;background:var(--tinta);
+  border:3px solid var(--papel);transform:translate(-50%,-50%);transition:left .6s cubic-bezier(.3,.8,.3,1)}
+.medidor .val{font-family:var(--serif);font-size:1.6rem;font-weight:700;line-height:1}
+
+.toggle{display:flex;background:var(--verde-bg);border-radius:99px;padding:5px;margin-bottom:14px}
+.toggle button{flex:1;border:0;background:transparent;border-radius:99px;padding:12px;min-height:48px;
+  font-weight:700;font-size:.95rem;color:var(--tinta2);display:flex;align-items:center;
+  justify-content:center;gap:7px;transition:all .25s}
+.toggle button[aria-pressed="true"]{background:var(--papel);color:var(--tinta);box-shadow:var(--sombra)}
+
+.banner{border-radius:var(--rx);padding:28px 20px;text-align:center;margin-bottom:16px;position:relative;overflow:hidden}
+.banner.noite{background:linear-gradient(168deg,#7B76D9,#9A93E8)}
+.banner.manha{background:linear-gradient(168deg,#F3C98E,#EFA179)}
+.banner>svg.ceu{position:absolute;inset:0;width:100%;height:100%}
+.banner h2{font-family:var(--serif);font-size:1.7rem;color:#fff;position:relative;
+  display:inline-flex;align-items:center;gap:10px}
+
+.passoTit{display:flex;align-items:center;gap:11px;margin:22px 0 10px}
+.passoTit i{width:30px;height:30px;border-radius:99px;background:var(--verde-bg);color:var(--verde-esc);
+  display:flex;align-items:center;justify-content:center;font-size:.86rem;font-weight:700;font-style:normal;flex:0 0 auto}
+.passoTit b{font-size:1.12rem;font-weight:700}
+
+.prod{display:flex;gap:14px;align-items:center;background:var(--papel);border-radius:var(--rg);
+  padding:14px;box-shadow:var(--sombra);width:100%;text-align:left;border:0;transition:transform .16s;color:var(--tinta)}
+.prod:active{transform:scale(.99)}
+.prod .frasco{flex:0 0 56px;width:56px;height:64px;border-radius:14px;display:flex;
+  align-items:center;justify-content:center}
+.prod .corpo{flex:1;min-width:0}
+.prod .marcaP{font-size:.76rem;color:var(--tinta2);display:block;margin-bottom:1px}
+.prod .nomeP{font-size:1rem;font-weight:700;line-height:1.25;display:block;margin-bottom:8px}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:.78rem;font-weight:700;
+  padding:6px 13px;border-radius:99px;background:var(--verde);color:#fff}
+.chip.claro{background:var(--verde-bg);color:var(--verde-esc)}
+.chip.neutro{background:var(--linha2);color:var(--tinta2);font-weight:600;border:1px solid var(--linha)}
+.alt{display:block;width:100%;background:none;border:0;color:var(--verde);font-weight:600;
+  font-size:.88rem;padding:11px;min-height:44px}
+
+.aviso{border-radius:var(--r);padding:15px 17px;margin-bottom:12px;font-size:.87rem;line-height:1.5}
+.aviso b{display:block;font-weight:700;margin-bottom:3px}
+.aviso.d{background:var(--perigo-bg);color:var(--perigo)}
+.aviso.a{background:var(--alerta-bg);color:var(--alerta)}
+.aviso.o{background:var(--verde-bg);color:var(--verde-esc)}
+
+details{background:var(--papel);border-radius:var(--rg);margin-bottom:10px;box-shadow:var(--sombra)}
+details>summary{padding:16px 18px;cursor:pointer;list-style:none;display:flex;align-items:center;
+  justify-content:space-between;gap:12px;min-height:54px;font-weight:600;font-size:.96rem}
+details>summary::-webkit-details-marker{display:none}
+details>summary::after{content:"";width:8px;height:8px;border-right:2px solid var(--verde);
+  border-bottom:2px solid var(--verde);transform:rotate(45deg);margin-top:-4px;flex:0 0 auto;transition:transform .25s}
+details[open]>summary::after{transform:rotate(-135deg);margin-top:3px}
+details .in{padding:0 18px 18px}
+
+.busca{position:relative;margin-bottom:12px}
+.busca input{width:100%;font:inherit;font-size:16px;background:var(--papel);border:0;border-radius:99px;
+  padding:16px 44px 16px 50px;color:var(--tinta);min-height:56px;outline:none;box-shadow:var(--sombra)}
+.busca input:focus{box-shadow:var(--sombra),0 0 0 2px var(--verde)}
+.busca .lupa{position:absolute;left:19px;top:50%;transform:translateY(-50%);font-size:1.1rem;
+  color:var(--tinta2);pointer-events:none}
+.busca .limpar{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:0;
+  color:var(--tinta2);font-size:1.4rem;width:40px;height:40px;border-radius:99px;display:none}
+.busca.tem .limpar{display:block}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 20px 6px;margin:0 -20px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chipB{flex:0 0 auto;background:var(--papel);border:0;border-radius:99px;padding:10px 16px;
+  font-size:.85rem;color:var(--tinta2);white-space:nowrap;min-height:42px;box-shadow:var(--sombra)}
+.chipB:active{background:var(--verde);color:#fff}
+
+.res{display:flex;gap:13px;align-items:center;width:100%;text-align:left;background:var(--papel);
+  border:0;border-radius:var(--rg);padding:14px 16px;margin-bottom:9px;box-shadow:var(--sombra);color:var(--tinta)}
+.res .ico{flex:0 0 42px;width:42px;height:42px;border-radius:13px;display:flex;align-items:center;
+  justify-content:center;font-size:1.05rem}
+.res .cc{flex:1;min-width:0}
+.res .kind{font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--verde);display:block;margin-bottom:2px}
+.res b{display:block;font-size:.95rem;font-weight:700;line-height:1.3}
+.res .dd{display:block;font-size:.8rem;color:var(--tinta2);line-height:1.35;margin-top:2px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+.trilho{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 20px 8px;
+  margin:0 -20px;scrollbar-width:none}
+.trilho::-webkit-scrollbar{display:none}
+.cardAula{flex:0 0 208px;scroll-snap-align:start;background:var(--papel);border:0;border-radius:var(--rx);
+  overflow:hidden;text-align:left;padding:0;box-shadow:var(--sombra);transition:transform .16s;color:var(--tinta)}
+.cardAula:active{transform:scale(.98)}
+.cardAula .capa{position:relative;width:100%;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center}
+.cardAula .selo{position:absolute;top:9px;left:9px;font-size:.62rem;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;background:#ffffffe6;color:#3a3a3a;padding:4px 9px;border-radius:99px}
+.cardAula .bolha{width:42px;height:42px;border-radius:99px;background:#fff;display:flex;
+  align-items:center;justify-content:center;font-size:.85rem;box-shadow:0 4px 12px #0000001f}
+.cardAula .tt{padding:12px 14px 15px;display:block}
+.cardAula .tt b{display:-webkit-box;font-size:.88rem;font-weight:700;line-height:1.3;
+  -webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cardAula .tt small{font-size:.74rem;color:var(--tinta2);display:block;margin-top:3px}
+.cardAula.breve{opacity:.55}
+
+.aula{display:flex;gap:13px;align-items:center;width:100%;text-align:left;background:var(--papel);
+  border:0;border-radius:var(--rg);padding:12px 14px;margin-bottom:9px;box-shadow:var(--sombra);color:var(--tinta)}
+.aula .play{flex:0 0 48px;width:48px;height:48px;border-radius:14px;background:var(--verde-bg);
+  color:var(--verde-esc);display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.aula .ii{flex:1;min-width:0}
+.aula .ii b{display:block;font-size:.93rem;font-weight:700;line-height:1.3}
+.aula .ii span{display:-webkit-box;font-size:.78rem;color:var(--tinta2);line-height:1.35;
+  -webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.aula .dur{font-size:.72rem;color:var(--tinta2);flex:0 0 auto}
+.aula.breve{opacity:.5}
+.aula.vista .play{background:var(--verde);color:#fff}
+
+.video{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:var(--r);
+  overflow:hidden;margin-bottom:14px}
+.video iframe,.video video{position:absolute;inset:0;width:100%;height:100%;border:0}
+.semVideo{display:flex;align-items:center;justify-content:center;height:100%;color:#fff9;
+  font-size:.86rem;text-align:center;padding:20px}
+
+.load{text-align:center;padding-top:9vh}
+.loadArte{width:230px;margin:0 auto 28px}
+.loadTxt{height:26px;position:relative;margin-top:6px}
+.loadTxt span{position:absolute;inset:0;opacity:0;color:var(--tinta2);font-size:.95rem;animation:pisca 9s infinite}
+.loadTxt span:nth-child(2){animation-delay:3s} .loadTxt span:nth-child(3){animation-delay:6s}
+@keyframes pisca{0%,4%{opacity:0;transform:translateY(7px)}10%,30%{opacity:1;transform:none}
+  36%,100%{opacity:0;transform:translateY(-7px)}}
+
+.oi{display:flex;align-items:center;gap:13px;padding:18px 0 16px}
+.oi .av{width:48px;height:48px;border-radius:99px;background:var(--verde-bg);flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;position:relative;color:var(--verde)}
+.oi .av::after{content:"";position:absolute;right:0;bottom:2px;width:12px;height:12px;border-radius:99px;
+  background:var(--verde);border:2.5px solid var(--creme)}
+.oi h1{font-family:var(--serif);font-size:1.5rem;font-weight:700;letter-spacing:-.01em}
+
+nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom));
+  display:flex;align-items:center;gap:8px;z-index:40;width:calc(100% - 28px);max-width:592px}
+.navBar{flex:1;display:flex;background:color-mix(in srgb,var(--papel) 92%,transparent);
+  backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);
+  border-radius:99px;padding:6px;box-shadow:0 8px 28px #00000022}
+.navBar button{flex:1;background:none;border:0;color:var(--tinta2);font-size:.66rem;font-weight:600;
+  display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 4px;min-height:52px;
+  border-radius:99px;transition:all .22s}
+.navBar button i{font-style:normal;font-size:1.05rem;line-height:1}
+.navBar button[aria-current="true"]{background:var(--verde-bg);color:var(--verde-esc)}
+.fab{flex:0 0 58px;width:58px;height:58px;border-radius:99px;background:var(--verde);color:#fff;border:0;
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;
+  box-shadow:0 8px 22px color-mix(in srgb,var(--verde) 45%,transparent);transition:transform .16s}
+.fab:active{transform:scale(.94)}
+
+.veu{position:fixed;inset:0;background:#00000080;backdrop-filter:blur(2px);z-index:50;opacity:0;
+  pointer-events:none;transition:opacity .3s}
+.veu.on{opacity:1;pointer-events:auto}
+.folha{position:fixed;left:0;right:0;bottom:0;z-index:51;background:var(--papel);
+  border-radius:30px 30px 0 0;padding:12px 22px calc(28px + env(safe-area-inset-bottom));
+  max-height:88vh;overflow-y:auto;transform:translateY(101%);
+  transition:transform .4s cubic-bezier(.32,.72,0,1)}
+.folha.on{transform:translateY(0)}
+.puxador{width:40px;height:4px;background:var(--linha);border-radius:99px;margin:0 auto 18px}
+
+.toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--tinta);
+  color:var(--creme);padding:13px 22px;border-radius:99px;font-size:.86rem;z-index:70;max-width:88vw;
+  text-align:center;opacity:0;pointer-events:none;transition:opacity .25s}
+.toast.on{opacity:1}
+.rodape{margin:38px 0 0;padding:18px 0 0;border-top:1px solid var(--linha);font-size:.72rem;
+  line-height:1.6;color:var(--tinta2)}
+
+@keyframes sobe{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.anima>*{animation:sobe .5s cubic-bezier(.2,.7,.3,1) backwards}
+.anima>*:nth-child(1){animation-delay:.03s} .anima>*:nth-child(2){animation-delay:.08s}
+.anima>*:nth-child(3){animation-delay:.13s} .anima>*:nth-child(4){animation-delay:.18s}
+.anima>*:nth-child(n+5){animation-delay:.23s}
+@keyframes flutua{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.flutua{animation:flutua 4s ease-in-out infinite}
+@keyframes pulsa{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+.pulsa{animation:pulsa 2.6s ease-in-out infinite;transform-origin:center}
+@keyframes cintila{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
+.cintila{animation:cintila 2.4s ease-in-out infinite;transform-origin:center}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{nav,.btn,.toast,.veu,.folha,.qTopo,button{display:none!important}
+  body{background:#fff;color:#000;padding:0}}
+</style>
+</head>
+<body>
+
+<section data-tela="capa" class="pag" hidden>
+  <div class="slide" id="slideCorpo"></div>
+  <div class="dots" id="dots"></div>
+  <button class="btn" id="btnSlide" onclick="proxSlide()">Continuar</button>
+  <button class="btn ghost" onclick="ir('termo')" style="margin-bottom:22px">Pular introdução</button>
+</section>
+
+<section data-tela="termo" class="pag anima" hidden style="padding-top:26px">
+  <h1 class="disp">Cinco linhas que <em>protegem você</em>.</h1>
+  <div class="aviso d"><b>1. Isto não substitui dermatologista.</b>Nada aqui diagnostica, trata, cura ou previne qualquer condição de pele.</div>
+  <div class="aviso d"><b>2. Nada é garantido.</b>Pele é individual. Aqui você aprende método e ordem — não recebe promessa de resultado.</div>
+  <div class="aviso d"><b>3. Condição diagnosticada?</b>Acne severa, rosácea, melasma, dermatite, psoríase ou medicação para a pele: procure seu médico antes de mudar qualquer coisa.</div>
+  <div class="aviso d"><b>4. Grávida ou amamentando?</b>Vários ativos são contraindicados. Marque no questionário e converse com seu obstetra e dermatologista.</div>
+  <div class="aviso d"><b>5. Sempre faça teste de contato.</b>Produto novo: pouca quantidade atrás da orelha, espere 24h. Ardeu, coçou ou avermelhou, não use no rosto.</div>
+  <label class="opt" style="display:flex;gap:13px;align-items:flex-start;margin-top:20px">
+    <input type="checkbox" id="aceite" style="width:22px;height:22px;accent-color:var(--verde);margin-top:2px;flex:0 0 auto"
+           onchange="document.getElementById('btnAceite').disabled=!this.checked">
+    <span style="margin:0;padding:0;color:var(--tinta);font-size:.92rem">Eu li, entendi e concordo. Sei que este material é <b>educativo</b> e não substitui avaliação profissional de saúde.</span>
+  </label>
+  <button class="btn" id="btnAceite" disabled onclick="aceitar()">Concordo e quero continuar</button>
+  <button class="btn ghost" onclick="ir('capa')">Voltar</button>
+</section>
+
+<section data-tela="quiz" hidden>
+  <div class="qTopo">
+    <div class="qLinha">
+      <button class="circBtn" onclick="voltarPergunta()" aria-label="Voltar">‹</button>
+      <b id="qConta"></b>
+      <button class="circBtn" onclick="ir('capa')" aria-label="Fechar">×</button>
+    </div>
+    <div class="qBarra"><i id="qProg" style="width:0%"></i></div>
+  </div>
+  <div class="pag" style="padding-top:26px;text-align:center">
+    <h1 class="disp" id="qTitulo" style="font-size:clamp(1.55rem,6.2vw,2rem)"></h1>
+    <p class="lead" id="qAjuda" style="margin-bottom:22px"></p>
+    <div id="qOpcoes" style="text-align:left"></div>
+  </div>
+  <div class="pag"><button class="btn" id="qSeguinte" onclick="seguinte()">Seguinte</button></div>
+</section>
+
+<section data-tela="carregando" class="pag" hidden>
+  <div class="load">
+    <div class="loadArte pulsa" id="loadArte"></div>
+    <h1 class="disp" style="color:var(--verde)">Criando sua rotina perfeita…</h1>
+    <div class="loadTxt">
+      <span>Lendo o seu perfil de pele…</span>
+      <span>Escolhendo os ativos certos…</span>
+      <span>Conferindo conflitos entre produtos…</span>
+    </div>
+  </div>
+</section>
+
+<section data-tela="hoje" class="pag" hidden>
+  <div id="hojeTopo" class="anima"></div>
+  <div class="busca" id="buscaWrap">
+    <span class="lupa" aria-hidden="true">⌕</span>
+    <input id="q" type="search" autocomplete="off" placeholder="Buscar dúvida, produto ou passo"
+           aria-label="Buscar" oninput="buscar()">
+    <button class="limpar" onclick="limparBusca()" aria-label="Limpar">×</button>
+  </div>
+  <div class="chips" id="chips"></div>
+  <div id="hojeCorpo"></div>
+  <div id="resultados" hidden></div>
+  <div class="rodape" id="rodape1"></div>
+</section>
+
+<section data-tela="rotina" class="pag anima" hidden style="padding-top:20px">
+  <h1 class="disp" id="rTitulo"></h1>
+  <p class="lead" id="rPerfil"></p>
+  <div id="rAvisos"></div>
+  <div class="toggle">
+    <button onclick="verPeriodo('manha')" data-per="manha" aria-pressed="true">☀ Manhã</button>
+    <button onclick="verPeriodo('noite')" data-per="noite" aria-pressed="false">☾ Noite</button>
+  </div>
+  <div id="rCorpo"></div>
+  <div id="rExtra"></div>
+  <div class="rodape" id="rodape2"></div>
+</section>
+
+<section data-tela="aulas" class="pag anima" hidden style="padding-top:20px">
+  <h1 class="disp">Assista, <em>depois faça</em>.</h1>
+  <p class="lead">Ler a ordem certa ajuda. Ver a mão fazendo resolve.</p>
+  <div id="auCorpo"></div>
+  <div class="rodape" id="rodape3"></div>
+</section>
+
+<section data-tela="patricia" class="pag anima" hidden style="padding-top:20px">
+  <h1 class="disp" id="paTitulo"></h1>
+  <p class="lead" id="paSub"></p>
+  <div id="paCorpo"></div>
+  <div class="rodape" id="rodape4"></div>
+</section>
+
+<div class="veu" id="veu" onclick="fecharFolha()"></div>
+<div class="folha" id="folha" role="dialog" aria-modal="true" aria-label="Detalhe">
+  <div class="puxador"></div><div id="folhaCorpo"></div>
+  <button class="btn ghost" onclick="fecharFolha()" style="margin-top:16px">Fechar</button>
+</div>
+
+<nav id="nav" hidden>
+  <div class="navBar">
+    <button onclick="ir('hoje')" data-nav="hoje"><i>✿</i>Início</button>
+    <button onclick="ir('rotina')" data-nav="rotina"><i>◔</i>Rotina</button>
+    <button onclick="ir('aulas')" data-nav="aulas"><i>▷</i>Aulas</button>
+    <button onclick="ir('patricia')" data-nav="patricia"><i>♡</i>Patricia</button>
+  </div>
+  <button class="fab" onclick="focarBusca()" aria-label="Buscar">⌕</button>
+</nav>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ══════════════ PERSONALIZE AQUI ══════════════ */
+const CONFIG = { produto:"RITUAL", autora:"@seu_arroba", linkBio:"https://seu-link.com", nomeUsuaria:"" };
+
+/* ══════════════ ILUSTRAÇÕES — SVG inline, zero download ══════════════ */
+const SVG = {
+ordem: () => `
+<svg viewBox="0 0 320 250" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%">
+  <ellipse cx="160" cy="226" rx="112" ry="16" fill="#6E9B72" opacity=".13"/>
+  ${[["#E9A178",56,150,1],["#7B76D9",130,108,2],["#7CA3D6",204,68,3]].map(([c,x,y,n])=>`
+  <g class="flutua" style="animation-delay:${n*.5}s">
+    <rect x="${x}" y="${y}" width="58" height="${214-y}" rx="18" fill="${c}" opacity=".93"/>
+    <rect x="${x+18}" y="${y-16}" width="22" height="20" rx="7" fill="${c}"/>
+    <rect x="${x+11}" y="${y+26}" width="36" height="6" rx="3" fill="#fff" opacity=".5"/>
+    <circle cx="${x+29}" cy="${y-40}" r="18" fill="#fff"/>
+    <circle cx="${x+29}" cy="${y-40}" r="18" fill="none" stroke="${c}" stroke-width="2.5"/>
+    <text x="${x+29}" y="${y-33}" text-anchor="middle" font-family="Georgia,serif" font-size="18"
+          font-weight="700" fill="${c}">${n}</text></g>`).join("")}
+  <path d="M96 118 C114 104 122 100 140 90" stroke="#75706C" stroke-width="2.5" stroke-dasharray="5 7"
+        stroke-linecap="round" opacity=".45"/>
+  <path d="M170 76 C190 62 198 58 214 50" stroke="#75706C" stroke-width="2.5" stroke-dasharray="5 7"
+        stroke-linecap="round" opacity=".45"/>
+</svg>`,
+
+alerta: () => `
+<svg viewBox="0 0 320 250" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%">
+  <ellipse cx="160" cy="226" rx="110" ry="16" fill="#C4553F" opacity=".1"/>
+  <g class="flutua">
+    <rect x="74" y="96" width="74" height="118" rx="22" fill="#E48BA0" opacity=".85"/>
+    <rect x="98" y="72" width="26" height="26" rx="8" fill="#E48BA0"/></g>
+  <g class="flutua" style="animation-delay:1s">
+    <rect x="172" y="124" width="76" height="90" rx="22" fill="#F0B9C6" opacity=".85"/>
+    <rect x="196" y="104" width="28" height="22" rx="8" fill="#F0B9C6"/></g>
+  ${[[52,76],[262,92],[150,48],[272,182]].map(([x,y],i)=>`
+  <g class="cintila" style="animation-delay:${i*.55}s">
+    <circle cx="${x}" cy="${y}" r="17" fill="#C4553F"/>
+    <rect x="${x-1.7}" y="${y-8}" width="3.4" height="9" rx="1.7" fill="#fff"/>
+    <circle cx="${x}" cy="${y+5}" r="2" fill="#fff"/></g>`).join("")}
+</svg>`,
+
+aprovado: () => `
+<svg viewBox="0 0 320 250" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%">
+  <ellipse cx="160" cy="218" rx="122" ry="20" fill="#6E9B72" opacity=".15"/>
+  <g class="flutua">
+    <rect x="62" y="112" width="58" height="98" rx="18" fill="#E6E1D8"/>
+    <rect x="79" y="92" width="24" height="22" rx="7" fill="#D3CCC0"/>
+    <rect x="136" y="86" width="66" height="124" rx="20" fill="#F1ECE4"/>
+    <rect x="156" y="64" width="26" height="24" rx="8" fill="#DCD4C9"/>
+    <rect x="218" y="130" width="52" height="80" rx="17" fill="#E6E1D8"/>
+    <rect x="234" y="112" width="20" height="20" rx="7" fill="#D3CCC0"/></g>
+  ${[[26,84],[224,58],[112,34]].map(([x,y],i)=>`
+  <g class="cintila" style="animation-delay:${i*.6}s" transform="translate(${x},${y})">
+    <rect width="82" height="30" rx="15" fill="#6E9B72"/>
+    <path d="M15 15 l6 6 l11 -13" stroke="#fff" stroke-width="3" stroke-linecap="round"
+          stroke-linejoin="round" fill="none"/>
+    <text x="52" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#fff"
+          font-family="-apple-system,sans-serif">boa</text></g>`).join("")}
+</svg>`,
+
+rosto: () => `
+<svg viewBox="0 0 320 250" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%">
+  <ellipse cx="160" cy="224" rx="106" ry="18" fill="#E9A178" opacity=".15"/>
+  <path d="M108 78 Q160 38 212 78 Q222 136 196 178 Q160 212 124 178 Q98 136 108 78Z" fill="#F6DCC8"/>
+  <path d="M104 82 Q160 30 216 82 Q214 54 160 42 Q106 54 104 82Z" fill="#8A6244"/>
+  <circle cx="136" cy="120" r="5" fill="#5A4632"/><circle cx="184" cy="120" r="5" fill="#5A4632"/>
+  <path d="M146 160 Q160 170 174 160" stroke="#C98B72" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <ellipse cx="122" cy="142" rx="12" ry="8" fill="#F0B49B" opacity=".7"/>
+  <ellipse cx="198" cy="142" rx="12" ry="8" fill="#F0B49B" opacity=".7"/>
+  ${[["#E9A178",92,104],["#7B76D9",228,132],["#6E9B72",108,176]].map(([c,x,y],i)=>`
+  <g class="cintila" style="animation-delay:${i*.7}s">
+    <circle cx="${x}" cy="${y}" r="13" fill="#fff"/><circle cx="${x}" cy="${y}" r="7" fill="${c}"/></g>`).join("")}
+  <g fill="#6E9B72" opacity=".5">
+    <path d="M258 162 q22 -26 44 -20 q-8 26 -44 20Z"/><path d="M22 188 q20 -24 42 -18 q-8 24 -42 18Z"/></g>
+</svg>`,
+
+frascos: () => `
+<svg viewBox="0 0 320 250" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%">
+  <ellipse cx="160" cy="224" rx="118" ry="18" fill="#7B76D9" opacity=".12"/>
+  <g class="flutua"><rect x="52" y="110" width="62" height="106" rx="20" fill="#E9A178" opacity=".9"/>
+    <rect x="70" y="88" width="26" height="24" rx="8" fill="#E9A178"/></g>
+  <g class="flutua" style="animation-delay:.9s"><rect x="128" y="72" width="66" height="144" rx="22" fill="#7B76D9" opacity=".9"/>
+    <rect x="148" y="48" width="26" height="26" rx="8" fill="#7B76D9"/>
+    <rect x="141" y="104" width="40" height="6" rx="3" fill="#fff" opacity=".5"/></g>
+  <g class="flutua" style="animation-delay:1.7s"><rect x="208" y="126" width="58" height="90" rx="19" fill="#E48BA0" opacity=".9"/>
+    <rect x="224" y="106" width="26" height="22" rx="8" fill="#E48BA0"/></g>
+  <g fill="#F3C98E"><circle class="cintila" cx="30" cy="62" r="6"/>
+    <circle class="cintila" style="animation-delay:.8s" cx="290" cy="80" r="8"/>
+    <circle class="cintila" style="animation-delay:1.5s" cx="262" cy="36" r="5"/></g>
+</svg>`,
+
+ic:{
+  rotina:`<svg width="46" height="46" viewBox="0 0 46 46" fill="none" aria-hidden="true">
+    <circle cx="31" cy="17" r="8" fill="#6E9B72" opacity=".4"/>
+    <rect x="11" y="15" width="17" height="24" rx="7" fill="#6E9B72"/>
+    <rect x="16" y="8" width="7" height="8" rx="2.5" fill="#4F7A55"/></svg>`,
+  manual:`<svg width="46" height="46" viewBox="0 0 46 46" fill="none" aria-hidden="true">
+    <rect x="9" y="9" width="28" height="28" rx="9" fill="#7B76D9" opacity=".35"/>
+    <rect x="15" y="17" width="17" height="3.2" rx="1.6" fill="#7B76D9"/>
+    <rect x="15" y="25" width="11" height="3.2" rx="1.6" fill="#7B76D9"/></svg>`,
+  erro:`<svg width="46" height="46" viewBox="0 0 46 46" fill="none" aria-hidden="true">
+    <circle cx="23" cy="23" r="15" fill="#E48BA0" opacity=".4"/>
+    <rect x="21.3" y="13" width="3.4" height="14" rx="1.7" fill="#C4553F"/>
+    <circle cx="23" cy="31.5" r="2.4" fill="#C4553F"/></svg>`,
+  barato:`<svg width="46" height="46" viewBox="0 0 46 46" fill="none" aria-hidden="true">
+    <circle cx="23" cy="23" r="15" fill="#7CA3D6" opacity=".4"/>
+    <path d="M23 13v20M18 18h8a3.6 3.6 0 010 7.2h-7a3.6 3.6 0 000 7.2h9"
+          stroke="#3E6EA8" stroke-width="3" stroke-linecap="round" fill="none"/></svg>`,
+  frasco:`<svg width="30" height="38" viewBox="0 0 30 38" fill="none" aria-hidden="true">
+    <rect x="6" y="11" width="18" height="24" rx="7" fill="currentColor" opacity=".9"/>
+    <rect x="11" y="3" width="8" height="9" rx="3" fill="currentColor"/>
+    <rect x="9.5" y="18" width="11" height="2.6" rx="1.3" fill="#fff" opacity=".65"/></svg>`,
+  lua:`<svg width="28" height="28" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+    <path d="M22 18.5A9.5 9.5 0 0111 7.2a9.5 9.5 0 100 15.6 9.5 9.5 0 0011-4.3z" fill="#fff"/></svg>`,
+  sol:`<svg width="28" height="28" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+    <circle cx="15" cy="15" r="6.5" fill="#fff"/>
+    ${[0,45,90,135,180,225,270,315].map(a=>`<rect x="14" y="1.5" width="2" height="5" rx="1" fill="#fff"
+      transform="rotate(${a} 15 15)"/>`).join("")}</svg>`,
+},
+ceu: n => Array.from({length:n},(_,i)=>{
+  const x=[8,26,50,72,88,38,62,16,80][i%9], y=[22,58,14,66,34,80,26,74,52][i%9], r=[2.4,1.7,3,2,2.6,1.6,2.2,1.9,2.8][i%9];
+  return `<circle class="cintila" style="animation-delay:${(i*.33).toFixed(2)}s" cx="${x}%" cy="${y}%" r="${r}" fill="#fff"/>`;
+}).join(""),
+};
+
+/* ══════════════ ABERTURA ══════════════ */
+const SLIDES=[
+ {arte:"ordem",tit:'A ordem certa dos produtos que <em>você já tem</em>.',
+  sub:"Não é sobre comprar mais. É sobre parar de usar na ordem errada — o motivo real de arder, descamar e não funcionar."},
+ {arte:"alerta",tit:'Pare de <span class="rx">errar sozinha</span>.',
+  sub:"Ácido com retinol na mesma noite. Sabonete que resseca. Protetor de menos. São os erros que sabotam sem você perceber."},
+ {arte:"aprovado",tit:'Descubra a versão <em>nacional e barata</em>.',
+  sub:"Cada passo da rotina coreana tem um equivalente de farmácia. O que importa é a função do passo, não o país do frasco."},
+ {arte:"rosto",tit:'Sua rotina, feita <span class="rz">pra sua pele</span>.',
+  sub:"Sete perguntas rápidas e você sai com o ritual da manhã, o da noite e o manual de cada produto."},
+];
+
+/* ══════════════ AULAS ══════════════ */
+const VIDEOS={
+ intro:{t:"Comece por aqui",dur:"2 min",url:"",desc:"Como usar o app, em dois minutos."},
+ modulos:[
+  {nome:"Fundamentos",sub:"O que muda tudo antes de qualquer produto",cor:"verde",aulas:[
+   {id:"f1",chave:null,t:"A ordem certa, do começo ao fim",dur:"6 min",url:"",desc:"Por que do mais líquido pro mais denso — e o que acontece quando você inverte."},
+   {id:"f2",chave:null,t:"Descobrindo seu tipo de pele em casa",dur:"4 min",url:"",desc:"O teste do lenço e o erro de confundir pele oleosa com pele desidratada."},
+   {id:"f3",chave:null,t:"Quanto de cada produto usar",dur:"5 min",url:"",desc:"Na mão, na frente da câmera. A quantidade certa versus a que você usa hoje."},
+   {id:"f4",chave:null,t:"Teste de contato: como e por quê",dur:"3 min",url:"",desc:"O passo de 24 horas que evita a maior parte dos sustos."}]},
+  {nome:"Passo a passo",sub:"Uma aula para cada produto do seu ritual",cor:"roxo",aulas:[
+   {id:"p1",chave:"limpeza",t:"Limpeza: a técnica e o tempo",dur:"5 min",url:"",desc:"Os 60 segundos de massagem e por que pele que range é pele machucada."},
+   {id:"p2",chave:"oleo",t:"Dupla limpeza sem complicar",dur:"6 min",url:"",desc:"No rosto seco, emulsionar, enxaguar. Do início ao fim."},
+   {id:"p3",chave:"tonico",t:"Tônico: tapinhas, não algodão",dur:"3 min",url:"",desc:"Por que o algodão desperdiça metade do produto."},
+   {id:"p4",chave:"azelaico",t:"Ácido azelaico na prática",dur:"5 min",url:"",desc:"Camada fina, tempo de espera e o que esperar das primeiras semanas."},
+   {id:"p5",chave:"niacinamida",t:"Niacinamida: o ativo mais fácil",dur:"4 min",url:"",desc:"Por onde começar quando você nunca usou nada."},
+   {id:"p6",chave:"retinol",t:"Retinol sem descascar",dur:"8 min",url:"",desc:"A espera de 15 minutos e o calendário de introdução."},
+   {id:"p7",chave:"hidratante",t:"Hidratante para pele oleosa",dur:"4 min",url:"",desc:"Gel ou creme, e por que pular esse passo aumenta o brilho."},
+   {id:"p8",chave:"protetor",t:"Dois dedos de protetor solar",dur:"5 min",url:"",desc:"A quantidade medida na câmera e a reaplicação sobre a maquiagem."},
+   {id:"p9",chave:"mascara",t:"Máscara de tecido do jeito certo",dur:"3 min",url:"",desc:"20 minutos, tapinhas no que sobrou, nunca deixar secar."}]},
+  {nome:"O ritual da Patricia",sub:"A rotina coreana filmada de ponta a ponta",cor:"rosa",aulas:[
+   {id:"r1",modo:"acne",t:"Manhã completa — controle de acne",dur:"9 min",url:"",desc:"COSRX, Centella Toner, azelaico e TOCOBO, no espelho."},
+   {id:"r2",modo:"acne",t:"Noite completa — controle de acne",dur:"11 min",url:"",desc:"Dupla limpeza, tônico, azelaico e Dr. Thea 345."},
+   {id:"r3",modo:"retinol",t:"A noite de retinol",dur:"8 min",url:"",desc:"Inclusive os 15 minutos de espera, o passo que quase todo mundo pula."},
+   {id:"r4",modo:"glass",t:"Glass skin em camadas",dur:"12 min",url:"",desc:"Snail 96, Probio-Cica, Celimax e PDRN. Quando entrar e quando não."},
+   {id:"r5",modo:null,t:"Medicube Age-R: como uso",dur:"6 min",url:"",desc:"Modo Booster, 2x por semana, e o que passar logo depois."}]},
+  {nome:"Os erros",sub:"O que sabota sem você perceber",cor:"pessego",aulas:[
+   {id:"e1",chave:null,t:"Os 7 erros que estragam a rotina",dur:"10 min",url:"",desc:"Do sabonete alcalino ao ácido todo dia."},
+   {id:"e2",chave:null,t:"Minha pele arde: o protocolo de socorro",dur:"7 min",url:"",desc:"O que parar, o que manter e por quantos dias."},
+   {id:"e3",chave:null,t:"Aproveitando o que já está na sua gaveta",dur:"9 min",url:"",desc:"Cinco categorias, sem comprar nada novo."},
+   {id:"e4",chave:null,t:"Montando a versão nacional e barata",dur:"12 min",url:"",desc:"Cada passo coreano traduzido pra farmácia da esquina."}]},
+ ]};
+
+/* ══════════════ RITUAL DA PATRICIA ══════════════ */
+const PATRICIA={
+ titulo:'O ritual da <em>Patricia</em>',
+ sub:"Skincare coreano com uma lógica só: controlar a acne primeiro, buscar o glow depois. Nunca os dois ao mesmo tempo.",
+ perfil:"Pele mista com tendência à oleosidade · acne inflamatória em queixo, mandíbula e testa · manchas pós-acne · poros aparentes nas bochechas · excesso de brilho quando leva hidratante demais.",
+ objetivo:"Controlar a acne inflamada, reduzir a oleosidade, suavizar a aparência das manchas pós-acne, refinar a textura e fortalecer a barreira — e só então buscar o efeito glass skin.",
+ modos:[
+  {id:"acne",nome:"Controle de acne",cor:"verde",quando:"O ritual padrão, enquanto houver acne ativa.",
+   nota:["o","A lógica deste modo","Poucos ativos, sempre os mesmos, todo dia. Acne não responde a variedade — responde a <b>constância</b>."],
+   blocos:[
+    {titulo:"Manhã",passos:[
+     {marca:"COSRX",produto:"Low pH Good Morning Cleanser",oque:"Limpeza de pH baixo",porque:"pH baixo limpa sem quebrar o manto ácido. Pele oleosa lavada com produto alcalino produz mais óleo pra compensar."},
+     {marca:"SKIN1004",produto:"Centella Toning Toner",oque:"Tônico calmante",porque:"O ingrediente-assinatura da rotina. Acalma a vermelhidão e umedece a pele pro azelaico entrar melhor."},
+     {marca:"Purito",produto:"Azelaic Acid 10",oque:"Sérum de ácido azelaico",porque:"O ativo central. Age na acne e na aparência das manchas ao mesmo tempo, e é bem mais tolerado que os ácidos clássicos."},
+     {marca:"TOCOBO",produto:"Bio Watery Sun Cream SPF50+",oque:"Protetor solar",porque:"Mancha pós-acne escurece com sol. Sem protetor, o azelaico da manhã perde metade do sentido."}]},
+    {titulo:"Noite",passos:[
+     {marca:"—",produto:"Demaquilante",oque:"Primeira limpeza",quando:"dias com protetor ou maquiagem",porque:"Protetor solar resiste à água por design. Sabonete sozinho não tira, e o que sobra entope poro."},
+     {marca:"COSRX",produto:"Low pH Cleanser",oque:"Segunda limpeza",porque:"Tira o resto e o próprio demaquilante."},
+     {marca:"SKIN1004",produto:"Centella Toning Toner",oque:"Tônico calmante",porque:"Repõe a água que a dupla limpeza levou."},
+     {marca:"Purito",produto:"Azelaic Acid 10",oque:"Sérum de ácido azelaico",porque:"Mesmo ativo da manhã. Constância é o que faz o azelaico funcionar."},
+     {marca:"Dr. Thea",produto:"345 Relief Cream",oque:"Creme reparador de barreira",porque:"Fecha o ritual reconstruindo a barreira. Barreira forte é o que permite usar ativo sem irritar."}]},
+    {titulo:"Pontual",passos:[
+     {marca:"SKIN1004",produto:"Tea-Trica Spot Cream",oque:"Secativo localizado",quando:"só na lesão",porque:"Só em cima da espinha, no fim do ritual. Espalhar no rosto todo resseca área que não precisava."},
+     {marca:"Medicube",produto:"Zero Pore Pad",oque:"Pad de limpeza de poro",quando:"pontual, não diário",porque:"Todo dia vira esfoliação demais e machuca a barreira."}]}]},
+  {id:"retinol",nome:"Noite de retinol",cor:"roxo",quando:"2x por semana. Nunca na mesma noite do azelaico.",
+   nota:["d","A regra que não se quebra","Retinol e azelaico <b>não entram na mesma noite</b>. E no dia seguinte, protetor solar é obrigatório."],
+   blocos:[{titulo:"A sequência",passos:[
+     {marca:"—",produto:"Demaquilante",oque:"Primeira limpeza",porque:"O rosto precisa estar completamente limpo antes do retinol."},
+     {marca:"COSRX",produto:"Low pH Cleanser",oque:"Segunda limpeza",porque:"Limpeza final."},
+     {marca:"⏱",produto:"Esperar 15 a 20 minutos",oque:"Pele completamente seca",quando:"passo obrigatório",porque:"Retinol em pele úmida penetra rápido demais — é isso que causa ardência e descamação. A espera é o passo mais importante da noite."},
+     {marca:"Celimax",produto:"Retinol Shot",oque:"Retinol",quando:"2x por semana",porque:"Renovação da textura. Duas vezes por semana entrega o resultado sem quebrar a barreira."},
+     {marca:"Dr. Thea",produto:"345 Relief Cream",oque:"Creme reparador",porque:"Amortece o retinol e conforta a barreira."}]}]},
+  {id:"glass",nome:"Glass skin",cor:"azul",quando:"SÓ com a acne controlada. Nunca durante um surto.",
+   nota:["a","Por que este ritual fica guardado","Rico em camadas e oclusivos — ótimo pro glow, arriscado com acne ativa. Entrar cedo demais reinicia o ciclo."],
+   blocos:[{titulo:"As camadas",passos:[
+     {marca:"COSRX",produto:"Low pH Cleanser",oque:"Limpeza",porque:"Base limpa, sempre."},
+     {marca:"SKIN1004",produto:"Centella Toning Toner",oque:"Tônico calmante",porque:"Primeira camada de água. Glass skin é água em camadas, não creme pesado."},
+     {marca:"COSRX",produto:"Snail 96 Essence",oque:"Essência de mucina",porque:"O passo que dá o aspecto preenchido e úmido característico do glass skin."},
+     {marca:"SKIN1004",produto:"Probio-Cica Intensive Ampoule",oque:"Ampola de cica",porque:"Camada de conforto e recuperação, por cima da mucina."},
+     {marca:"Celimax",produto:"Pore + Dark Spot Brightening Cream",oque:"Creme para poros e manchas",porque:"Trabalha a aparência de poro e tom desigual — as duas coisas que quebram o efeito de vidro."},
+     {marca:"Medicube",produto:"PDRN Pink Collagen Capsule Cream",oque:"Creme final rico",porque:"Sela todas as camadas. É o brilho de fora."},
+     {marca:"TOCOBO",produto:"Bio Watery Sun Cream SPF50+",oque:"Protetor solar",quando:"só de manhã",porque:"Sem ele, nada disso se sustenta."}]}]},
+ ],
+ aparelho:{titulo:"Medicube Age-R",quando:"2x por semana, modo Booster",
+  depois:"Dr. Thea 345 Relief Cream + Medicube PDRN Pink Collagen Cream",
+  cuidado:"Não passar sobre espinha inflamada."},
+ pausar:[
+  {p:"COSRX Snail 96 Essence",porque:"Oclusiva. Durante surto, tende a piorar a congestão."},
+  {p:"SKIN1004 Probio-Cica Ampoule",porque:"Camada a mais em pele já sobrecarregada."},
+  {p:"Celimax Pore + Dark Spot Cream",porque:"Na crise a prioridade é controlar, não clarear."},
+  {p:"Medicube PDRN Pink Collagen (diário)",porque:"Rico demais pra uso diário com acne ativa."},
+  {p:"COSRX Alpha-Arbutin 2",porque:"Pausar se a pele estiver sensibilizada. Clareamento vem depois da calma."}],
+ regras:[
+  "Controlar a acne <b>antes</b> de buscar o glow. Sempre nessa ordem.",
+  "Nunca juntar vários ativos irritantes na mesma noite.",
+  "Retinol no máximo 2x por semana.",
+  "Ajustar a hidratação conforme a oleosidade do dia.",
+  "Protetor solar toda manhã, sem exceção.",
+  "Se a acne aumentar: <b>simplificar</b>, não acrescentar."],
+};
+
+const EQUIVALENTES=[
+ {passo:"Limpeza de pH baixo",coreano:"COSRX Low pH · SKIN1004 Centella Foam",faixa:"R$ 25 – 60",
+  exemplos:"Géis que informam pH entre 5 e 6 no rótulo. Procure <b>pH fisiológico</b> ou <b>pH balanceado</b>."},
+ {passo:"Demaquilante",coreano:"Óleo ou bálsamo demaquilante",faixa:"R$ 25 – 70",
+  exemplos:"Água micelar, óleo de limpeza ou bálsamo. Pra pele oleosa, micelar costuma ser mais confortável."},
+ {passo:"Tônico calmante",coreano:"SKIN1004 Centella Toning Toner",faixa:"R$ 30 – 70",
+  exemplos:"Tônico <b>sem álcool</b> com centella (aparece como <i>cica</i>), pantenol ou aloe. A função é acalmar, não adstringir."},
+ {passo:"Ácido azelaico",coreano:"Purito Azelaic Acid 10",faixa:"R$ 50 – 110",
+  exemplos:"Já existe azelaico 10% nacional. Se não achar, a categoria mais próxima é <b>niacinamida 5–10%</b>."},
+ {passo:"Essência de mucina",coreano:"COSRX Snail 96 Essence",faixa:"R$ 30 – 80",
+  exemplos:"Séruns de <b>ácido hialurônico</b> ou essências leves. O aspecto úmido vem da hidratação, não da mucina."},
+ {passo:"Ampola calmante",coreano:"SKIN1004 Probio-Cica Ampoule",faixa:"R$ 35 – 90",
+  exemplos:"Séruns com pantenol, centella, alantoína ou ceramidas."},
+ {passo:"Clareador de manchas",coreano:"COSRX Alpha-Arbutin · Celimax Pore + Dark Spot",faixa:"R$ 40 – 100",
+  exemplos:"Alfa-arbutina, niacinamida ou vitamina C nacional. A niacinamida é a mais barata e bem tolerada."},
+ {passo:"Retinol",coreano:"Celimax Retinol Shot",faixa:"R$ 45 – 110",
+  exemplos:"Retinol nacional 0,1% a 0,3%. Nunca comece por concentração alta."},
+ {passo:"Creme reparador",coreano:"Dr. Thea 345 Relief Cream",faixa:"R$ 40 – 100",
+  exemplos:"Cremes com <b>ceramidas</b>, pantenol ou colesterol. A categoria mais ignorada por quem tem acne."},
+ {passo:"Creme final rico",coreano:"Medicube PDRN Pink Collagen",faixa:"R$ 35 – 90",
+  exemplos:"Hidratante mais denso, noturno. Pele oleosa pode pular e ficar só no reparador."},
+ {passo:"Secativo localizado",coreano:"SKIN1004 Tea-Trica Spot Cream",faixa:"R$ 25 – 70",
+  exemplos:"Géis com salicílico, enxofre ou melaleuca. Sempre pontual."},
+ {passo:"Protetor toque seco",coreano:"TOCOBO Bio Watery Sun SPF50+",faixa:"R$ 30 – 90",
+  exemplos:"FPS 50 com acabamento seco. Se for confortável, você usa todo dia — e isso importa mais que a marca."},
+];
+
+const MANUAL={
+ limpeza:{nome:"Limpeza facial",cat:"Limpeza",qtd:"Uma ervilha, com o rosto úmido.",tempo:"Massageie 30 a 60 segundos e enxágue com água morna — nunca quente.",freq:"2x ao dia",erro:"Lavar até 'ranger'. Pele que range é pele sem proteção — e produz mais óleo pra compensar."},
+ oleo:{nome:"Primeira limpeza",cat:"Demaquilante",qtd:"2 a 3 bombeadas, no rosto SECO.",tempo:"Massageie 60 segundos, adicione água pra emulsionar e enxágue.",freq:"À noite",erro:"Pular esse passo. Protetor solar é resistente à água — sabonete sozinho não tira."},
+ tonico:{nome:"Tônico hidratante",cat:"Tonificação",qtd:"3 a 5 gotas na palma da mão.",tempo:"Aplique com tapinhas. Espere uns 10 segundos.",freq:"2x ao dia",erro:"Usar tônico adstringente com álcool achando que 'seca a espinha'. Ele resseca e piora a oleosidade."},
+ vitc:{nome:"Sérum de vitamina C",cat:"Antioxidante",qtd:"3 a 4 gotas.",tempo:"Espere 1 a 2 minutos.",freq:"1x ao dia, de manhã",erro:"Usar junto com retinol ou ácido na mesma aplicação."},
+ niacinamida:{nome:"Sérum de niacinamida",cat:"Tratamento",qtd:"3 a 4 gotas.",tempo:"Espere cerca de 1 minuto.",freq:"1 a 2x ao dia",erro:"Achar que precisa de concentração alta. Acima de 10% costuma irritar sem entregar mais."},
+ azelaico:{nome:"Ácido azelaico",cat:"Tratamento",qtd:"Uma camada fina no rosto todo.",tempo:"Espere 2 a 3 minutos.",freq:"1 a 2x ao dia",erro:"Desistir na terceira semana. Azelaico é lento — pede 8 a 12 semanas de constância."},
+ salicilico:{nome:"Ácido salicílico",cat:"Tratamento",qtd:"Camada fina, só onde há necessidade.",tempo:"Espere 5 minutos.",freq:"2x por semana, à noite",erro:"Usar todo dia desde o começo. Ácido em excesso quebra a barreira."},
+ retinol:{nome:"Retinol",cat:"Tratamento",qtd:"Uma ervilha pro rosto TODO. Não mais.",tempo:"Pele completamente seca — espere 15 a 20 min depois da limpeza.",freq:"2x por semana, à noite",erro:"Usar sem protetor no dia seguinte, e usar junto com ácido."},
+ hidratante:{nome:"Hidratante",cat:"Hidratação",qtd:"Uma amêndoa.",tempo:"De baixo pra cima, com a pele levemente úmida.",freq:"2x ao dia",erro:"Pele oleosa pular o hidratante. Pele desidratada produz MAIS óleo."},
+ protetor:{nome:"Protetor solar",cat:"Proteção solar",qtd:"Dois dedos cheios — indicador e médio.",tempo:"Aplique 15 minutos antes de sair.",freq:"Todo dia, sem exceção",erro:"Usar pouco. Metade da quantidade entrega bem menos que metade da proteção."},
+ mascara:{nome:"Máscara de tecido",cat:"Extra",qtd:"Uma unidade.",tempo:"15 a 20 minutos. Tapinhas no que sobrou — não enxágue.",freq:"1 a 3x por semana",erro:"Deixar até secar. Máscara seca puxa água de volta da sua pele."},
+};
+
+const BIBLIOTECA=[
+ {t:"Qual é a ordem certa dos produtos?",tags:"ordem sequencia sequência primeiro depois passos",
+  r:"A regra vale pra qualquer rotina: <b>do mais líquido pro mais denso</b>.<br><br>Limpeza → tônico → sérum/ativo → hidratante → protetor solar (de manhã).<br><br>O motivo é físico: produto denso forma um filme. Se ele vem antes, o que é líquido não atravessa e fica desperdiçado em cima da pele."},
+ {t:"Minha pele arde depois do ácido. É normal?",tags:"arde ardencia ardência queima irrita vermelho vermelhidão socorro",
+  r:"Um leve formigamento que passa em minutos pode acontecer. <b>Ardência que persiste, não.</b><br><br>Quase sempre é: frequência alta demais, pele ainda úmida, dois ativos juntos, ou barreira já comprometida.<br><br>O que fazer: <b>pare o ativo</b>, volte a limpeza + hidratante + protetor por 7 a 14 dias, e só depois reintroduza 1x por semana. Se não passar, houver lesão ou piora, procure um dermatologista."},
+ {t:"Posso usar vitamina C e retinol juntos?",tags:"vitamina c retinol juntos combinar misturar",
+  r:"Na mesma aplicação, não.<br><br><b>Vitamina C é de manhã</b> — trabalha com o protetor solar.<br><b>Retinol é de noite</b> — é quando a pele se recupera.<br><br>Separados, se somam. Juntos, se atrapalham e irritam."},
+ {t:"Pele oleosa precisa de hidratante?",tags:"oleosa oleosidade hidratante brilho gordurosa",
+  r:"Precisa — e é o passo que mais gente pula.<br><br>Pele desidratada entende que falta proteção e <b>produz mais óleo</b> pra compensar. Quanto mais você resseca, mais ela brilha.<br><br>A solução não é tirar o hidratante. É trocar a textura: <b>gel ou gel-creme</b>, camada fina."},
+ {t:"Quanto de protetor solar eu devo usar?",tags:"protetor solar quantidade fps quanto reaplicar sol",
+  r:"<b>Dois dedos cheios</b> — a extensão do indicador e do médio.<br><br>É bem mais do que a maioria usa. Metade da quantidade certa não entrega metade da proteção, entrega bem menos.<br><br>Todo dia. Nublado, dentro de casa, no inverno. Reaplique a cada 2 a 3 horas sob sol."},
+ {t:"O que é dupla limpeza?",tags:"dupla limpeza demaquilante oleo óleo micelar",
+  r:"Duas limpezas seguidas, à noite:<br><br><b>1.</b> Óleo, bálsamo ou micelar, no rosto <b>seco</b> — dissolve o gorduroso: protetor, maquiagem, sebo.<br><b>2.</b> Gel ou espuma — tira o resto e o próprio óleo.<br><br>Protetor solar resiste à água. Sabonete sozinho não tira, e o que fica entope poro."},
+ {t:"Posso usar retinol grávida?",tags:"gravida grávida gestante amamentando retinol seguro bebe",
+  r:"<b>Retinol e derivados são classicamente contraindicados na gestação</b> — retinol, retinaldeído, tretinoína, adapaleno.<br><br>Salicílico em concentração alta também costuma entrar na lista de cautela.<br><br>Esta é uma decisão do seu <b>obstetra e do seu dermatologista</b>, não de um app. Leve a lista do que você passa na pele na próxima consulta."},
+ {t:"Quanto tempo até ver diferença?",tags:"tempo resultado demora quando semanas funciona",
+  r:"Depende do ativo, e ninguém pode garantir resultado.<br><br>O ciclo de renovação da pele leva em média 28 dias e fica mais lento com a idade. Por isso a maioria dos protocolos fala em <b>8 a 12 semanas</b> de uso constante antes de avaliar.<br><br>Trocar de produto a cada 3 semanas é o jeito mais rápido de nunca saber o que funciona pra você."},
+ {t:"Preciso mesmo de tônico?",tags:"tonico tônico toner precisa pular",
+  r:"Não é obrigatório. É o primeiro passo que sai quando o tempo ou o dinheiro apertam.<br><br>Mas o tônico coreano moderno não é o adstringente de antigamente — é uma <b>camada de água</b>, e pele levemente úmida absorve melhor o que vem depois.<br><br>Se for cortar algo, corte o tônico antes do hidratante ou do protetor."},
+ {t:"Posso usar dois ácidos ao mesmo tempo?",tags:"dois acidos ácidos juntos salicilico glicolico esfoliante",
+  r:"Não.<br><br>Salicílico com glicólico, ou ácido com esfoliante físico, é excesso. Escolha um e dê tempo a ele.<br><br>Barreira quebrada é o caminho mais rápido pra piorar exatamente o que você queria melhorar."},
+ {t:"Comprei um monte de produto e não uso nenhum",tags:"comprei gastei dinheiro parado gaveta desperdicio errado",
+  r:"Você não está sozinha. Pesquisas de mercado apontam que a média de produto de beleza <b>parado em casa</b> é várias vezes maior que a de produto usado.<br><br>O caminho é o contrário do que parece: <b>não compre nada novo por 30 dias</b>. Separe o que você tem em cinco categorias — limpeza, tônico, ativo, hidratante, protetor. Escolha <b>um</b> de cada. O resto vai pra caixa.<br><br>Rotina de 5 produtos feita todo dia entrega mais que 20 usados sem ordem."},
+ {t:"Como faço teste de contato?",tags:"teste contato alergia patch novo produto seguro",
+  r:"<b>1.</b> Aplique pouca quantidade atrás da orelha ou na dobra do antebraço.<br><b>2.</b> Espere <b>24 horas</b>.<br><b>3.</b> Se arder, coçar, avermelhar ou inchar — não use no rosto.<br><br>Vale pra todo produto novo. E introduza <b>um por vez</b>, com 7 dias de intervalo: assim você sabe quem foi o culpado."},
+];
+
+const PERGUNTAS=[
+ {id:"clinico",titulo:"Você tem alguma condição de pele diagnosticada por médico?",
+  ajuda:"Acne severa ou com nódulos, rosácea, melasma, dermatite, psoríase, ou medicação para a pele.",
+  opcoes:[{txt:"Não, minha pele é saudável",sub:"só quero organizar minha rotina",valor:"nao"},
+          {txt:"Sim, tenho ou já tive",sub:"vou adaptar tudo e te orientar",valor:"sim"},
+          {txt:"Não sei / desconfio",sub:"vamos pelo caminho mais seguro",valor:"talvez"}]},
+ {id:"gestante",titulo:"Você está grávida ou amamentando?",
+  ajuda:"Isso muda quais ativos podem entrar na rotina. É importante.",
+  opcoes:[{txt:"Não",valor:"nao"},{txt:"Sim",sub:"vou remover os ativos contraindicados",valor:"sim"}]},
+ {id:"tipo",titulo:"Qual é o seu tipo de pele?",ajuda:"Pense num dia normal, sem maquiagem, no fim da tarde.",
+  opcoes:[{txt:"Misto",sub:"zona T oleosa, bochechas normais ou secas",valor:"mista"},
+          {txt:"Oleoso",sub:"poros dilatados e brilho geral",valor:"oleosa"},
+          {txt:"Seco",sub:"sente repuxada, pode estar descamando",valor:"seca"},
+          {txt:"Normal",sub:"poros quase invisíveis, parece hidratada",valor:"normal"}]},
+ {id:"sensivel",titulo:"Sua pele reage fácil?",ajuda:"Arde, coça ou fica vermelha com produto novo, perfume ou sol.",
+  opcoes:[{txt:"Sim, com frequência",sub:"vou montar algo bem mais suave",valor:"sim"},
+          {txt:"Às vezes",valor:"as"},{txt:"Não, aguenta bem",valor:"nao"}]},
+ {id:"foco",titulo:"Qual é a sua principal preocupação com a pele?",
+  ajuda:"Você pode escolher mais de uma opção.",multi:true,
+  opcoes:[{txt:"Acne, cicatrizes e marcas pós-acne",valor:"acne"},
+          {txt:"Poros dilatados e oleosidade",valor:"poros"},
+          {txt:"Tom irregular e manchas",valor:"tom"},
+          {txt:"Textura áspera e falta de viço",valor:"vico"},
+          {txt:"Rugas e perda de firmeza",valor:"linhas"},
+          {txt:"Ressecamento e sensibilidade",valor:"barreira"}]},
+ {id:"nivel",titulo:"Qual é a sua relação com ativos?",ajuda:"Ativo é ácido, retinol, vitamina C — os produtos de tratamento.",
+  opcoes:[{txt:"Nunca usei",sub:"vou começar devagar com você",valor:"zero"},
+          {txt:"Já usei, mas sem constância",valor:"medio"},
+          {txt:"Uso e minha pele tolera bem",valor:"alto"}]},
+ {id:"tempo",titulo:"Quanto tempo você realmente tem?",ajuda:"Responda com honestidade. Rotina que você não faz não funciona.",
+  opcoes:[{txt:"Uns 2 minutos",sub:"o essencial que não pode faltar",valor:"curto"},
+          {txt:"5 minutos",sub:"o equilíbrio ideal",valor:"medio"},
+          {txt:"10 minutos ou mais",sub:"o ritual completo em camadas",valor:"longo"}]},
+];
+
+/* ══════════════ MOTOR ══════════════ */
+function focos(r){return Array.isArray(r.foco)?r.foco:(r.foco?[r.foco]:[]);}
+function focoP(r){return focos(r)[0]||"barreira";}
+function nomeFoco(f){return {acne:"acne",poros:"poros e oleosidade",tom:"tom uniforme",
+  vico:"textura e viço",linhas:"firmeza",barreira:"barreira e conforto"}[f]||"equilíbrio";}
+
+function montarRotina(r){
+  const seguro=r.clinico!=="nao",gest=r.gestante==="sim",sens=r.sensivel==="sim";
+  const zero=r.nivel==="zero",curto=r.tempo==="curto",longo=r.tempo==="longo";
+  const oleosa=r.tipo==="oleosa"||r.tipo==="mista",f=focoP(r),fs=focos(r);
+  const avisos=[],manha=[],noite=[],conflitos=[];
+  const P=(k,t,p)=>({chave:k,titulo:t,porque:p});
+
+  if(r.clinico==="sim") avisos.push(["d","Você marcou uma condição diagnosticada",
+    "Montei o ritual mais suave possível, sem ativos fortes. <b>Leve isto ao seu dermatologista antes de começar.</b> Se você está em tratamento médico, a orientação dele vem na frente desta aqui."]);
+  if(r.clinico==="talvez") avisos.push(["a","Você não tem certeza sobre a saúde da sua pele",
+    "Fui pelo caminho seguro: reconstrução de barreira, sem ativos agressivos. Se houver ardência persistente, lesões que não somem ou piora, procure um dermatologista."]);
+  if(gest) avisos.push(["d","Gestação ou amamentação",
+    "Removi retinol e salicílico — os mais citados como contraindicados nesse período. <b>Confirme com seu obstetra e dermatologista</b> tudo que você passa na pele."]);
+  if(sens) avisos.push(["a","Pele reativa",
+    "Reduzi ativos e frequência. Introduza <b>um produto novo por vez</b>, com 7 dias entre eles."]);
+  if(fs.length>2) avisos.push(["o","Você marcou várias preocupações",
+    "Montei o ritual em volta da primeira — <b>"+nomeFoco(f)+"</b>. Resolver uma coisa de cada vez funciona; tentar tudo junto sobrecarrega a pele e não resolve nada."]);
+
+  manha.push(P("limpeza","Limpeza suave","Tira a oleosidade da noite sem agredir."));
+  if(!curto) manha.push(P("tonico","Tônico hidratante","Repõe água e prepara a pele pro que vem depois."));
+  if(!seguro&&!sens&&!zero&&f==="tom") manha.push(P("vitc","Sérum de vitamina C","Trabalha a aparência de tom uniforme e soma com o protetor."));
+  else if(!seguro&&f==="acne"&&!sens) manha.push(P("azelaico","Ácido azelaico","Age na acne e na aparência das manchas ao mesmo tempo."));
+  else if(!seguro&&(f==="poros"||f==="barreira")&&!curto) manha.push(P("niacinamida","Sérum de niacinamida","O ativo mais bem tolerado que existe."));
+  manha.push(P("hidratante","Hidratante"+(oleosa?" em gel":" em creme"),oleosa?"Sim, pele oleosa também hidrata. Em gel, leve, sem pesar.":"Sela a hidratação e conforta."));
+  manha.push(P("protetor","Protetor solar FPS 30+","O passo mais importante do ritual inteiro."));
+
+  if(!curto) noite.push(P("oleo","Primeira limpeza","Protetor solar não sai só com sabonete."));
+  noite.push(P("limpeza","Limpeza",curto?"Se usou protetor, passe micelar antes.":"Segunda limpeza — tira o resto e o próprio óleo."));
+  if(!curto) noite.push(P("tonico","Tônico hidratante","Devolve a água que a limpeza levou."));
+  if(seguro||(gest&&sens)) noite.push(P("niacinamida","Sérum de niacinamida","Ativo suave, focado em reconstruir barreira."));
+  else if(gest) noite.push(P("niacinamida","Sérum de niacinamida","Substitui o retinol com segurança neste período."));
+  else if(f==="acne") noite.push(P("azelaico","Ácido azelaico","O mesmo da manhã. Constância é o que faz funcionar."));
+  else if(f==="poros"&&!sens) noite.push(P("salicilico","Ácido salicílico","Trabalha dentro do poro. Comece 2x por semana."));
+  else if((f==="linhas"||f==="vico")&&!zero&&!sens) noite.push(P("retinol","Retinol em concentração baixa","O clássico da renovação. Devagar sempre."));
+  else if(f==="tom"&&!sens) noite.push(P("niacinamida","Sérum de niacinamida","Boa opção pra tom uniforme, sem agredir."));
+  else noite.push(P("niacinamida","Sérum de niacinamida","Começo seguro. Depois de 4 semanas tranquilas dá pra evoluir."));
+  noite.push(P("hidratante","Hidratante"+(oleosa?" em gel":" mais denso"),"Fecha as camadas e conforta a noite inteira."));
+  if(longo&&!seguro) noite.push(P("mascara","Máscara de tecido","O passo do carinho — pele descansada rápido."));
+
+  conflitos.push(["Retinol + qualquer ácido na mesma noite","A combinação que mais destrói barreira. Alterne as noites."]);
+  conflitos.push(["Vitamina C + retinol na mesma aplicação","Vitamina C é de manhã. Retinol é de noite."]);
+  conflitos.push(["Dois ácidos diferentes ao mesmo tempo","Salicílico com glicólico, ou com esfoliante físico, é excesso. Escolha um."]);
+  conflitos.push(["Ativo novo sem protetor no dia seguinte","Ativo deixa a pele mais reativa ao sol."]);
+  if(gest) conflitos.push(["Retinol e derivados, na gestação","Contraindicados. Confirme sempre com seu médico."]);
+
+  const forte=noite.some(p=>p.chave==="retinol"||p.chave==="salicilico");
+  const progressao=forte?[
+   ["Semana 1 e 2","Só o básico: limpeza, hidratante e protetor. Nenhum ativo. A pele precisa estar calma antes de receber tratamento."],
+   ["Semana 3","Entra o ativo da noite, <b>2x por semana</b>, com a pele completamente seca."],
+   ["Semana 4 e 5","Se não houve ardência nem descamação, suba pra 3x por semana."],
+   ["Semana 6 em diante","Máximo 4x por semana. Nas outras noites, só hidratação."]]:[
+   ["Semana 1","Só limpeza, hidratante e protetor. Todo dia, sem falhar."],
+   ["Semana 2","Entra o tônico. Continue observando como sua pele responde."],
+   ["Semana 3 e 4","Entra o sérum, 1x ao dia. Um produto novo por vez."],
+   ["Depois disso","Só evolua se as 4 semanas passaram sem ardência ou descamação."]];
+
+  const nt={mista:"mista",oleosa:"oleosa",seca:"seca",normal:"normal"}[r.tipo]||"";
+  return {titulo:seguro?'Reconstrução de <em>barreira</em>':curto?'Seu ritual <em>essencial</em>'
+                :longo?'Seu ritual <em>completo</em>':'Seu <em>ritual</em>',
+    perfil:`Pele ${nt}${sens?" e reativa":""} · foco em ${nomeFoco(f)}`,
+    avisos,manha,noite,conflitos,progressao};
+}
+
+/* ══════════════ ÍNDICE / BUSCA ══════════════ */
+let INDICE=[];
+const TODAS_AULAS=()=>VIDEOS.modulos.flatMap(m=>m.aulas.map(a=>({...a,modulo:m.nome,cor:m.cor})));
+function aulaDe(v,campo){return TODAS_AULAS().find(a=>a[campo]===v&&a.url);}
+
+function construirIndice(){
+  INDICE=[];
+  BIBLIOTECA.forEach(b=>INDICE.push({tipo:"Dúvida",cor:"roxo",ico:"?",t:b.t,
+    sub:b.r.replace(/<[^>]+>/g," ").slice(0,90)+"…",busca:b.t+" "+b.tags,html:b.r}));
+  Object.entries(MANUAL).forEach(([k,m])=>{const v=aulaDe(k,"chave");
+    INDICE.push({tipo:"Como usar",cor:"verde",ico:"◍",t:m.nome,sub:m.qtd,
+      busca:m.nome+" "+k+" "+m.cat+" "+m.freq+" "+m.erro+" como usar",
+      html:`${v?`<button class="btn" onclick="verAula('${v.id}')">▶ Ver a aula · ${v.dur}</button>`:""}
+        <p class="peq" style="margin:0 0 12px"><b style="color:var(--tinta)">Quanto usar.</b> ${m.qtd}</p>
+        <p class="peq" style="margin:0 0 12px"><b style="color:var(--tinta)">Como e quanto esperar.</b> ${m.tempo}</p>
+        <p class="peq" style="margin:0 0 14px"><b style="color:var(--tinta)">Frequência.</b> ${m.freq}</p>
+        <div class="aviso d"><b>O erro mais comum</b>${m.erro}</div>`});});
+  PATRICIA.modos.forEach(mo=>mo.blocos.forEach(b=>b.passos.forEach(p=>INDICE.push({
+    tipo:"Patricia · "+mo.nome,cor:mo.cor,ico:"♡",t:p.produto,sub:p.oque,
+    busca:p.produto+" "+p.marca+" "+p.oque+" "+p.porque+" "+mo.nome,
+    html:`<span class="chip claro">${p.oque}</span><p class="peq" style="margin:14px 0">${p.porque}</p>
+      <div class="aviso o"><b>Onde entra</b>${mo.nome} · ${b.titulo}${p.quando?" · "+p.quando:""}</div>`}))));
+  EQUIVALENTES.forEach(e=>INDICE.push({tipo:"Versão nacional",cor:"azul",ico:"₪",t:e.passo,sub:e.faixa,
+    busca:e.passo+" "+e.coreano+" "+e.exemplos+" barato nacional preço equivalente versão",
+    html:`<p class="peq" style="margin:0 0 10px"><b style="color:var(--tinta)">Na rotina coreana.</b> ${e.coreano}</p>
+      <p class="peq" style="margin:0 0 10px"><b style="color:var(--tinta)">Faixa de preço.</b> ${e.faixa}</p>
+      <p class="peq">${e.exemplos}</p>`}));
+  TODAS_AULAS().forEach(a=>INDICE.push({tipo:"Aula",cor:a.cor,ico:"▷",t:a.t,
+    sub:(a.url?a.desc:"Em breve")+" · "+a.dur,
+    busca:a.t+" "+a.desc+" "+a.modulo+" aula video vídeo tutorial assistir erro",
+    html:`<p class="peq" style="margin:0 0 14px">${a.desc}</p>`+
+      (a.url?`<button class="btn" onclick="verAula('${a.id}')">▶ Assistir · ${a.dur}</button>`
+            :`<div class="aviso a"><b>Em breve</b>Esta aula ainda não foi publicada.</div>`)}));
+}
+const limpar=s=>(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+
+function buscar(){
+  const q=document.getElementById("q").value.trim();
+  document.getElementById("buscaWrap").classList.toggle("tem",!!q);
+  const alvo=document.getElementById("resultados"),corpo=document.getElementById("hojeCorpo");
+  if(q.length<2){alvo.hidden=true;corpo.hidden=false;return;}
+  corpo.hidden=true;alvo.hidden=false;
+  const termos=limpar(q).split(/\s+/);
+  const achados=INDICE.map(e=>{const b=limpar(e.busca);
+      return {e,n:termos.filter(t=>b.includes(t)).length,ex:limpar(e.t).includes(limpar(q))?1:0};})
+    .filter(x=>x.n===termos.length||x.ex).sort((a,b)=>(b.ex-a.ex)||(b.n-a.n)).slice(0,24).map(x=>x.e);
+  alvo.innerHTML=achados.length
+   ? `<p class="peq" style="margin:14px 0 12px">${achados.length} resultado${achados.length>1?"s":""}</p>`+
+     achados.map(e=>`<button class="res" onclick="abrir(${INDICE.indexOf(e)})">
+       <span class="ico" style="background:var(--${e.cor}-bg);color:var(--${e.cor})">${e.ico}</span>
+       <span class="cc"><span class="kind">${e.tipo}</span><b>${e.t}</b>
+       <span class="dd">${e.sub}</span></span></button>`).join("")
+   : `<div style="text-align:center;padding:40px 10px">
+       <p class="disp" style="font-size:1.5rem">Nada por aqui.</p>
+       <p class="peq">Tente <b>ordem</b>, <b>arde</b>, <b>protetor</b>, <b>retinol</b>, <b>oleosa</b> ou <b>grávida</b>.</p></div>`;
+}
+function limparBusca(){document.getElementById("q").value="";buscar();document.getElementById("q").focus();}
+function focarBusca(){ if(estado.tela!=="hoje") ir("hoje");
+  setTimeout(()=>{const el=document.getElementById("q");
+    el.scrollIntoView({block:"center",behavior:"smooth"});el.focus();},140); }
+
+/* ══════════════ ESTADO ══════════════ */
+const CHAVE="ritual_v3";
+const hoje=()=>new Date().toISOString().slice(0,10);
+const inicial=()=>({tela:"capa",slide:0,aceito:false,i:0,resp:{},dias:{},seq:0,ultimo:null,
+                    modoP:"acne",per:"manha",tema:null,vistas:{}});
+let estado=carregar(),rotina=null;
+function carregar(){try{const s=JSON.parse(localStorage.getItem(CHAVE));
+  return s&&s.resp?{...inicial(),...s}:inicial();}catch{return inicial();}}
+function salvar(){try{localStorage.setItem(CHAVE,JSON.stringify(estado));}catch{}}
+
+function ir(tela){
+  document.querySelectorAll("[data-tela]").forEach(s=>s.hidden=s.dataset.tela!==tela);
+  estado.tela=tela;salvar();
+  const app=["hoje","rotina","aulas","patricia"].includes(tela);
+  document.getElementById("nav").hidden=!app;
+  document.querySelectorAll(".navBar button").forEach(b=>b.setAttribute("aria-current",b.dataset.nav===tela));
+  if(tela==="capa")     renderSlide();
+  if(tela==="quiz")     renderPergunta();
+  if(tela==="hoje")     renderHoje();
+  if(tela==="rotina")   renderRotina();
+  if(tela==="aulas")    renderAulas();
+  if(tela==="patricia") renderPatricia();
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+/* ─ abertura ─ */
+function renderSlide(){
+  const s=SLIDES[estado.slide];
+  document.getElementById("slideCorpo").innerHTML=
+    `<div class="slideArte">${SVG[s.arte]()}</div><h1 class="disp">${s.tit}</h1><p class="lead">${s.sub}</p>`;
+  document.getElementById("dots").innerHTML=SLIDES.map((_,i)=>`<i class="${i===estado.slide?"on":""}"></i>`).join("");
+  document.getElementById("btnSlide").textContent=estado.slide===SLIDES.length-1?"Quero minha rotina":"Continuar";
+}
+function proxSlide(){
+  if(estado.slide<SLIDES.length-1){estado.slide++;salvar();renderSlide();window.scrollTo({top:0,behavior:"instant"});}
+  else ir("termo");
+}
+function aceitar(){estado.aceito=true;estado.i=0;salvar();ir("quiz");}
+
+/* ─ quiz ─ */
+function renderPergunta(){
+  const p=PERGUNTAS[estado.i];
+  if(!p) return carregarRotina();
+  document.getElementById("qProg").style.width=((estado.i+1)/PERGUNTAS.length*100)+"%";
+  document.getElementById("qConta").textContent=`Pergunta ${estado.i+1} de ${PERGUNTAS.length}`;
+  document.getElementById("qTitulo").textContent=p.titulo;
+  document.getElementById("qAjuda").textContent=p.ajuda||"";
+  const box=document.getElementById("qOpcoes");box.innerHTML="";
+  p.opcoes.forEach(o=>{
+    const b=document.createElement("button");b.className="opt";
+    const at=estado.resp[p.id];
+    const on=p.multi?(Array.isArray(at)&&at.includes(o.valor)):at===o.valor;
+    b.innerHTML=`<b>${o.txt}</b>${o.sub?`<span>${o.sub}</span>`:""}<span class="tick">✓</span>`;
+    b.setAttribute("aria-pressed",on);
+    b.onclick=()=>{
+      if(p.multi){
+        const a=Array.isArray(estado.resp[p.id])?[...estado.resp[p.id]]:[];
+        const k=a.indexOf(o.valor);k>=0?a.splice(k,1):a.push(o.valor);
+        estado.resp[p.id]=a;salvar();renderPergunta();
+      }else{estado.resp[p.id]=o.valor;salvar();setTimeout(seguinte,190);}
+    };
+    box.appendChild(b);
+  });
+  const r=estado.resp[p.id];
+  const ok=p.multi?(Array.isArray(r)&&r.length>0):!!r;
+  const bt=document.getElementById("qSeguinte");
+  bt.disabled=!ok;bt.textContent=estado.i===PERGUNTAS.length-1?"Ver minha rotina":"Seguinte";
+}
+function seguinte(){
+  const p=PERGUNTAS[estado.i],r=estado.resp[p.id];
+  const ok=p.multi?(Array.isArray(r)&&r.length>0):!!r;
+  if(!ok) return;
+  estado.i++;salvar();
+  if(estado.i>=PERGUNTAS.length) carregarRotina();
+  else {renderPergunta();window.scrollTo({top:0,behavior:"instant"});}
+}
+function voltarPergunta(){if(estado.i>0){estado.i--;salvar();renderPergunta();}else ir("termo");}
+
+/* ─ carregando ─ */
+function carregarRotina(){
+  document.getElementById("loadArte").innerHTML=SVG.frascos();
+  ir("carregando");
+  setTimeout(()=>{rotina=montarRotina(estado.resp);ir("rotina");},3600);
+}
+
+/* ─ início ─ */
+function periodoAgora(){const h=new Date().getHours();return (h>=5&&h<17)?"manha":"noite";}
+function renderHoje(){
+  if(!rotina) rotina=montarRotina(estado.resp);
+  const per=periodoAgora(),lista=per==="manha"?rotina.manha:rotina.noite;
+  const d=hoje();estado.dias[d]=estado.dias[d]||{};
+  const feitos=lista.filter((_,i)=>estado.dias[d][per+i]).length;
+  const pct=Math.round(feitos/lista.length*100);
+  const h=new Date().getHours();
+  const saud=h<5?"Boa madrugada":h<12?"Bom dia":h<18?"Boa tarde":"Boa noite";
+  const seq=estado.seq||0;
+
+  document.getElementById("hojeTopo").innerHTML=`
+    <div class="oi"><span class="av">${SVG.ic.frasco}</span>
+      <h1>${saud}${CONFIG.nomeUsuaria?", "+CONFIG.nomeUsuaria:""}!</h1></div>
+
+    <div class="card">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <b style="font-size:.95rem">Constância</b>
+        <span class="mini">${seq} ${seq===1?"dia":"dias"} seguidos</span></div>
+      <div class="medidor"><span class="val">${pct}%</span>
+        <span class="trilha"><i class="pino" style="left:${Math.max(3,Math.min(97,pct))}%"></i></span></div>
+      <p class="peq" style="margin:0">${pct===100?"Ritual de "+(per==="manha"?"manhã":"noite")+" completo. É assim que a pele muda."
+        :pct===0?"Você ainda não marcou nenhum passo de "+(per==="manha"?"hoje de manhã":"hoje à noite")+"."
+        :"Faltam "+(lista.length-feitos)+" passos pra fechar o ritual de "+(per==="manha"?"manhã":"noite")+"."}</p>
+    </div>
+
+    <div class="faixa">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">${SVG.ceu(7)}</svg>
+      <h2>Seu ritual de ${per==="manha"?"manhã":"noite"}</h2>
+      <p>${lista.length} passos · ${feitos} feitos</p>
+      <button class="btn grad" onclick="verPeriodo('${per}');ir('rotina')">Abrir agora</button>
+    </div>
+
+    <div class="secao"><h2 class="h2">Passos de hoje</h2>
+      <button class="verTudo" onclick="ir('rotina')">Ver tudo ›</button></div>
+    <div>${lista.map((p,i)=>{const f=!!estado.dias[d][per+i];
+      return `<button class="prod" onclick="marcar('${per+i}')" aria-pressed="${f}">
+        <span class="frasco" style="background:var(--${f?"verde":"azul"}-bg);color:var(--${f?"verde":"azul"})">
+          ${f?'<b style="font-size:1.3rem">✓</b>':SVG.ic.frasco}</span>
+        <span class="corpo"><span class="marcaP">${MANUAL[p.chave].cat} · passo ${i+1}</span>
+          <span class="nomeP" style="${f?"opacity:.5;text-decoration:line-through":""}">${p.titulo}</span>
+          <span class="chip ${f?"":"claro"}">${f?"Feito ✓":MANUAL[p.chave].freq}</span></span></button>
+        <button class="alt" onclick="abrirChave('${p.chave}')">Como usar ⌄</button>`;}).join("")}</div>`;
+
+  document.getElementById("chips").innerHTML=
+    ["ordem certa","minha pele arde","protetor solar","retinol","pele oleosa","grávida","versão nacional"]
+    .map(c=>`<button class="chipB" onclick="chip('${c}')">${c}</button>`).join("");
+
+  document.getElementById("hojeCorpo").innerHTML=`
+    <div class="secao"><h2 class="h2">Explorar</h2></div>
+    <div class="grade">
+      <button class="tile t-verde" onclick="ir('rotina')">${SVG.ic.rotina}
+        <span><b>Meu ritual</b><small>manhã e noite, na ordem certa</small></span></button>
+      <button class="tile t-roxo" onclick="chip('como usar')">${SVG.ic.manual}
+        <span><b>Manual</b><small>quanto usar e quanto esperar</small></span></button>
+      <button class="tile t-rosa" onclick="chip('erro')">${SVG.ic.erro}
+        <span><b>Os erros</b><small>o que sabota sem você ver</small></span></button>
+      <button class="tile t-azul" onclick="chip('versão nacional')">${SVG.ic.barato}
+        <span><b>Versão nacional</b><small>coreano traduzido pro seu bolso</small></span></button>
+    </div>
+    ${trilhoAulas(lista)}
+    <div class="secao"><h2 class="h2">As dúvidas de sempre</h2>
+      <button class="verTudo" onclick="focarBusca()">Buscar ›</button></div>
+    ${BIBLIOTECA.slice(0,5).map(b=>{const i=INDICE.findIndex(e=>e.t===b.t);
+      return `<button class="res" onclick="abrir(${i})">
+        <span class="ico" style="background:var(--roxo-bg);color:var(--roxo)">?</span>
+        <span class="cc"><span class="kind">Dúvida</span><b>${b.t}</b>
+        <span class="dd">${b.r.replace(/<[^>]+>/g," ").slice(0,80)}…</span></span></button>`;}).join("")}`;
+  salvar();
+}
+function chip(c){if(estado.tela!=="hoje")ir("hoje");
+  setTimeout(()=>{const q=document.getElementById("q");q.value=c;buscar();
+    q.scrollIntoView({block:"start",behavior:"smooth"});},90);}
+
+function marcar(id){
+  const d=hoje();estado.dias[d]=estado.dias[d]||{};
+  estado.dias[d][id]=!estado.dias[d][id];
+  if(Object.values(estado.dias[d]).some(Boolean)&&estado.ultimo!==d){
+    const ontem=new Date(Date.now()-864e5).toISOString().slice(0,10);
+    estado.seq=(estado.ultimo===ontem)?(estado.seq||0)+1:1;estado.ultimo=d;
+  }
+  salvar();estado.tela==="hoje"?renderHoje():renderRotina();
+}
+
+/* ─ rotina ─ */
+function verPeriodo(p){estado.per=p;salvar();if(estado.tela==="rotina")renderRotina();}
+function renderRotina(){
+  rotina=montarRotina(estado.resp);
+  const per=estado.per||"manha",lista=per==="manha"?rotina.manha:rotina.noite;
+  const d=hoje();estado.dias[d]=estado.dias[d]||{};
+  document.getElementById("rTitulo").innerHTML=rotina.titulo;
+  document.getElementById("rPerfil").textContent=rotina.perfil;
+  document.getElementById("rAvisos").innerHTML=
+    rotina.avisos.map(([t,a,b])=>`<div class="aviso ${t}"><b>${a}</b>${b}</div>`).join("");
+  document.querySelectorAll(".toggle button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.per===per));
+
+  document.getElementById("rCorpo").innerHTML=`
+    <div class="banner ${per}">
+      <svg class="ceu" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">${SVG.ceu(9)}</svg>
+      <h2>${per==="manha"?SVG.ic.sol+" Manhã":SVG.ic.lua+" Noite"}</h2>
+    </div>
+    ${lista.map((p,i)=>{const m=MANUAL[p.chave],f=!!estado.dias[d][per+i],v=aulaDe(p.chave,"chave");
+      return `<div class="passoTit"><i>${i+1}</i><b>${m.cat}</b></div>
+      <button class="prod" onclick="marcar('${per+i}')" aria-pressed="${f}">
+        <span class="frasco" style="background:var(--${f?"verde":"pessego"}-bg);color:var(--${f?"verde":"pessego"})">
+          ${f?'<b style="font-size:1.3rem">✓</b>':SVG.ic.frasco}</span>
+        <span class="corpo"><span class="marcaP">${m.freq}</span>
+          <span class="nomeP" style="${f?"opacity:.5;text-decoration:line-through":""}">${p.titulo}</span>
+          <span class="chip ${f?"":"claro"}">${f?"Feito ✓":"Serve pra sua pele"}</span></span></button>
+      <p class="peq" style="margin:9px 4px 0">${p.porque}</p>
+      <div style="display:flex;gap:8px;margin-top:9px;flex-wrap:wrap">
+        <button class="btn mini ghost" onclick="abrirChave('${p.chave}')">Como usar</button>
+        ${v?`<button class="btn mini ghost" onclick="verAula('${v.id}')">▶ Ver aula</button>`:""}</div>`;}).join("")}`;
+
+  document.getElementById("rExtra").innerHTML=`
+    <div class="secao"><h2 class="h2">O que nunca junto</h2></div>
+    ${rotina.conflitos.map(([t,x])=>`<div class="aviso d"><b>${t}</b>${x}</div>`).join("")}
+    <div class="secao"><h2 class="h2">Como começar</h2></div>
+    ${rotina.progressao.map(([q,x],i)=>`<div class="card" style="display:flex;gap:13px">
+      <span style="flex:0 0 30px;height:30px;border-radius:99px;background:var(--roxo-bg);color:var(--roxo);
+        display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem">${i+1}</span>
+      <span><b class="h3">${q}</b><span class="peq">${x}</span></span></div>`).join("")}
+    <button class="btn" onclick="compartilhar()" style="margin-top:18px">Compartilhar meu ritual</button>
+    <button class="btn ghost" onclick="window.print()">Salvar em PDF</button>
+    <button class="btn ghost" onclick="recomecar()">Refazer o questionário</button>`;
+}
+
+/* ─ aulas ─ */
+function embutir(url){
+  if(!url) return null; const u=url.trim(); let m;
+  if((m=u.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|live\/|shorts\/)|youtu\.be\/)([\w-]{11})/)))
+    return {tipo:"iframe",src:`https://www.youtube-nocookie.com/embed/${m[1]}?rel=0&modestbranding=1&playsinline=1`};
+  if((m=u.match(/vimeo\.com\/(?:video\/)?(\d+)/))) return {tipo:"iframe",src:`https://player.vimeo.com/video/${m[1]}`};
+  if(/pandavideo|\/embed\/|loom\.com\/(share|embed)/.test(u))
+    return {tipo:"iframe",src:u.replace("loom.com/share","loom.com/embed")};
+  if(/\.(mp4|webm|mov|m4v)(\?|$)/i.test(u)) return {tipo:"video",src:u};
+  return {tipo:"link",src:u};
+}
+
+function trilhoAulas(passosAgora){
+  const vistas=estado.vistas||{},chaves=passosAgora.map(p=>p.chave),todas=TODAS_AULAS();
+  const peso=a=>(chaves.includes(a.chave)?-100:0)+(vistas[a.id]?50:0)+(a.url?0:20);
+  const fila=[...todas].sort((a,b)=>peso(a)-peso(b)).slice(0,8);
+  const jaViu=todas.some(a=>vistas[a.id]);
+  const rel=todas.filter(a=>chaves.includes(a.chave)).length;
+  return `<div class="secao"><h2 class="h2">${jaViu?"Continue assistindo":"Comece pelas aulas"}</h2>
+      <button class="verTudo" onclick="ir('aulas')">Ver todas ›</button></div>
+    <p class="peq" style="margin:-8px 0 10px">${rel?`As ${rel} primeiras são os passos do seu ritual de agora.`
+      :"Ler a ordem certa ajuda. Ver a mão fazendo resolve."}</p>
+    <div class="trilho">${fila.map(a=>{const tem=!!a.url,v=!!vistas[a.id];
+      return `<button class="cardAula ${tem?"":"breve"}"
+        ${tem?`onclick="verAula('${a.id}')"`:`onclick="toast('Esta aula ainda não foi publicada.')"`}
+        aria-label="${a.t}${tem?"":" — em breve"}">
+        <span class="capa" style="background:var(--${a.cor}-bg)">
+          <span class="selo">${chaves.includes(a.chave)?"do seu ritual":a.modulo}</span>
+          <span class="bolha" style="color:var(--${a.cor})">${v?"✓":tem?"▶":"◷"}</span></span>
+        <span class="tt"><b>${a.t}</b><small>${tem?a.dur:"em breve"}</small></span></button>`;}).join("")}</div>`;
+}
+
+function renderAulas(){
+  const todas=TODAS_AULAS(),comV=todas.filter(a=>a.url).length;
+  const vistas=todas.filter(a=>estado.vistas&&estado.vistas[a.id]).length;
+  const pctA=comV?Math.round(vistas/comV*100):0;
+  document.getElementById("auCorpo").innerHTML=`
+    ${comV===0?`<div class="aviso a"><b>As aulas ainda não foram publicadas</b>
+      A grade completa já está montada. Assim que os vídeos entrarem, aparecem aqui automaticamente.</div>`
+     :`<div class="card"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <b style="font-size:.95rem">Seu progresso</b><span class="mini">${vistas} de ${comV} aulas</span></div>
+        <div class="medidor"><span class="val">${pctA}%</span>
+        <span class="trilha"><i class="pino" style="left:${Math.max(3,Math.min(97,pctA))}%"></i></span></div></div>`}
+    ${VIDEOS.modulos.map(mo=>`
+      <div class="secao"><h2 class="h2">${mo.nome}</h2><span class="mini">${mo.aulas.length} aulas</span></div>
+      <p class="peq" style="margin:-8px 0 10px">${mo.sub}</p>
+      ${mo.aulas.map(a=>{const tem=!!a.url,v=estado.vistas&&estado.vistas[a.id];
+        return `<button class="aula ${tem?"":"breve"} ${v?"vista":""}"
+          ${tem?`onclick="verAula('${a.id}')"`:`disabled aria-disabled="true"`}>
+          <span class="play" style="${tem&&!v?`background:var(--${mo.cor}-bg);color:var(--${mo.cor})`:""}">
+            ${v?"✓":tem?"▶":"◷"}</span>
+          <span class="ii"><b>${a.t}</b><span>${tem?a.desc:"Em breve"}</span></span>
+          <span class="dur">${a.dur}</span></button>`;}).join("")}`).join("")}`;
+}
+
+function verAula(id){
+  const a=id==="intro"?{...VIDEOS.intro,id:"intro"}:TODAS_AULAS().find(x=>x.id===id);
+  if(!a) return;
+  const e=embutir(a.url);
+  estado.vistas=estado.vistas||{};estado.vistas[a.id]=true;salvar();
+  const player=!e?`<div class="video"><div class="semVideo">Esta aula ainda não foi publicada.</div></div>`
+   :e.tipo==="iframe"?`<div class="video"><iframe src="${e.src}" allowfullscreen loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" title="${a.t}"></iframe></div>`
+   :e.tipo==="video"?`<div class="video"><video src="${e.src}" controls playsinline preload="metadata"></video></div>`
+   :`<div class="video"><div class="semVideo"><a href="${e.src}" target="_blank" rel="noopener"
+      style="color:#fff">Assistir em outra janela →</a></div></div>`;
+  document.getElementById("folhaCorpo").innerHTML=
+    `<span class="chip claro">Aula · ${a.dur}</span><h2 class="h2" style="margin:12px 0 14px">${a.t}</h2>
+     ${player}<p class="peq">${a.desc}</p>
+     <div class="aviso a" style="margin-top:14px"><b>Vídeo precisa de internet</b>
+       O resto do app funciona offline.</div>`;
+  abrirFolha();if(estado.tela==="aulas")renderAulas();
+}
+
+/* ─ Patricia ─ */
+function renderPatricia(){
+  document.getElementById("paTitulo").innerHTML=PATRICIA.titulo;
+  document.getElementById("paSub").textContent=PATRICIA.sub;
+  const m=PATRICIA.modos.find(x=>x.id===estado.modoP)||PATRICIA.modos[0];
+  const vs=TODAS_AULAS().filter(a=>a.modo===m.id&&a.url);
+  document.getElementById("paCorpo").innerHTML=`
+    <div class="aviso a"><b>Leia com carinho</b>Este é o ritual de <b>uma pessoa</b>, com <b>uma pele</b>,
+      para os objetivos dela. Não é receita nem indicação para você — serve como referência de estrutura e lógica.</div>
+    <details><summary>O perfil de pele e o objetivo</summary><div class="in">
+      <p class="peq" style="margin:0 0 10px"><b style="color:var(--tinta)">A pele.</b> ${PATRICIA.perfil}</p>
+      <p class="peq"><b style="color:var(--tinta)">O objetivo.</b> ${PATRICIA.objetivo}</p></div></details>
+
+    <div class="secao"><h2 class="h2">Escolha o modo</h2></div>
+    ${PATRICIA.modos.map(x=>`<button class="opt" aria-pressed="${x.id===m.id}" onclick="verModo('${x.id}')">
+      <b>${x.nome}</b><span>${x.quando}</span><span class="tick">✓</span></button>`).join("")}
+
+    <div class="aviso ${m.nota[0]}" style="margin-top:16px"><b>${m.nota[1]}</b>${m.nota[2]}</div>
+    ${vs.length?`<div class="secao"><h2 class="h2">Assista este ritual</h2></div>
+      ${vs.map(a=>`<button class="aula" onclick="verAula('${a.id}')">
+        <span class="play">▶</span><span class="ii"><b>${a.t}</b><span>${a.desc}</span></span>
+        <span class="dur">${a.dur}</span></button>`).join("")}`:""}
+
+    ${m.blocos.map(b=>`<div class="secao"><h2 class="h2">${b.titulo}</h2>
+      <span class="mini">${b.passos.length} passos</span></div>
+      ${b.passos.map((p,i)=>`<div class="passoTit"><i>${i+1}</i><b>${p.oque}</b></div>
+        <button class="prod" onclick="abrirProduto('${m.id}','${b.titulo}',${i})">
+          <span class="frasco" style="background:var(--${m.cor}-bg);color:var(--${m.cor})">${SVG.ic.frasco}</span>
+          <span class="corpo"><span class="marcaP">${p.marca}</span><span class="nomeP">${p.produto}</span>
+            ${p.quando?`<span class="chip neutro">${p.quando}</span>`:`<span class="chip claro">${b.titulo}</span>`}
+          </span></button>`).join("")}`).join("")}
+
+    <div class="secao"><h2 class="h2">O aparelho</h2></div>
+    <div class="card"><b class="h3">${PATRICIA.aparelho.titulo}</b>
+      <span class="chip claro">${PATRICIA.aparelho.quando}</span>
+      <p class="peq" style="margin:12px 0 0"><b style="color:var(--tinta)">Logo depois.</b> ${PATRICIA.aparelho.depois}</p>
+      <div class="aviso d" style="margin:12px 0 0"><b>Cuidado</b>${PATRICIA.aparelho.cuidado}
+        Aparelho de uso doméstico tem instruções do fabricante — siga as dele, e converse com um
+        dermatologista antes de usar sobre pele com acne ativa.</div></div>
+
+    <div class="secao"><h2 class="h2">Pausar durante um surto</h2></div>
+    <p class="peq" style="margin:-8px 0 10px">Quando a acne piora, <b>simplifica</b> — não acrescenta.</p>
+    ${PATRICIA.pausar.map(x=>`<details><summary>${x.p}</summary>
+      <div class="in"><p class="peq">${x.porque}</p></div></details>`).join("")}
+
+    <div class="secao"><h2 class="h2">As regras de ouro</h2></div>
+    ${PATRICIA.regras.map((r,i)=>`<div class="card" style="display:flex;gap:13px;align-items:center">
+      <span style="flex:0 0 30px;height:30px;border-radius:99px;background:var(--verde-bg);color:var(--verde-esc);
+        display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem">${i+1}</span>
+      <span class="peq" style="color:var(--tinta)">${r}</span></div>`).join("")}
+
+    <div class="secao"><h2 class="h2">Versão nacional</h2><span class="mini">${EQUIVALENTES.length} passos</span></div>
+    <p class="peq" style="margin:-8px 0 10px">O que importa é <b>a função do passo</b>, não o país do frasco.</p>
+    ${EQUIVALENTES.map(e=>{const i=INDICE.findIndex(x=>x.tipo==="Versão nacional"&&x.t===e.passo);
+      return `<button class="res" onclick="abrir(${i})">
+        <span class="ico" style="background:var(--azul-bg);color:var(--azul)">₪</span>
+        <span class="cc"><span class="kind">${e.faixa}</span><b>${e.passo}</b>
+        <span class="dd">${e.coreano}</span></span></button>`;}).join("")}
+    <p class="peq" style="margin-top:14px">Os nomes citados são <b>exemplos de categoria de produto</b>,
+      sem vínculo comercial e sem indicação individual. Preços são faixas aproximadas e mudam.</p>`;
+}
+function verModo(id){estado.modoP=id;salvar();renderPatricia();window.scrollTo({top:0,behavior:"smooth"});}
+function abrirProduto(modo,bloco,i){
+  const m=PATRICIA.modos.find(x=>x.id===modo),b=m.blocos.find(x=>x.titulo===bloco),p=b.passos[i];
+  document.getElementById("folhaCorpo").innerHTML=
+    `<span class="chip claro">${p.oque}</span>
+     <h2 class="h2" style="margin:12px 0 4px">${p.produto}</h2>
+     <p class="mini" style="margin-bottom:14px">${p.marca} · ${m.nome} · ${b.titulo}</p>
+     <p class="peq" style="margin-bottom:14px">${p.porque}</p>
+     ${p.quando?`<div class="aviso a"><b>Quando usar</b>${p.quando}</div>`:""}
+     <div class="aviso o"><b>Lembre</b>Este produto faz parte da rotina da Patricia, não é indicação para
+       a sua pele. Use como referência de <b>função do passo</b>.</div>`;
+  abrirFolha();
+}
+
+/* ─ folha ─ */
+function abrir(i){const e=INDICE[i];if(!e)return;
+  document.getElementById("folhaCorpo").innerHTML=
+    `<span class="chip claro">${e.tipo}</span><h2 class="h2" style="margin:12px 0 14px">${e.t}</h2>${e.html}`;
+  abrirFolha();}
+function abrirChave(k){abrir(INDICE.findIndex(e=>e.tipo==="Como usar"&&e.t===MANUAL[k].nome));}
+function abrirFolha(){document.getElementById("folha").classList.add("on");
+  document.getElementById("veu").classList.add("on");document.body.style.overflow="hidden";}
+function fecharFolha(){
+  document.getElementById("folha").classList.remove("on");
+  document.getElementById("veu").classList.remove("on");document.body.style.overflow="";
+  setTimeout(()=>{if(!document.getElementById("folha").classList.contains("on"))
+    document.getElementById("folhaCorpo").innerHTML="";},420);}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")fecharFolha();});
+
+/* ─ utilidades ─ */
+async function compartilhar(){
+  if(!rotina) rotina=montarRotina(estado.resp);
+  const lim=s=>s.replace(/<[^>]+>/g,"");
+  const txt=`${lim(rotina.titulo)}\n${rotina.perfil}\n\nMANHÃ\n${rotina.manha.map((p,i)=>`${i+1}. ${p.titulo}`).join("\n")}\n\nNOITE\n${rotina.noite.map((p,i)=>`${i+1}. ${p.titulo}`).join("\n")}\n\n${CONFIG.produto} · ${CONFIG.autora}\n(conteúdo educativo — não substitui dermatologista)`;
+  try{ if(navigator.share) return await navigator.share({text:txt});
+    await navigator.clipboard.writeText(txt);toast("Copiado. Cola no seu story.");
+  }catch{toast("Não consegui copiar. Use 'Salvar em PDF'.");}
+}
+function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("on");
+  clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("on"),2800);}
+function recomecar(){if(!confirm("Refazer o questionário? Seu ritual atual será substituído."))return;
+  estado.i=0;estado.resp={};salvar();ir("quiz");}
+
+/* ─ boot ─ */
+(function(){
+  if(estado.tema) document.documentElement.dataset.tema=estado.tema;
+  document.title=CONFIG.produto+" · sua rotina de skincare";
+  const legal=`<b>Aviso.</b> Material <b>educativo</b> sobre organização de rotina cosmética. Não realiza
+    diagnóstico, não indica tratamento, não substitui consulta com dermatologista ou outro profissional
+    de saúde, e <b>não promete nem garante qualquer resultado</b>. Marcas citadas são exemplos de categoria,
+    sem vínculo comercial e sem indicação individual; preços são faixas aproximadas e variam. Em caso de
+    ardência, vermelhidão persistente, lesões ou piora, suspenda o uso e procure um médico. Grávidas,
+    lactantes e pessoas em tratamento dermatológico devem consultar seu médico antes de qualquer mudança.
+    <br><br>${CONFIG.produto} · ${CONFIG.autora}`;
+  ["rodape1","rodape2","rodape3","rodape4"].forEach(id=>document.getElementById(id).innerHTML=legal);
+  construirIndice();
+  const pronto=estado.aceito&&Object.keys(estado.resp).length>=PERGUNTAS.length;
+  ir(pronto?(["hoje","rotina","aulas","patricia"].includes(estado.tela)?estado.tela:"hoje"):"capa");
+})();
+</script>
+</body>
+</html>

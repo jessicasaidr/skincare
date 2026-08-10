@@ -1,0 +1,17 @@
+{
+  "name": "skincare-ritual",
+  "version": "1.0.0",
+  "description": "Aplicação de skincare RITUAL",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": ["skincare", "ritual"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {}
+}

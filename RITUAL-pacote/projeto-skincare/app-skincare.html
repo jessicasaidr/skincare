@@ -312,7 +312,6 @@ nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(sa
   <div class="slide" id="slideCorpo"></div>
   <div class="dots" id="dots"></div>
   <button class="btn" id="btnSlide" onclick="proxSlide()">Continuar</button>
-  <button class="btn ghost" onclick="ir('termo')" style="margin-bottom:22px">Pular introdução</button>
 </section>
 
 <section data-tela="termo" class="pag anima" hidden style="padding-top:26px">
@@ -409,12 +408,10 @@ nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(sa
 
 <nav id="nav" hidden>
   <div class="navBar">
-    <button onclick="ir('hoje')" data-nav="hoje"><i>✿</i>Início</button>
     <button onclick="ir('rotina')" data-nav="rotina"><i>◔</i>Rotina</button>
     <button onclick="ir('aulas')" data-nav="aulas"><i>▷</i>Aulas</button>
-    <button onclick="ir('patricia')" data-nav="patricia"><i>♡</i>Patricia</button>
+    <button onclick="ir('patricia')" data-nav="patricia"><i>♡</i>Perfil</button>
   </div>
-  <button class="fab" onclick="focarBusca()" aria-label="Buscar">⌕</button>
 </nav>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -892,9 +889,12 @@ function carregar(){try{const s=JSON.parse(localStorage.getItem(CHAVE));
 function salvar(){try{localStorage.setItem(CHAVE,JSON.stringify(estado));}catch{}}
 
 function ir(tela){
+  const pronto=estado.aceito&&Object.keys(estado.resp).length>=PERGUNTAS.length;
+  const permitido=["capa","termo","quiz","carregando"];
+  if(!pronto && !permitido.includes(tela)) tela="capa";
   document.querySelectorAll("[data-tela]").forEach(s=>s.hidden=s.dataset.tela!==tela);
   estado.tela=tela;salvar();
-  const app=["hoje","rotina","aulas","patricia"].includes(tela);
+  const app=["rotina","aulas","patricia"].includes(tela);
   document.getElementById("nav").hidden=!app;
   document.querySelectorAll(".navBar button").forEach(b=>b.setAttribute("aria-current",b.dataset.nav===tela));
   if(tela==="capa")     renderSlide();
@@ -1286,7 +1286,7 @@ function recomecar(){if(!confirm("Refazer o questionário? Seu ritual atual ser�
   ["rodape1","rodape2","rodape3","rodape4"].forEach(id=>document.getElementById(id).innerHTML=legal);
   construirIndice();
   const pronto=estado.aceito&&Object.keys(estado.resp).length>=PERGUNTAS.length;
-  ir(pronto?(["hoje","rotina","aulas","patricia"].includes(estado.tela)?estado.tela:"hoje"):"capa");
+  ir(pronto?(["rotina","aulas","patricia"].includes(estado.tela)?estado.tela:"rotina"):"capa");
 })();
 </script>
 </body>

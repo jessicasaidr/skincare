@@ -1,10 +1,10 @@
 {
   "version": 2,
   "builds": [
-    { "src": "public/**/*", "use": "@now/static" }
+    { "src": "public/**", "use": "@now/static" }
   ],
   "routes": [
-    { "src": "/relatorio", "dest": "/relatorio-print.html" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    { "src": "^/relatorio$", "dest": "/relatorio-print.html" },
+    { "src": "^/(.*)$", "dest": "/index.html" }
   ]
 }

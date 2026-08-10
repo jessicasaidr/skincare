@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "builds": [
+    { "src": "public/**/*", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/relatorio", "dest": "/relatorio-print.html" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
+}

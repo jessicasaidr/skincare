@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>RITUAL · sua rotina de skincare</title>
+<link rel="icon" href="/logo.webp" type="image/webp">
+<link rel="apple-touch-icon" href="/logo.webp">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#6E9B72">
 <style>
 /* ══════════════ SISTEMA ══════════════ */
 :root{
@@ -1089,7 +1093,6 @@ function renderRotina(){
       <span style="flex:0 0 30px;height:30px;border-radius:99px;background:var(--roxo-bg);color:var(--roxo);
         display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem">${i+1}</span>
       <span><b class="h3">${q}</b><span class="peq">${x}</span></span></div>`).join("")}
-    <button class="btn" onclick="compartilhar()" style="margin-top:18px">Compartilhar meu ritual</button>
     <button class="btn ghost" onclick="window.print()">Salvar em PDF</button>
     <button class="btn ghost" onclick="recomecar()">Refazer o questionário</button>`;
 }

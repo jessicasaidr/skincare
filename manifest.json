@@ -1,0 +1,16 @@
+{
+  "name": "RITUAL · sua rotina de skincare",
+  "short_name": "RITUAL",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FAF7F3",
+  "theme_color": "#6E9B72",
+  "icons": [
+    {
+      "src": "logo.webp",
+      "sizes": "any",
+      "type": "image/webp"
+    }
+  ]
+}

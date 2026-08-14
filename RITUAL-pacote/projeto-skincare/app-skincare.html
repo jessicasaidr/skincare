@@ -25,16 +25,6 @@
   --r:18px; --rg:26px; --rx:34px;
   --sombra:0 2px 4px #0000000a,0 12px 28px #00000012;
 }
-@media (prefers-color-scheme:dark){
-  :root{
-    --verde:#8DBB91; --verde-esc:#A9D0AC; --verde-bg:#1E2A1F; --roxo:#A29EEA; --roxo-bg:#232140;
-    --rosa:#F0A7B8; --rosa-bg:#3A222A; --azul:#9FBFEA; --azul-bg:#1D2735;
-    --pessego:#F2B591; --pessego-bg:#33241B; --creme:#141312; --papel:#1E1C1B;
-    --tinta:#F4F0EC; --tinta2:#A29B95; --linha:#ffffff1a; --linha2:#ffffff0d;
-    --perigo:#F0A18C; --perigo-bg:#331E19; --alerta:#E8C888; --alerta-bg:#2C2416;
-    --sombra:0 2px 4px #00000030,0 12px 28px #00000040;
-  }
-}
 :root[data-tema="dark"]{
   --verde:#8DBB91; --verde-esc:#A9D0AC; --verde-bg:#1E2A1F; --roxo:#A29EEA; --roxo-bg:#232140;
   --rosa:#F0A7B8; --rosa-bg:#3A222A; --azul:#9FBFEA; --azul-bg:#1D2735;
@@ -263,6 +253,7 @@ details .in{padding:0 18px 18px}
 
 nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom));
   display:flex;align-items:center;gap:8px;z-index:40;width:calc(100% - 28px);max-width:592px}
+nav[hidden]{display:none}
 .navBar{flex:1;display:flex;background:color-mix(in srgb,var(--papel) 92%,transparent);
   backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);
   border-radius:99px;padding:6px;box-shadow:0 8px 28px #00000022}
@@ -527,6 +518,10 @@ ic:{
     <circle cx="23" cy="23" r="15" fill="#7CA3D6" opacity=".4"/>
     <path d="M23 13v20M18 18h8a3.6 3.6 0 010 7.2h-7a3.6 3.6 0 000 7.2h9"
           stroke="#3E6EA8" stroke-width="3" stroke-linecap="round" fill="none"/></svg>`,
+  frasco:`<svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+    <rect x="7" y="10" width="12" height="13" rx="4" fill="currentColor"/>
+    <rect x="10" y="5" width="6" height="6" rx="2" fill="currentColor"/>
+    <rect x="9.5" y="14" width="7" height="2.4" rx="1.2" fill="#fff" opacity=".5"/></svg>`,
   lua:`<svg width="28" height="28" viewBox="0 0 30 30" fill="none" aria-hidden="true">
     <path d="M22 18.5A9.5 9.5 0 0111 7.2a9.5 9.5 0 100 15.6 9.5 9.5 0 0011-4.3z" fill="#fff"/></svg>`,
   sol:`<svg width="28" height="28" viewBox="0 0 30 30" fill="none" aria-hidden="true">
@@ -629,30 +624,45 @@ const PATRICIA={
 };
 
 const EQUIVALENTES=[
- {passo:"Limpeza de pH baixo",coreano:"COSRX Low pH · SKIN1004 Centella Foam",faixa:"R$ 25 – 60",
+ {passo:"Limpeza de pH baixo",coreano:"COSRX Low pH · SKIN1004 Centella Foam",faixa:"R$ 80 – 100",
   exemplos:"Géis que informam pH entre 5 e 6 no rótulo. Procure <b>pH fisiológico</b> ou <b>pH balanceado</b>."},
- {passo:"Demaquilante",coreano:"Óleo ou bálsamo demaquilante",faixa:"R$ 25 – 70",
+ {passo:"Demaquilante",coreano:"Óleo ou bálsamo demaquilante",faixa:"R$ 50 – 100",
   exemplos:"Água micelar, óleo de limpeza ou bálsamo. Pra pele oleosa, micelar costuma ser mais confortável."},
- {passo:"Tônico calmante",coreano:"SKIN1004 Centella Toning Toner",faixa:"R$ 30 – 70",
+ {passo:"Tônico calmante",coreano:"SKIN1004 Centella Toning Toner",faixa:"R$ 100 – 150",
   exemplos:"Tônico <b>sem álcool</b> com centella (aparece como <i>cica</i>), pantenol ou aloe. A função é acalmar, não adstringir."},
- {passo:"Ácido azelaico",coreano:"Purito Azelaic Acid 10",faixa:"R$ 50 – 110",
+ {passo:"Ácido azelaico",coreano:"Purito Azelaic Acid 10",faixa:"R$ 80 – 220",
   exemplos:"Já existe azelaico 10% nacional. Se não achar, a categoria mais próxima é <b>niacinamida 5–10%</b>."},
- {passo:"Essência de mucina",coreano:"COSRX Snail 96 Essence",faixa:"R$ 30 – 80",
+ {passo:"Essência de mucina",coreano:"COSRX Snail 96 Essence",faixa:"R$ 70 – 200",
   exemplos:"Séruns de <b>ácido hialurônico</b> ou essências leves. O aspecto úmido vem da hidratação, não da mucina."},
- {passo:"Ampola calmante",coreano:"SKIN1004 Probio-Cica Ampoule",faixa:"R$ 35 – 90",
+ {passo:"Ampola calmante",coreano:"SKIN1004 Probio-Cica Ampoule",faixa:"R$ 50 – 150",
   exemplos:"Séruns com pantenol, centella, alantoína ou ceramidas."},
- {passo:"Clareador de manchas",coreano:"COSRX Alpha-Arbutin · Celimax Pore + Dark Spot",faixa:"R$ 40 – 100",
+ {passo:"Clareador de manchas",coreano:"COSRX Alpha-Arbutin · Celimax Pore + Dark Spot",faixa:"R$ 50 – 160",
   exemplos:"Alfa-arbutina, niacinamida ou vitamina C nacional. A niacinamida é a mais barata e bem tolerada."},
- {passo:"Retinol",coreano:"Celimax Retinol Shot",faixa:"R$ 45 – 110",
+ {passo:"Retinol",coreano:"Celimax Retinol Shot",faixa:"R$ 80 – 200",
   exemplos:"Retinol nacional 0,1% a 0,3%. Nunca comece por concentração alta."},
- {passo:"Creme reparador",coreano:"Dr. Thea 345 Relief Cream",faixa:"R$ 40 – 100",
+ {passo:"Creme reparador",coreano:"Dr. Thea 345 Relief Cream",faixa:"R$ 90 – 200",
   exemplos:"Cremes com <b>ceramidas</b>, pantenol ou colesterol. A categoria mais ignorada por quem tem acne."},
- {passo:"Creme final rico",coreano:"Medicube PDRN Pink Collagen",faixa:"R$ 35 – 90",
+ {passo:"Creme final rico",coreano:"Medicube PDRN Pink Collagen",faixa:"R$ 40 – 100",
   exemplos:"Hidratante mais denso, noturno. Pele oleosa pode pular e ficar só no reparador."},
- {passo:"Secativo localizado",coreano:"SKIN1004 Tea-Trica Spot Cream",faixa:"R$ 25 – 70",
+ {passo:"Secativo localizado",coreano:"SKIN1004 Tea-Trica Spot Cream",faixa:"R$ 90 – 150",
   exemplos:"Géis com salicílico, enxofre ou melaleuca. Sempre pontual."},
- {passo:"Protetor toque seco",coreano:"TOCOBO Bio Watery Sun SPF50+",faixa:"R$ 30 – 90",
+ {passo:"Protetor toque seco",coreano:"TOCOBO Bio Watery Sun SPF50+",faixa:"R$ 70 – 200",
   exemplos:"FPS 50 com acabamento seco. Se for confortável, você usa todo dia — e isso importa mais que a marca."},
+];
+
+const EQUIVALENTES_BR=[
+  {faixa:"R$ 50–70",passo:"Limpeza de pH baixo",coreano:"Sallve Limpador Facial"},
+  {faixa:"R$ 45–80",passo:"Demaquilante",coreano:"Hidrabene Cleansing Oil / cleansing balm nacional"},
+  {faixa:"R$ 50–80",passo:"Tônico calmante",coreano:"Creamy Tônico Hidratante"},
+  {faixa:"R$ 55–80",passo:"Ácido azelaico",coreano:"Azelan 15% Gel"},
+  {faixa:"R$ 50–70",passo:"Essência hidratante/reparadora",coreano:"Principia AH-2 Ácidos Hialurônicos + B5"},
+  {faixa:"R$ 50–70",passo:"Ampola calmante",coreano:"Creamy Calming Cream / sérum calmante"},
+  {faixa:"R$ 55–80",passo:"Clareador de manchas",coreano:"Principia Alfa-Arbutin / Mix Clareador"},
+  {faixa:"R$ 60–80",passo:"Retinol",coreano:"Principia RN-0,3 Retinol 0,3% + Vitamina E"},
+  {faixa:"R$ 60–90",passo:"Creme reparador",coreano:"Sallve Hidratante Reparador"},
+  {faixa:"R$ 50–90",passo:"Creme final rico",coreano:"Sallve Hidratante Reparador / Creamy Calming Cream"},
+  {faixa:"R$ 45–70",passo:"Secativo localizado",coreano:"Sallve Secativo Antiacne"},
+  {faixa:"R$ 60–80",passo:"Protetor toque seco",coreano:"Principia Protetor Solar Facial FPS 99 PS-01"}
 ];
 
 const MANUAL={
@@ -665,8 +675,22 @@ const MANUAL={
  salicilico:{nome:"Ácido salicílico",cat:"Tratamento",qtd:"Camada fina, só onde há necessidade.",tempo:"Espere 5 minutos.",freq:"2x por semana, à noite",erro:"Usar todo dia desde o começo. Ácido em excesso quebra a barreira."},
  retinol:{nome:"Retinol",cat:"Tratamento",qtd:"Uma ervilha pro rosto TODO. Não mais.",tempo:"Pele completamente seca — espere 15 a 20 min depois da limpeza.",freq:"2x por semana, à noite",erro:"Usar sem protetor no dia seguinte, e usar junto com ácido."},
  hidratante:{nome:"Hidratante",cat:"Hidratação",qtd:"Uma amêndoa.",tempo:"De baixo pra cima, com a pele levemente úmida.",freq:"2x ao dia",erro:"Pele oleosa pular o hidratante. Pele desidratada produz MAIS óleo."},
- protetor:{nome:"Protetor solar",cat:"Proteção solar",qtd:"Dois dedos cheios — indicador e médio.",tempo:"Aplique 15 minutos antes de sair.",freq:"Todo dia, sem exceção",erro:"Usar pouco. Metade da quantidade certa não entrega metade da proteção,
+ protetor:{nome:"Protetor solar",cat:"Proteção solar",qtd:"Dois dedos cheios — indicador e médio.",tempo:"Aplique 15 minutos antes de sair.",freq:"Todo dia, sem exceção",erro:"Usar pouco. Metade da quantidade certa não entrega metade da proteção, entrega bem menos."},
  mascara:{nome:"Máscara de tecido",cat:"Extra",qtd:"Uma unidade.",tempo:"15 a 20 minutos. Tapinhas no que sobrou — não enxágue.",freq:"1 a 3x por semana",erro:"Deixar até secar. Máscara seca puxa água de volta da sua pele."},
+};
+
+const MANUAL_EQUIV={
+  limpeza:["Limpeza de pH baixo"],
+  oleo:["Demaquilante"],
+  tonico:["Tônico calmante"],
+  vitc:["Clareador de manchas"],
+  niacinamida:["Clareador de manchas"],
+  azelaico:["Ácido azelaico"],
+  salicilico:["Secativo localizado"],
+  retinol:["Retinol"],
+  hidratante:["Creme reparador","Creme final rico"],
+  protetor:["Protetor toque seco"],
+  mascara:[]
 };
 
 const BIBLIOTECA=[
@@ -810,13 +834,25 @@ function construirIndice(){
   BIBLIOTECA.forEach(b=>INDICE.push({tipo:"Dúvida",cor:"roxo",ico:"?",t:b.t,
     sub:b.r.replace(/<[^>]+>/g," ").slice(0,90)+"…",busca:b.t+" "+b.tags,html:b.r}));
   Object.entries(MANUAL).forEach(([k,m])=>{const v=aulaDe(k,"chave");
+    const passos=MANUAL_EQUIV[k]||[];
+    const eqK=passos.map(p=>EQUIVALENTES.findIndex(x=>x.passo===p)).filter(i=>i>-1);
+    const eqB=passos.map(p=>EQUIVALENTES_BR.findIndex(x=>x.passo===p)).filter(i=>i>-1);
     INDICE.push({tipo:"Como usar",cor:"verde",ico:"◍",t:m.nome,sub:m.qtd,
       busca:m.nome+" "+k+" "+m.cat+" "+m.freq+" "+m.erro+" como usar",
       html:`${v?`<button class="btn" onclick="verAula('${v.id}')">▶ Ver a aula · ${v.dur}</button>`:""}
         <p class="peq" style="margin:0 0 12px"><b style="color:var(--tinta)">Quanto usar.</b> ${m.qtd}</p>
         <p class="peq" style="margin:0 0 12px"><b style="color:var(--tinta)">Como e quanto esperar.</b> ${m.tempo}</p>
         <p class="peq" style="margin:0 0 14px"><b style="color:var(--tinta)">Frequência.</b> ${m.freq}</p>
-        <div class="aviso d"><b>O erro mais comum</b>${m.erro}</div>`});});
+        <div class="aviso d"><b>O erro mais comum</b>${m.erro}</div>
+        ${(eqK.length||eqB.length)?`<div class="secao" style="margin-top:6px"><h2 class="h2" style="font-size:1rem">Equivalentes pra este passo</h2></div>
+          ${eqK.map(i=>`<button class="res" onclick="buscarGoogleCoreano(${i})">
+            <span class="ico" style="background:var(--azul-bg);color:var(--azul)">${SVG.ic.frasco}</span>
+            <span class="cc"><span class="kind">Versão coreana</span><b>${EQUIVALENTES[i].coreano}</b>
+            <span class="dd">${EQUIVALENTES[i].faixa}</span></span></button>`).join("")}
+          ${eqB.map(i=>`<button class="res" onclick="buscarGoogleBrasileiro(${i})">
+            <span class="ico" style="background:var(--verde-bg);color:var(--verde-esc)">${SVG.ic.frasco}</span>
+            <span class="cc"><span class="kind">Versão brasileira</span><b>${EQUIVALENTES_BR[i].coreano}</b>
+            <span class="dd">${EQUIVALENTES_BR[i].faixa}</span></span></button>`).join("")}`:""}`});});
   PATRICIA.modos.forEach(mo=>mo.blocos.forEach(b=>b.passos.forEach(p=>INDICE.push({
     tipo:"Patricia · "+mo.nome,cor:mo.cor,ico:"♡",t:p.produto,sub:p.oque,
     busca:p.produto+" "+p.marca+" "+p.oque+" "+p.porque+" "+mo.nome,
@@ -1071,7 +1107,7 @@ function renderRotina(){
     ${rotina.progressao.map(([q,x],i)=>`<div class="card" style="display:flex;gap:13px">
       <span style="flex:0 0 30px;height:30px;border-radius:99px;background:var(--roxo-bg);color:var(--roxo);
         display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem">${i+1}</span>
-      <span class="peq" style="color:var(--tinta)">${r}</span></div>`).join("")}
+      <span class="peq" style="color:var(--tinta)"><b style="color:var(--tinta)">${q}.</b> ${x}</span></div>`).join("")}
     <button class="btn ghost" onclick="window.print()">Salvar em PDF</button>
     <button class="btn ghost" onclick="recomecar()">Refazer o questionário</button>`;
 }
@@ -1156,13 +1192,45 @@ function renderPatricia(){
   document.getElementById("paTitulo").innerHTML=PATRICIA.titulo;
   document.getElementById("paSub").textContent=PATRICIA.sub;
   // Mostrar apenas a seção "Versão coreana" com a lista de passos
+  const ICON_MAP = {
+    "Limpeza de pH baixo":"frascos",
+    "Demaquilante":"frascos",
+    "Tônico calmante":"rosto",
+    "Ácido azelaico":"alerta",
+    "Essência de mucina":"frascos",
+    "Ampola calmante":"frascos",
+    "Clareador de manchas":"aprovado",
+    "Retinol":"alerta",
+    "Creme reparador":"aprovado",
+    "Creme final rico":"frascos",
+    "Secativo localizado":"alerta",
+    "Protetor toque seco":"sol"
+  };
   document.getElementById("paCorpo").innerHTML = `
-    <div class="secao"><h2 class="h2">Versão coreana</h2><span class="mini">${EQUIVALENTES.length} passos</span></div>
-    ${EQUIVALENTES.map(e=>{const i=INDICE.findIndex(x=>x.tipo==="Versão coreana"&&x.t===e.passo);
-      return `<button class="res" onclick="abrir(${i})">
-        <span class="ico" style="background:var(--azul-bg);color:var(--azul)">₪</span>
+    <div class="secao"><h2 class="h2">Versão Coreana</h2><span class="mini">${EQUIVALENTES.length} passos</span></div>
+    ${EQUIVALENTES.map((e,idx)=>{
+      return `<button class="res" onclick="buscarGoogleCoreano(${idx})">
+        <span class="ico" style="background:var(--azul-bg);color:var(--azul)">${SVG.ic.frasco}</span>
         <span class="cc"><span class="kind">${e.faixa}</span><b>${e.passo}</b>
-        <span class="dd">${e.coreano}</span></span></button>`;}).join("")}`;
+        <span class="dd">${e.coreano}</span></span></button>`;}).join("")}
+
+    <!-- Versão brasileira -->
+    ${(()=>{
+      return `<div class="secao"><h2 class="h2">Versão Brasileira</h2><span class="mini">${EQUIVALENTES_BR.length} passos</span></div>`+
+        EQUIVALENTES_BR.map((e,idx)=>`<button class="res" onclick="buscarGoogleBrasileiro(${idx})">
+          <span class="ico" style="background:var(--azul-bg);color:var(--azul)">${SVG.ic.frasco}</span>
+          <span class="cc"><span class="kind">${e.faixa}</span><b>${e.passo}</b>
+          <span class="dd">${e.coreano}</span></span></button>`).join("");
+    })()}
+`;
+}
+function buscarGoogleCoreano(idx){
+  const e=EQUIVALENTES[idx];
+  window.open("https://www.google.com/search?q="+encodeURIComponent(e.coreano),"_blank");
+}
+function buscarGoogleBrasileiro(idx){
+  const e=EQUIVALENTES_BR[idx];
+  window.open("https://www.google.com/search?q="+encodeURIComponent(e.coreano),"_blank");
 }
 function verModo(id){estado.modoP=id;salvar();renderPatricia();window.scrollTo({top:0,behavior:"smooth"});}
 function abrirProduto(modo,bloco,i){
@@ -1216,9 +1284,9 @@ function recomecar(){if(!confirm("Refazer o questionário? Seu ritual atual ser�
     de saúde, e <b>não promete nem garante qualquer resultado</b>. Marcas citadas são exemplos de categoria,
     sem vínculo comercial e sem indicação individual; preços são faixas aproximadas e mudam. Em caso de
     ardência, vermelhidão persistente, lesões ou piora, suspenda o uso e procure um médico. Grávidas,
-    lactantes e pessoas em tratamento dermatológico devem consultar seu médico antes de qualquer mudança.
-    <br><br>${CONFIG.produto} · ${CONFIG.autora}`;
-  ["rodape1","rodape2","rodape3","rodape4"].forEach(id=>document.getElementById(id).innerHTML=legal);
+    lactantes e pessoas em tratamento dermatológico devem consultar seu médico antes de qualquer mudança.`;
+  document.getElementById("rodape1").innerHTML=legal+`<br><br>${CONFIG.produto} · ${CONFIG.autora}`;
+  ["rodape2","rodape3","rodape4"].forEach(id=>document.getElementById(id).innerHTML=legal);
   construirIndice();
   const pronto=estado.aceito&&Object.keys(estado.resp).length>=PERGUNTAS.length;
   ir(pronto?(["rotina","aulas","patricia"].includes(estado.tela)?estado.tela:"rotina"):"capa");

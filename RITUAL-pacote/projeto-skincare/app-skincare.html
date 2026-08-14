@@ -414,7 +414,7 @@ nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(sa
   <div class="navBar">
     <button onclick="ir('rotina')" data-nav="rotina"><i>◔</i>Rotina</button>
     <button onclick="ir('aulas')" data-nav="aulas"><i>▷</i>Aulas</button>
-    <button onclick="ir('patricia')" data-nav="patricia"><i>♡</i>Perfil</button>
+    <button onclick="ir('patricia')" data-nav="patricia"><i>♡</i>Indicações</button>
   </div>
 </nav>
 
@@ -527,10 +527,6 @@ ic:{
     <circle cx="23" cy="23" r="15" fill="#7CA3D6" opacity=".4"/>
     <path d="M23 13v20M18 18h8a3.6 3.6 0 010 7.2h-7a3.6 3.6 0 000 7.2h9"
           stroke="#3E6EA8" stroke-width="3" stroke-linecap="round" fill="none"/></svg>`,
-  frasco:`<svg width="30" height="38" viewBox="0 0 30 38" fill="none" aria-hidden="true">
-    <rect x="6" y="11" width="18" height="24" rx="7" fill="currentColor" opacity=".9"/>
-    <rect x="11" y="3" width="8" height="9" rx="3" fill="currentColor"/>
-    <rect x="9.5" y="18" width="11" height="2.6" rx="1.3" fill="#fff" opacity=".65"/></svg>`,
   lua:`<svg width="28" height="28" viewBox="0 0 30 30" fill="none" aria-hidden="true">
     <path d="M22 18.5A9.5 9.5 0 0111 7.2a9.5 9.5 0 100 15.6 9.5 9.5 0 0011-4.3z" fill="#fff"/></svg>`,
   sol:`<svg width="28" height="28" viewBox="0 0 30 30" fill="none" aria-hidden="true">
@@ -561,31 +557,14 @@ const VIDEOS={
  intro:{t:"Comece por aqui",dur:"2 min",url:"",desc:"Como usar o app, em dois minutos."},
  modulos:[
   {nome:"Fundamentos",sub:"O que muda tudo antes de qualquer produto",cor:"verde",aulas:[
-   {id:"f1",chave:null,t:"A ordem certa, do começo ao fim",dur:"6 min",url:"",desc:"Por que do mais líquido pro mais denso — e o que acontece quando você inverte."},
-   {id:"f2",chave:null,t:"Descobrindo seu tipo de pele em casa",dur:"4 min",url:"",desc:"O teste do lenço e o erro de confundir pele oleosa com pele desidratada."},
-   {id:"f3",chave:null,t:"Quanto de cada produto usar",dur:"5 min",url:"",desc:"Na mão, na frente da câmera. A quantidade certa versus a que você usa hoje."},
-   {id:"f4",chave:null,t:"Teste de contato: como e por quê",dur:"3 min",url:"",desc:"O passo de 24 horas que evita a maior parte dos sustos."}]},
-  {nome:"Passo a passo",sub:"Uma aula para cada produto do seu ritual",cor:"roxo",aulas:[
-   {id:"p1",chave:"limpeza",t:"Limpeza: a técnica e o tempo",dur:"5 min",url:"",desc:"Os 60 segundos de massagem e por que pele que range é pele machucada."},
-   {id:"p2",chave:"oleo",t:"Dupla limpeza sem complicar",dur:"6 min",url:"",desc:"No rosto seco, emulsionar, enxaguar. Do início ao fim."},
-   {id:"p3",chave:"tonico",t:"Tônico: tapinhas, não algodão",dur:"3 min",url:"",desc:"Por que o algodão desperdiça metade do produto."},
-   {id:"p4",chave:"azelaico",t:"Ácido azelaico na prática",dur:"5 min",url:"",desc:"Camada fina, tempo de espera e o que esperar das primeiras semanas."},
-   {id:"p5",chave:"niacinamida",t:"Niacinamida: o ativo mais fácil",dur:"4 min",url:"",desc:"Por onde começar quando você nunca usou nada."},
-   {id:"p6",chave:"retinol",t:"Retinol sem descascar",dur:"8 min",url:"",desc:"A espera de 15 minutos e o calendário de introdução."},
-   {id:"p7",chave:"hidratante",t:"Hidratante para pele oleosa",dur:"4 min",url:"",desc:"Gel ou creme, e por que pular esse passo aumenta o brilho."},
-   {id:"p8",chave:"protetor",t:"Dois dedos de protetor solar",dur:"5 min",url:"",desc:"A quantidade medida na câmera e a reaplicação sobre a maquiagem."},
-   {id:"p9",chave:"mascara",t:"Máscara de tecido do jeito certo",dur:"3 min",url:"",desc:"20 minutos, tapinhas no que sobrou, nunca deixar secar."}]},
+  {id:"f1",chave:null,t:"A ordem certa, do começo ao fim",dur:"6 min",url:"",desc:"Por que do mais líquido pro mais denso — e o que acontece quando você inverte."},
+  {id:"f3",chave:null,t:"Quanto de cada produto usar",dur:"5 min",url:"",desc:"Na mão, na frente da câmera. A quantidade certa versus a que você usa hoje."}]},
   {nome:"O ritual da Patricia",sub:"A rotina coreana filmada de ponta a ponta",cor:"rosa",aulas:[
    {id:"r1",modo:"acne",t:"Manhã completa — controle de acne",dur:"9 min",url:"",desc:"COSRX, Centella Toner, azelaico e TOCOBO, no espelho."},
    {id:"r2",modo:"acne",t:"Noite completa — controle de acne",dur:"11 min",url:"",desc:"Dupla limpeza, tônico, azelaico e Dr. Thea 345."},
    {id:"r3",modo:"retinol",t:"A noite de retinol",dur:"8 min",url:"",desc:"Inclusive os 15 minutos de espera, o passo que quase todo mundo pula."},
    {id:"r4",modo:"glass",t:"Glass skin em camadas",dur:"12 min",url:"",desc:"Snail 96, Probio-Cica, Celimax e PDRN. Quando entrar e quando não."},
    {id:"r5",modo:null,t:"Medicube Age-R: como uso",dur:"6 min",url:"",desc:"Modo Booster, 2x por semana, e o que passar logo depois."}]},
-  {nome:"Os erros",sub:"O que sabota sem você perceber",cor:"pessego",aulas:[
-   {id:"e1",chave:null,t:"Os 7 erros que estragam a rotina",dur:"10 min",url:"",desc:"Do sabonete alcalino ao ácido todo dia."},
-   {id:"e2",chave:null,t:"Minha pele arde: o protocolo de socorro",dur:"7 min",url:"",desc:"O que parar, o que manter e por quantos dias."},
-   {id:"e3",chave:null,t:"Aproveitando o que já está na sua gaveta",dur:"9 min",url:"",desc:"Cinco categorias, sem comprar nada novo."},
-   {id:"e4",chave:null,t:"Montando a versão nacional e barata",dur:"12 min",url:"",desc:"Cada passo coreano traduzido pra farmácia da esquina."}]},
  ]};
 
 /* ══════════════ RITUAL DA PATRICIA ══════════════ */
@@ -686,35 +665,35 @@ const MANUAL={
  salicilico:{nome:"Ácido salicílico",cat:"Tratamento",qtd:"Camada fina, só onde há necessidade.",tempo:"Espere 5 minutos.",freq:"2x por semana, à noite",erro:"Usar todo dia desde o começo. Ácido em excesso quebra a barreira."},
  retinol:{nome:"Retinol",cat:"Tratamento",qtd:"Uma ervilha pro rosto TODO. Não mais.",tempo:"Pele completamente seca — espere 15 a 20 min depois da limpeza.",freq:"2x por semana, à noite",erro:"Usar sem protetor no dia seguinte, e usar junto com ácido."},
  hidratante:{nome:"Hidratante",cat:"Hidratação",qtd:"Uma amêndoa.",tempo:"De baixo pra cima, com a pele levemente úmida.",freq:"2x ao dia",erro:"Pele oleosa pular o hidratante. Pele desidratada produz MAIS óleo."},
- protetor:{nome:"Protetor solar",cat:"Proteção solar",qtd:"Dois dedos cheios — indicador e médio.",tempo:"Aplique 15 minutos antes de sair.",freq:"Todo dia, sem exceção",erro:"Usar pouco. Metade da quantidade entrega bem menos que metade da proteção."},
+ protetor:{nome:"Protetor solar",cat:"Proteção solar",qtd:"Dois dedos cheios — indicador e médio.",tempo:"Aplique 15 minutos antes de sair.",freq:"Todo dia, sem exceção",erro:"Usar pouco. Metade da quantidade certa não entrega metade da proteção,
  mascara:{nome:"Máscara de tecido",cat:"Extra",qtd:"Uma unidade.",tempo:"15 a 20 minutos. Tapinhas no que sobrou — não enxágue.",freq:"1 a 3x por semana",erro:"Deixar até secar. Máscara seca puxa água de volta da sua pele."},
 };
 
 const BIBLIOTECA=[
  {t:"Qual é a ordem certa dos produtos?",tags:"ordem sequencia sequência primeiro depois passos",
-  r:"A regra vale pra qualquer rotina: <b>do mais líquido pro mais denso</b>.<br><br>Limpeza → tônico → sérum/ativo → hidratante → protetor solar (de manhã).<br><br>O motivo é físico: produto denso forma um filme. Se ele vem antes, o que é líquido não atravessa e fica desperdiçado em cima da pele."},
+  r:"A regra vale pra qualquer rotina: <b>do mais líquido pro mais denso</b>.\n\nLimpeza → tônico → sérum/ativo → hidratante → protetor solar (de manhã).\n\nO motivo é físico: produto denso forma um filme. Se ele vem antes, o que é líquido não atravessa e fica desperdiçado em cima da pele."},
  {t:"Minha pele arde depois do ácido. É normal?",tags:"arde ardencia ardência queima irrita vermelho vermelhidão socorro",
-  r:"Um leve formigamento que passa em minutos pode acontecer. <b>Ardência que persiste, não.</b><br><br>Quase sempre é: frequência alta demais, pele ainda úmida, dois ativos juntos, ou barreira já comprometida.<br><br>O que fazer: <b>pare o ativo</b>, volte a limpeza + hidratante + protetor por 7 a 14 dias, e só depois reintroduza 1x por semana. Se não passar, houver lesão ou piora, procure um dermatologista."},
+  r:"Um leve formigamento que passa em minutos pode acontecer. <b>Ardência que persiste, não.</b>\n\nQuase sempre é: frequência alta demais, pele ainda úmida, dois ativos juntos, ou barreira já comprometida.\n\nO que fazer: <b>pare o ativo</b>, volte a limpeza + hidratante + protetor por 7 a 14 dias, e só depois reintroduza 1x por semana. Se não passar, houver lesão ou piora, procure um dermatologista."},
  {t:"Posso usar vitamina C e retinol juntos?",tags:"vitamina c retinol juntos combinar misturar",
-  r:"Na mesma aplicação, não.<br><br><b>Vitamina C é de manhã</b> — trabalha com o protetor solar.<br><b>Retinol é de noite</b> — é quando a pele se recupera.<br><br>Separados, se somam. Juntos, se atrapalham e irritam."},
+  r:"Na mesma aplicação, não.\n\n<b>Vitamina C é de manhã</b> — trabalha com o protetor solar.\n<b>Retinol é de noite</b> — é quando a pele se recupera.\n\nSeparados, se somam. Juntos, se atrapalham e irritam."},
  {t:"Pele oleosa precisa de hidratante?",tags:"oleosa oleosidade hidratante brilho gordurosa",
-  r:"Precisa — e é o passo que mais gente pula.<br><br>Pele desidratada entende que falta proteção e <b>produz mais óleo</b> pra compensar. Quanto mais você resseca, mais ela brilha.<br><br>A solução não é tirar o hidratante. É trocar a textura: <b>gel ou gel-creme</b>, camada fina."},
+  r:"Precisa — e é o passo que mais gente pula.\n\nPele desidratada entende que falta proteção e <b>produz mais óleo</b> pra compensar. Quanto mais você resseca, mais ela brilha.\n\nA solução não é tirar o hidratante. É trocar a textura: <b>gel ou gel-creme</b>, camada fina."},
  {t:"Quanto de protetor solar eu devo usar?",tags:"protetor solar quantidade fps quanto reaplicar sol",
-  r:"<b>Dois dedos cheios</b> — a extensão do indicador e do médio.<br><br>É bem mais do que a maioria usa. Metade da quantidade certa não entrega metade da proteção, entrega bem menos.<br><br>Todo dia. Nublado, dentro de casa, no inverno. Reaplique a cada 2 a 3 horas sob sol."},
+  r:"<b>Dois dedos cheios</b> — a extensão do indicador e do médio.\n\nÉ bem mais do que a maioria usa. Metade da quantidade certa não entrega metade da proteção, entrega bem menos.\n\nTodo dia. Nublado, dentro de casa, no inverno. Reaplique a cada 2 a 3 horas sob sol."},
  {t:"O que é dupla limpeza?",tags:"dupla limpeza demaquilante oleo óleo micelar",
-  r:"Duas limpezas seguidas, à noite:<br><br><b>1.</b> Óleo, bálsamo ou micelar, no rosto <b>seco</b> — dissolve o gorduroso: protetor, maquiagem, sebo.<br><b>2.</b> Gel ou espuma — tira o resto e o próprio óleo.<br><br>Protetor solar resiste à água. Sabonete sozinho não tira, e o que fica entope poro."},
+  r:"Duas limpezas seguidas, à noite:\n\n<b>1.</b> Óleo, bálsamo ou micelar, no rosto <b>seco</b> — dissolve o gorduroso: protetor, maquiagem, sebo.\n<b>2.</b> Gel ou espuma — tira o resto e o próprio óleo.\n\nProtetor solar resiste à água. Sabonete sozinho não tira, e o que fica entope poro."},
  {t:"Posso usar retinol grávida?",tags:"gravida grávida gestante amamentando retinol seguro bebe",
-  r:"<b>Retinol e derivados são classicamente contraindicados na gestação</b> — retinol, retinaldeído, tretinoína, adapaleno.<br><br>Salicílico em concentração alta também costuma entrar na lista de cautela.<br><br>Esta é uma decisão do seu <b>obstetra e do seu dermatologista</b>, não de um app. Leve a lista do que você passa na pele na próxima consulta."},
+  r:"<b>Retinol e derivados são classicamente contraindicados na gestação</b> — retinol, retinaldeído, tretinoína, adapaleno.\n\nSalicílico em concentração alta também costuma entrar na lista de cautela.\n\nEsta é uma decisão do seu <b>obstetra e do seu dermatologista</b>, não de um app. Leve a lista do que você passa na pele na próxima consulta."},
  {t:"Quanto tempo até ver diferença?",tags:"tempo resultado demora quando semanas funciona",
-  r:"Depende do ativo, e ninguém pode garantir resultado.<br><br>O ciclo de renovação da pele leva em média 28 dias e fica mais lento com a idade. Por isso a maioria dos protocolos fala em <b>8 a 12 semanas</b> de uso constante antes de avaliar.<br><br>Trocar de produto a cada 3 semanas é o jeito mais rápido de nunca saber o que funciona pra você."},
+  r:"Depende do ativo, e ninguém pode garantir resultado.\n\nO ciclo de renovação da pele leva em média 28 dias e fica mais lento com a idade. Por isso a maioria dos protocolos fala em <b>8 a 12 semanas</b> de uso constante antes de avaliar.\n\nTrocar de produto a cada 3 semanas é o jeito mais rápido de nunca saber o que funciona pra você."},
  {t:"Preciso mesmo de tônico?",tags:"tonico tônico toner precisa pular",
-  r:"Não é obrigatório. É o primeiro passo que sai quando o tempo ou o dinheiro apertam.<br><br>Mas o tônico coreano moderno não é o adstringente de antigamente — é uma <b>camada de água</b>, e pele levemente úmida absorve melhor o que vem depois.<br><br>Se for cortar algo, corte o tônico antes do hidratante ou do protetor."},
+  r:"Não é obrigatório. É o primeiro passo que sai quando o tempo ou o dinheiro apertam.\n\nMas o tônico coreano moderno não é o adstringente de antigamente — é uma <b>camada de água</b>, e pele levemente úmida absorve melhor o que vem depois.\n\nSe for cortar algo, corte o tônico antes do hidratante ou do protetor."},
  {t:"Posso usar dois ácidos ao mesmo tempo?",tags:"dois acidos ácidos juntos salicilico glicolico esfoliante",
-  r:"Não.<br><br>Salicílico com glicólico, ou ácido com esfoliante físico, é excesso. Escolha um e dê tempo a ele.<br><br>Barreira quebrada é o caminho mais rápido pra piorar exatamente o que você queria melhorar."},
+  r:"Não.\n\nSalicílico com glicólico, ou ácido com esfoliante físico, é excesso. Escolha um e dê tempo a ele.\n\nBarreira quebrada é o caminho mais rápido pra piorar exatamente o que você queria melhorar."},
  {t:"Comprei um monte de produto e não uso nenhum",tags:"comprei gastei dinheiro parado gaveta desperdicio errado",
-  r:"Você não está sozinha. Pesquisas de mercado apontam que a média de produto de beleza <b>parado em casa</b> é várias vezes maior que a de produto usado.<br><br>O caminho é o contrário do que parece: <b>não compre nada novo por 30 dias</b>. Separe o que você tem em cinco categorias — limpeza, tônico, ativo, hidratante, protetor. Escolha <b>um</b> de cada. O resto vai pra caixa.<br><br>Rotina de 5 produtos feita todo dia entrega mais que 20 usados sem ordem."},
+  r:"Você não está sozinha. Pesquisas de mercado apontam que a média de produto de beleza <b>parado em casa</b> é várias vezes maior que a de produto usado.\n\nO caminho é o contrário do que parece: <b>não compre nada novo por 30 dias</b>. Separe o que você tem em cinco categorias — limpeza, tônico, ativo, hidratante, protetor. Escolha <b>um</b> de cada. O resto vai pra caixa.\n\nRotina de 5 produtos feita todo dia entrega mais que 20 usados sem ordem."},
  {t:"Como faço teste de contato?",tags:"teste contato alergia patch novo produto seguro",
-  r:"<b>1.</b> Aplique pouca quantidade atrás da orelha ou na dobra do antebraço.<br><b>2.</b> Espere <b>24 horas</b>.<br><b>3.</b> Se arder, coçar, avermelhar ou inchar — não use no rosto.<br><br>Vale pra todo produto novo. E introduza <b>um por vez</b>, com 7 dias de intervalo: assim você sabe quem foi o culpado."},
+  r:"<b>1.</b> Aplique pouca quantidade atrás da orelha ou na dobra do antebraço.\n<b>2.</b> Espere <b>24 horas</b>.\n<b>3.</b> Se arder, coçar, avermelhar ou inchar — não use no rosto.\n\nVale pra todo produto novo. E introduza <b>um por vez</b>, com 7 dias de intervalo: assim você sabe quem foi o culpado."},
 ];
 
 const PERGUNTAS=[
@@ -769,7 +748,7 @@ function montarRotina(r){
     "Montei o ritual mais suave possível, sem ativos fortes. <b>Leve isto ao seu dermatologista antes de começar.</b> Se você está em tratamento médico, a orientação dele vem na frente desta aqui."]);
   if(r.clinico==="talvez") avisos.push(["a","Você não tem certeza sobre a saúde da sua pele",
     "Fui pelo caminho seguro: reconstrução de barreira, sem ativos agressivos. Se houver ardência persistente, lesões que não somem ou piora, procure um dermatologista."]);
-  if(gest) avisos.push(["d","Gestação ou amamentação",
+  if(gest) avisos.push(["d","Gestação ou amamentando",
     "Removi retinol e salicílico — os mais citados como contraindicados nesse período. <b>Confirme com seu obstetra e dermatologista</b> tudo que você passa na pele."]);
   if(sens) avisos.push(["a","Pele reativa",
     "Reduzi ativos e frequência. Introduza <b>um produto novo por vez</b>, com 7 dias entre eles."]);
@@ -843,7 +822,7 @@ function construirIndice(){
     busca:p.produto+" "+p.marca+" "+p.oque+" "+p.porque+" "+mo.nome,
     html:`<span class="chip claro">${p.oque}</span><p class="peq" style="margin:14px 0">${p.porque}</p>
       <div class="aviso o"><b>Onde entra</b>${mo.nome} · ${b.titulo}${p.quando?" · "+p.quando:""}</div>`}))));
-  EQUIVALENTES.forEach(e=>INDICE.push({tipo:"Versão nacional",cor:"azul",ico:"₪",t:e.passo,sub:e.faixa,
+  EQUIVALENTES.forEach(e=>INDICE.push({tipo:"Versão coreana",cor:"azul",ico:"₪",t:e.passo,sub:e.faixa,
     busca:e.passo+" "+e.coreano+" "+e.exemplos+" barato nacional preço equivalente versão",
     html:`<p class="peq" style="margin:0 0 10px"><b style="color:var(--tinta)">Na rotina coreana.</b> ${e.coreano}</p>
       <p class="peq" style="margin:0 0 10px"><b style="color:var(--tinta)">Faixa de preço.</b> ${e.faixa}</p>
@@ -1016,7 +995,7 @@ function renderHoje(){
         <button class="alt" onclick="abrirChave('${p.chave}')">Como usar ⌄</button>`;}).join("")}</div>`;
 
   document.getElementById("chips").innerHTML=
-    ["ordem certa","minha pele arde","protetor solar","retinol","pele oleosa","grávida","versão nacional"]
+    ["ordem certa","minha pele arde","protetor solar","retinol","pele oleosa","grávida","versão coreana"]
     .map(c=>`<button class="chipB" onclick="chip('${c}')">${c}</button>`).join("");
 
   document.getElementById("hojeCorpo").innerHTML=`
@@ -1028,8 +1007,8 @@ function renderHoje(){
         <span><b>Manual</b><small>quanto usar e quanto esperar</small></span></button>
       <button class="tile t-rosa" onclick="chip('erro')">${SVG.ic.erro}
         <span><b>Os erros</b><small>o que sabota sem você ver</small></span></button>
-      <button class="tile t-azul" onclick="chip('versão nacional')">${SVG.ic.barato}
-        <span><b>Versão nacional</b><small>coreano traduzido pro seu bolso</small></span></button>
+      <button class="tile t-azul" onclick="chip('versão coreana')">${SVG.ic.barato}
+        <span><b>Versão coreana</b><small>coreano traduzido pro seu bolso</small></span></button>
     </div>
     ${trilhoAulas(lista)}
     <div class="secao"><h2 class="h2">As dúvidas de sempre</h2>
@@ -1070,7 +1049,7 @@ function renderRotina(){
   document.getElementById("rCorpo").innerHTML=`
     <div class="banner ${per}">
       <svg class="ceu" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">${SVG.ceu(9)}</svg>
-      <h2>${per==="manha"?SVG.ic.sol+" Manhã":SVG.ic.lua+" Noite"}</h2>
+      <h2>${per==="manha"?"Manhã":SVG.ic.lua+" Noite"}</h2>
     </div>
     ${lista.map((p,i)=>{const m=MANUAL[p.chave],f=!!estado.dias[d][per+i],v=aulaDe(p.chave,"chave");
       return `<div class="passoTit"><i>${i+1}</i><b>${m.cat}</b></div>
@@ -1079,7 +1058,7 @@ function renderRotina(){
           ${f?'<b style="font-size:1.3rem">✓</b>':SVG.ic.frasco}</span>
         <span class="corpo"><span class="marcaP">${m.freq}</span>
           <span class="nomeP" style="${f?"opacity:.5;text-decoration:line-through":""}">${p.titulo}</span>
-          <span class="chip ${f?"":"claro"}">${f?"Feito ✓":"Serve pra sua pele"}</span></span></button>
+          <span class="chip ${f?"":"claro"}">${f?"Feito ✓":MANUAL[p.chave].freq}</span></span></button>
       <p class="peq" style="margin:9px 4px 0">${p.porque}</p>
       <div style="display:flex;gap:8px;margin-top:9px;flex-wrap:wrap">
         <button class="btn mini ghost" onclick="abrirChave('${p.chave}')">Como usar</button>
@@ -1092,7 +1071,7 @@ function renderRotina(){
     ${rotina.progressao.map(([q,x],i)=>`<div class="card" style="display:flex;gap:13px">
       <span style="flex:0 0 30px;height:30px;border-radius:99px;background:var(--roxo-bg);color:var(--roxo);
         display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem">${i+1}</span>
-      <span><b class="h3">${q}</b><span class="peq">${x}</span></span></div>`).join("")}
+      <span class="peq" style="color:var(--tinta)">${r}</span></div>`).join("")}
     <button class="btn ghost" onclick="window.print()">Salvar em PDF</button>
     <button class="btn ghost" onclick="recomecar()">Refazer o questionário</button>`;
 }
@@ -1145,7 +1124,8 @@ function renderAulas(){
       <p class="peq" style="margin:-8px 0 10px">${mo.sub}</p>
       ${mo.aulas.map(a=>{const tem=!!a.url,v=estado.vistas&&estado.vistas[a.id];
         return `<button class="aula ${tem?"":"breve"} ${v?"vista":""}"
-          ${tem?`onclick="verAula('${a.id}')"`:`disabled aria-disabled="true"`}>
+          ${tem?`onclick="verAula('${a.id}')"`:`disabled aria-disabled="true"`}
+          aria-label="${a.t}${tem?"":" — em breve"}">
           <span class="play" style="${tem&&!v?`background:var(--${mo.cor}-bg);color:var(--${mo.cor})`:""}">
             ${v?"✓":tem?"▶":"◷"}</span>
           <span class="ii"><b>${a.t}</b><span>${tem?a.desc:"Em breve"}</span></span>
@@ -1175,62 +1155,14 @@ function verAula(id){
 function renderPatricia(){
   document.getElementById("paTitulo").innerHTML=PATRICIA.titulo;
   document.getElementById("paSub").textContent=PATRICIA.sub;
-  const m=PATRICIA.modos.find(x=>x.id===estado.modoP)||PATRICIA.modos[0];
-  const vs=TODAS_AULAS().filter(a=>a.modo===m.id&&a.url);
-  document.getElementById("paCorpo").innerHTML=`
-    <div class="aviso a"><b>Leia com carinho</b>Este é o ritual de <b>uma pessoa</b>, com <b>uma pele</b>,
-      para os objetivos dela. Não é receita nem indicação para você — serve como referência de estrutura e lógica.</div>
-    <details><summary>O perfil de pele e o objetivo</summary><div class="in">
-      <p class="peq" style="margin:0 0 10px"><b style="color:var(--tinta)">A pele.</b> ${PATRICIA.perfil}</p>
-      <p class="peq"><b style="color:var(--tinta)">O objetivo.</b> ${PATRICIA.objetivo}</p></div></details>
-
-    <div class="secao"><h2 class="h2">Escolha o modo</h2></div>
-    ${PATRICIA.modos.map(x=>`<button class="opt" aria-pressed="${x.id===m.id}" onclick="verModo('${x.id}')">
-      <b>${x.nome}</b><span>${x.quando}</span><span class="tick">✓</span></button>`).join("")}
-
-    <div class="aviso ${m.nota[0]}" style="margin-top:16px"><b>${m.nota[1]}</b>${m.nota[2]}</div>
-    ${vs.length?`<div class="secao"><h2 class="h2">Assista este ritual</h2></div>
-      ${vs.map(a=>`<button class="aula" onclick="verAula('${a.id}')">
-        <span class="play">▶</span><span class="ii"><b>${a.t}</b><span>${a.desc}</span></span>
-        <span class="dur">${a.dur}</span></button>`).join("")}`:""}
-
-    ${m.blocos.map(b=>`<div class="secao"><h2 class="h2">${b.titulo}</h2>
-      <span class="mini">${b.passos.length} passos</span></div>
-      ${b.passos.map((p,i)=>`<div class="passoTit"><i>${i+1}</i><b>${p.oque}</b></div>
-        <button class="prod" onclick="abrirProduto('${m.id}','${b.titulo}',${i})">
-          <span class="frasco" style="background:var(--${m.cor}-bg);color:var(--${m.cor})">${SVG.ic.frasco}</span>
-          <span class="corpo"><span class="marcaP">${p.marca}</span><span class="nomeP">${p.produto}</span>
-            ${p.quando?`<span class="chip neutro">${p.quando}</span>`:`<span class="chip claro">${b.titulo}</span>`}
-          </span></button>`).join("")}`).join("")}
-
-    <div class="secao"><h2 class="h2">O aparelho</h2></div>
-    <div class="card"><b class="h3">${PATRICIA.aparelho.titulo}</b>
-      <span class="chip claro">${PATRICIA.aparelho.quando}</span>
-      <p class="peq" style="margin:12px 0 0"><b style="color:var(--tinta)">Logo depois.</b> ${PATRICIA.aparelho.depois}</p>
-      <div class="aviso d" style="margin:12px 0 0"><b>Cuidado</b>${PATRICIA.aparelho.cuidado}
-        Aparelho de uso doméstico tem instruções do fabricante — siga as dele, e converse com um
-        dermatologista antes de usar sobre pele com acne ativa.</div></div>
-
-    <div class="secao"><h2 class="h2">Pausar durante um surto</h2></div>
-    <p class="peq" style="margin:-8px 0 10px">Quando a acne piora, <b>simplifica</b> — não acrescenta.</p>
-    ${PATRICIA.pausar.map(x=>`<details><summary>${x.p}</summary>
-      <div class="in"><p class="peq">${x.porque}</p></div></details>`).join("")}
-
-    <div class="secao"><h2 class="h2">As regras de ouro</h2></div>
-    ${PATRICIA.regras.map((r,i)=>`<div class="card" style="display:flex;gap:13px;align-items:center">
-      <span style="flex:0 0 30px;height:30px;border-radius:99px;background:var(--verde-bg);color:var(--verde-esc);
-        display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem">${i+1}</span>
-      <span class="peq" style="color:var(--tinta)">${r}</span></div>`).join("")}
-
-    <div class="secao"><h2 class="h2">Versão nacional</h2><span class="mini">${EQUIVALENTES.length} passos</span></div>
-    <p class="peq" style="margin:-8px 0 10px">O que importa é <b>a função do passo</b>, não o país do frasco.</p>
-    ${EQUIVALENTES.map(e=>{const i=INDICE.findIndex(x=>x.tipo==="Versão nacional"&&x.t===e.passo);
+  // Mostrar apenas a seção "Versão coreana" com a lista de passos
+  document.getElementById("paCorpo").innerHTML = `
+    <div class="secao"><h2 class="h2">Versão coreana</h2><span class="mini">${EQUIVALENTES.length} passos</span></div>
+    ${EQUIVALENTES.map(e=>{const i=INDICE.findIndex(x=>x.tipo==="Versão coreana"&&x.t===e.passo);
       return `<button class="res" onclick="abrir(${i})">
         <span class="ico" style="background:var(--azul-bg);color:var(--azul)">₪</span>
         <span class="cc"><span class="kind">${e.faixa}</span><b>${e.passo}</b>
-        <span class="dd">${e.coreano}</span></span></button>`;}).join("")}
-    <p class="peq" style="margin-top:14px">Os nomes citados são <b>exemplos de categoria de produto</b>,
-      sem vínculo comercial e sem indicação individual. Preços são faixas aproximadas e mudam.</p>`;
+        <span class="dd">${e.coreano}</span></span></button>`;}).join("")}`;
 }
 function verModo(id){estado.modoP=id;salvar();renderPatricia();window.scrollTo({top:0,behavior:"smooth"});}
 function abrirProduto(modo,bloco,i){
@@ -1282,7 +1214,7 @@ function recomecar(){if(!confirm("Refazer o questionário? Seu ritual atual ser�
   const legal=`<b>Aviso.</b> Material <b>educativo</b> sobre organização de rotina cosmética. Não realiza
     diagnóstico, não indica tratamento, não substitui consulta com dermatologista ou outro profissional
     de saúde, e <b>não promete nem garante qualquer resultado</b>. Marcas citadas são exemplos de categoria,
-    sem vínculo comercial e sem indicação individual; preços são faixas aproximadas e variam. Em caso de
+    sem vínculo comercial e sem indicação individual; preços são faixas aproximadas e mudam. Em caso de
     ardência, vermelhidão persistente, lesões ou piora, suspenda o uso e procure um médico. Grávidas,
     lactantes e pessoas em tratamento dermatológico devem consultar seu médico antes de qualquer mudança.
     <br><br>${CONFIG.produto} · ${CONFIG.autora}`;

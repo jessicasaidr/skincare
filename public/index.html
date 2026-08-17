@@ -665,6 +665,9 @@ const EQUIVALENTES_BR=[
   {faixa:"R$ 60–80",passo:"Protetor toque seco",coreano:"Principia Protetor Solar Facial FPS 99 PS-01"}
 ];
 
+const CORE_IMG={"Limpeza de pH baixo":"core1.webp","Demaquilante":"core2.webp","Tônico calmante":"core3.webp","Ácido azelaico":"core4.webp","Essência de mucina":"core5.webp","Ampola calmante":"core6.webp","Clareador de manchas":"core7.webp","Retinol":"core10.webp","Creme reparador":"core9.webp","Creme final rico":"core11.webp","Secativo localizado":"core12.webp","Protetor toque seco":"core13.webp"};
+const BR_IMG={"Limpeza de pH baixo":"brasi1.webp","Demaquilante":"brasi2.webp","Tônico calmante":"brasi3.webp","Ácido azelaico":"brasi4.webp","Essência hidratante/reparadora":"brasi5.webp","Ampola calmante":"brasi6.webp","Clareador de manchas":"brasi7.webp","Retinol":"brasi8.webp","Creme reparador":"brasi9.webp","Creme final rico":"brasi10.webp","Secativo localizado":"brasi11.webp","Protetor toque seco":"brasi12.webp"};
+
 const MANUAL={
  limpeza:{nome:"Limpeza facial",cat:"Limpeza",qtd:"Uma ervilha, com o rosto úmido.",tempo:"Massageie 30 a 60 segundos e enxágue com água morna — nunca quente.",freq:"2x ao dia",erro:"Lavar até 'ranger'. Pele que range é pele sem proteção — e produz mais óleo pra compensar."},
  oleo:{nome:"Primeira limpeza",cat:"Demaquilante",qtd:"2 a 3 bombeadas, no rosto SECO.",tempo:"Massageie 60 segundos, adicione água pra emulsionar e enxágue.",freq:"À noite",erro:"Pular esse passo. Protetor solar é resistente à água — sabonete sozinho não tira."},
@@ -846,11 +849,11 @@ function construirIndice(){
         <div class="aviso d"><b>O erro mais comum</b>${m.erro}</div>
         ${(eqK.length||eqB.length)?`<div class="secao" style="margin-top:6px"><h2 class="h2" style="font-size:1rem">Equivalentes pra este passo</h2></div>
           ${eqK.map(i=>`<button class="res" onclick="buscarGoogleCoreano(${i})">
-            <span class="ico" style="background:var(--azul-bg);color:var(--azul)">${SVG.ic.frasco}</span>
+            <span class="ico" style="${CORE_IMG[EQUIVALENTES[i].passo]?"padding:0;overflow:hidden":"background:var(--azul-bg);color:var(--azul)"}">${CORE_IMG[EQUIVALENTES[i].passo]?`<img src="${CORE_IMG[EQUIVALENTES[i].passo]}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:13px">`:SVG.ic.frasco}</span>
             <span class="cc"><span class="kind">Versão coreana</span><b>${EQUIVALENTES[i].coreano}</b>
             <span class="dd">${EQUIVALENTES[i].faixa}</span></span></button>`).join("")}
           ${eqB.map(i=>`<button class="res" onclick="buscarGoogleBrasileiro(${i})">
-            <span class="ico" style="background:var(--verde-bg);color:var(--verde-esc)">${SVG.ic.frasco}</span>
+            <span class="ico" style="${BR_IMG[EQUIVALENTES_BR[i].passo]?"padding:0;overflow:hidden":"background:var(--verde-bg);color:var(--verde-esc)"}">${BR_IMG[EQUIVALENTES_BR[i].passo]?`<img src="${BR_IMG[EQUIVALENTES_BR[i].passo]}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:13px">`:SVG.ic.frasco}</span>
             <span class="cc"><span class="kind">Versão brasileira</span><b>${EQUIVALENTES_BR[i].coreano}</b>
             <span class="dd">${EQUIVALENTES_BR[i].faixa}</span></span></button>`).join("")}`:""}`});});
   PATRICIA.modos.forEach(mo=>mo.blocos.forEach(b=>b.passos.forEach(p=>INDICE.push({
@@ -1206,21 +1209,44 @@ function renderPatricia(){
     "Secativo localizado":"alerta",
     "Protetor toque seco":"sol"
   };
+  const pilha=EQUIVALENTES.filter(e=>CORE_IMG[e.passo]).map((e,i)=>
+    `<img src="${CORE_IMG[e.passo]}" alt="" style="width:26px;height:26px;border-radius:50%;object-fit:cover;
+      border:2px solid var(--papel);margin-left:${i?"-10px":"0"};position:relative;z-index:${100-i};
+      ${i?"filter:blur(1.5px);opacity:.8":""}">`).join("");
   document.getElementById("paCorpo").innerHTML = `
-    <div class="secao"><h2 class="h2">Versão Coreana</h2><span class="mini">${EQUIVALENTES.length} passos</span></div>
+    <div class="secao"><h2 class="h2">Versão Coreana</h2>
+      <span style="display:flex;align-items:center;gap:8px">
+        <span style="display:flex">${pilha}</span>
+        <span class="mini">${EQUIVALENTES.length} passos</span>
+      </span></div>
     ${EQUIVALENTES.map((e,idx)=>{
+      const ico=CORE_IMG[e.passo]
+        ?`<span class="ico" style="padding:0;overflow:hidden"><img src="${CORE_IMG[e.passo]}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:13px"></span>`
+        :`<span class="ico" style="background:var(--azul-bg);color:var(--azul)">${SVG.ic.frasco}</span>`;
       return `<button class="res" onclick="buscarGoogleCoreano(${idx})">
-        <span class="ico" style="background:var(--azul-bg);color:var(--azul)">${SVG.ic.frasco}</span>
+        ${ico}
         <span class="cc"><span class="kind">${e.faixa}</span><b>${e.passo}</b>
         <span class="dd">${e.coreano}</span></span></button>`;}).join("")}
 
     <!-- Versão brasileira -->
     ${(()=>{
-      return `<div class="secao"><h2 class="h2">Versão Brasileira</h2><span class="mini">${EQUIVALENTES_BR.length} passos</span></div>`+
-        EQUIVALENTES_BR.map((e,idx)=>`<button class="res" onclick="buscarGoogleBrasileiro(${idx})">
-          <span class="ico" style="background:var(--azul-bg);color:var(--azul)">${SVG.ic.frasco}</span>
+      const pilhaBR=EQUIVALENTES_BR.filter(e=>BR_IMG[e.passo]).map((e,i)=>
+        `<img src="${BR_IMG[e.passo]}" alt="" style="width:26px;height:26px;border-radius:50%;object-fit:cover;
+          border:2px solid var(--papel);margin-left:${i?"-10px":"0"};position:relative;z-index:${100-i};
+          ${i?"filter:blur(1.5px);opacity:.8":""}">`).join("");
+      return `<div class="secao"><h2 class="h2">Versão Brasileira</h2>
+        <span style="display:flex;align-items:center;gap:8px">
+          <span style="display:flex">${pilhaBR}</span>
+          <span class="mini">${EQUIVALENTES_BR.length} passos</span>
+        </span></div>`+
+        EQUIVALENTES_BR.map((e,idx)=>{
+          const ico=BR_IMG[e.passo]
+            ?`<span class="ico" style="padding:0;overflow:hidden"><img src="${BR_IMG[e.passo]}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:13px"></span>`
+            :`<span class="ico" style="background:var(--azul-bg);color:var(--azul)">${SVG.ic.frasco}</span>`;
+          return `<button class="res" onclick="buscarGoogleBrasileiro(${idx})">
+          ${ico}
           <span class="cc"><span class="kind">${e.faixa}</span><b>${e.passo}</b>
-          <span class="dd">${e.coreano}</span></span></button>`).join("");
+          <span class="dd">${e.coreano}</span></span></button>`;}).join("");
     })()}
 `;
 }

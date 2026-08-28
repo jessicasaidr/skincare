@@ -557,9 +557,7 @@ const VIDEOS={
   {nome:"O ritual da Patricia",sub:"A rotina coreana filmada de ponta a ponta",cor:"rosa",aulas:[
    {id:"r1",modo:"acne",t:"Manhã completa — controle de acne",dur:"4 min",url:"https://www.youtube.com/watch?v=B4Mgy-66y1Y&feature=youtu.be",desc:"COSRX, Centella Toner, azelaico e TOCOBO, no espelho."},
    {id:"r2",modo:"acne",t:"Noite completa — controle de acne",dur:"4 min",url:"https://www.youtube.com/watch?v=8D8ke4tELbo",desc:"Dupla limpeza, tônico, azelaico e Dr. Thea 345."},
-   {id:"r3",modo:"retinol",t:"A noite de retinol",dur:"8 min",url:"",desc:"Inclusive os 15 minutos de espera, o passo que quase todo mundo pula."},
-   {id:"r4",modo:"glass",t:"Glass skin em camadas",dur:"12 min",url:"",desc:"Snail 96, Probio-Cica, Celimax e PDRN. Quando entrar e quando não."},
-   {id:"r5",modo:null,t:"Medicube Age-R: como uso",dur:"6 min",url:"",desc:"Modo Booster, 2x por semana, e o que passar logo depois."}]},
+   {id:"r3",modo:"retinol",t:"A noite de retinol",dur:"2 min",url:"https://www.youtube.com/watch?v=lZLk9SbnOpE",desc:"Inclusive os 15 minutos de espera, o passo que quase todo mundo pula."}]},
  ]};
 
 /* ══════════════ RITUAL DA PATRICIA ══════════════ */
@@ -1106,11 +1104,6 @@ function renderRotina(){
   document.getElementById("rExtra").innerHTML=`
     <div class="secao"><h2 class="h2">O que nunca junto</h2></div>
     ${rotina.conflitos.map(([t,x])=>`<div class="aviso d"><b>${t}</b>${x}</div>`).join("")}
-    <div class="secao"><h2 class="h2">Como começar</h2></div>
-    ${rotina.progressao.map(([q,x],i)=>`<div class="card" style="display:flex;gap:13px">
-      <span style="flex:0 0 30px;height:30px;border-radius:99px;background:var(--roxo-bg);color:var(--roxo);
-        display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem">${i+1}</span>
-      <span class="peq" style="color:var(--tinta)"><b style="color:var(--tinta)">${q}.</b> ${x}</span></div>`).join("")}
     <button class="btn ghost" onclick="window.print()">Salvar em PDF</button>
     <button class="btn ghost" onclick="recomecar()">Refazer o questionário</button>`;
 }
